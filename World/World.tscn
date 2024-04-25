@@ -1,0 +1,20 @@
+[gd_scene load_steps=4 format=3 uid="uid://bowbvqed7tr02"]
+
+[ext_resource type="PackedScene" uid="uid://bfja5411gtv4h" path="res://Player/Player.tscn" id="1_v8kyn"]
+[ext_resource type="Script" path="res://World/World.gd" id="1_ys7y2"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_16ahp"]
+
+[node name="World" type="Node2D"]
+script = ExtResource("1_ys7y2")
+
+[node name="Camera2D" type="Camera2D" parent="."]
+
+[node name="WorldBounds" type="Area2D" parent="."]
+
+[node name="WorldBoundsShape" type="CollisionShape2D" parent="WorldBounds"]
+shape = SubResource("RectangleShape2D_16ahp")
+
+[node name="Player" parent="." instance=ExtResource("1_v8kyn")]
+
+[connection signal="body_exited" from="WorldBounds" to="." method="_on_world_bounds_body_exited"]
