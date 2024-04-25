@@ -18,3 +18,9 @@ shape = SubResource("RectangleShape2D_2kgax")
 [node name="Sprite2D" type="Sprite2D" parent="."]
 scale = Vector2(0.75, 0.75)
 texture = ExtResource("2_ju6x8")
+
+[node name="MarkerLeft" type="Marker2D" parent="."]
+position = Vector2(-23, -5)
+
+[node name="MarkerRight" type="Marker2D" parent="."]
+position = Vector2(23, -5)

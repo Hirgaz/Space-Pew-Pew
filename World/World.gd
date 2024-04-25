@@ -19,6 +19,5 @@ func _ready() -> void:
 
 
 func _on_world_bounds_body_exited(body: Node2D) -> void:
-	# Warp players and other items.
-	# TODO: Decide further details.
-	body.global_position = -body.global_position
+	if body.has_method(&"exit_map"):
+		body.exit_map()
