@@ -17,8 +17,10 @@ const SHOOT_COOLDOWN = 9.0
 const LASER_VELOCITY = 500
 
 
+@onready var audio_player := $AudioStreamPlayer2D
 @onready var marker_left := $MarkerLeft
 @onready var marker_right := $MarkerRight
+@onready var thrust := $Thrust
 
 
 var shoot_time := 0
@@ -79,8 +81,10 @@ func _integrate_forces(state: PhysicsDirectBodyState2D) -> void:
 		elif move_back:
 			if velocity.length_squared() < MAX_MOVE_VELOCITY*MAX_MOVE_VELOCITY:
 				velocity = velocity.move_toward(forward * -MAX_MOVE_VELOCITY, MOVE_BACK_ACCEL * step)
+		thrust.visible = true
 	else:
 		velocity = velocity.move_toward(Vector2(), MOVE_DECEL * step)
+		thrust.visible = false
 	
 	state.set_linear_velocity(velocity)
 
@@ -98,5 +102,6 @@ func _spawn_laser_at(position: Vector2) -> void:
 
 
 func _spawn_laser() -> void:
+	audio_player.get_stream_playback().play_stream(preload("res://Player/Laser/LaserSound.ogg"))
 	_spawn_laser_at(marker_left.global_position)
 	_spawn_laser_at(marker_right.global_position)

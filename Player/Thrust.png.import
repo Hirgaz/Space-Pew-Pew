@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://b7fnn5wa0rhec"
-path="res://.godot/imported/LaserGreen.png-db1e95f78a41cad297c11c1895ffb842.ctex"
+uid="uid://bmg0sdfy43pxl"
+path="res://.godot/imported/Thrust.png-016ccec6b112c15a559742fa83b26e70.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Player/Laser/LaserGreen.png"
-dest_files=["res://.godot/imported/LaserGreen.png-db1e95f78a41cad297c11c1895ffb842.ctex"]
+source_file="res://Player/Thrust.png"
+dest_files=["res://.godot/imported/Thrust.png-016ccec6b112c15a559742fa83b26e70.ctex"]
 
 [params]
 
