@@ -1,8 +1,9 @@
-[gd_scene load_steps=6 format=3 uid="uid://bfja5411gtv4h"]
+[gd_scene load_steps=7 format=3 uid="uid://bfja5411gtv4h"]
 
 [ext_resource type="Script" path="res://Player/Player.gd" id="1_gme6l"]
 [ext_resource type="Texture2D" uid="uid://jr8cse33r852" path="res://Player/PlayerShipOrange.png" id="2_ju6x8"]
 [ext_resource type="Texture2D" uid="uid://bmg0sdfy43pxl" path="res://Player/Thrust.png" id="3_j14qt"]
+[ext_resource type="AudioStream" uid="uid://dcfnvhj0627d3" path="res://Player/Thruster.ogg" id="4_vlf3c"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_2kgax"]
 size = Vector2(86, 58)
@@ -32,8 +33,14 @@ position = Vector2(-23, -5)
 [node name="MarkerRight" type="Marker2D" parent="."]
 position = Vector2(23, -5)
 
-[node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="."]
+[node name="LaserAudioPlayer" type="AudioStreamPlayer2D" parent="."]
 stream = SubResource("AudioStreamPolyphonic_47i0w")
 autoplay = true
+attenuation = 1e-05
 max_polyphony = 5
+bus = &"Effects"
+
+[node name="ThrusterAudioPlayer" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("4_vlf3c")
+attenuation = 1e-05
 bus = &"Effects"
