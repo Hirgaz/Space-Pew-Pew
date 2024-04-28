@@ -1,22 +1,39 @@
-[gd_scene load_steps=6 format=3 uid="uid://bowbvqed7tr02"]
+[gd_scene load_steps=8 format=3 uid="uid://bowbvqed7tr02"]
 
 [ext_resource type="PackedScene" uid="uid://bfja5411gtv4h" path="res://Player/Player.tscn" id="1_v8kyn"]
 [ext_resource type="Script" path="res://World/World.gd" id="1_ys7y2"]
 [ext_resource type="Texture2D" uid="uid://de5dalm8rljim" path="res://World/Background.png" id="2_k0k6s"]
+[ext_resource type="PackedScene" uid="uid://sb8ingkt53st" path="res://Asteroids/Asteroid1.tscn" id="2_wucef"]
+[ext_resource type="PackedScene" uid="uid://ca7bkasohx006" path="res://Asteroids/Asteroid2.tscn" id="3_qhvly"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_16ahp"]
+size = Vector2(1152, 720)
+
+[sub_resource type="Curve2D" id="Curve2D_g6puy"]
+_data = {
+"points": PackedVector2Array(0, 0, 0, 0, 1152, 0, 0, 0, 0, 0, 1152, 720, 0, 0, 0, 0, 0, 720, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1152, 0)
+}
+point_count = 5
 
 [node name="World" type="Node2D"]
 script = ExtResource("1_ys7y2")
+asteroid_scenes = Array[PackedScene]([ExtResource("2_wucef"), ExtResource("3_qhvly")])
 
 [node name="CanvasLayer" type="CanvasLayer" parent="."]
 layer = -1
 
 [node name="Control" type="Control" parent="CanvasLayer"]
+custom_minimum_size = Vector2(1152, 720)
 layout_mode = 3
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -576.0
+offset_top = -324.0
+offset_right = 576.0
+offset_bottom = 324.0
 grow_horizontal = 2
 grow_vertical = 2
 
@@ -56,10 +73,28 @@ text = "v: "
 current = true
 
 [node name="WorldBounds" type="Area2D" parent="."]
+collision_layer = 4
+collision_mask = 7
 
 [node name="WorldBoundsShape" type="CollisionShape2D" parent="WorldBounds"]
 shape = SubResource("RectangleShape2D_16ahp")
 
 [node name="Player" parent="." instance=ExtResource("1_v8kyn")]
+unique_name_in_owner = true
+
+[node name="SpawnPath" type="Path2D" parent="."]
+position = Vector2(-576, -360)
+curve = SubResource("Curve2D_g6puy")
+
+[node name="SpawnPoint" type="PathFollow2D" parent="SpawnPath"]
+position = Vector2(1152, 0)
+rotation = 1.5708
+
+[node name="AsteroidsRoot" type="Node2D" parent="."]
+
+[node name="SpawnTimer" type="Timer" parent="."]
+wait_time = 2.5
+autostart = true
 
 [connection signal="body_exited" from="WorldBounds" to="." method="_on_world_bounds_body_exited"]
+[connection signal="timeout" from="SpawnTimer" to="." method="_on_spawn_timer_timeout"]

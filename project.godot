@@ -17,6 +17,14 @@ run/main_scene="res://World/World.tscn"
 config/features=PackedStringArray("4.3", "Forward Plus")
 config/icon="res://icon.svg"
 
+[display]
+
+window/size/viewport_height=720
+window/size/resizable=false
+window/size/window_width_override=1152
+window/size/window_height_override=720
+window/stretch/scale_mode="integer"
+
 [input]
 
 turn_left={
@@ -51,5 +59,7 @@ shoot={
 
 [rendering]
 
+textures/canvas_textures/default_texture_filter=2
 environment/defaults/default_clear_color=Color(0, 0, 0, 1)
-2d/snap/snap_2d_transforms_to_pixel=true
+anti_aliasing/quality/msaa_2d=1
+anti_aliasing/quality/screen_space_aa=1
