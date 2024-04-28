@@ -7,3 +7,7 @@ Export/*
 !Export/.gdignore
 
 export_presets.cfg
+
+# Automation related files
+__pycache__
+*.gen.*
