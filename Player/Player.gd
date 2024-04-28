@@ -77,11 +77,10 @@ func _integrate_forces(state: PhysicsDirectBodyState2D) -> void:
 		# Forward direction in local space.
 		var forward := transform.basis_xform(Vector2(0, -1.0))
 		if move_forward:
-			if velocity.length_squared() < MAX_MOVE_VELOCITY*MAX_MOVE_VELOCITY:
-				velocity = velocity.move_toward(forward * MAX_MOVE_VELOCITY, MOVE_FORWARD_ACCEL * step)
+			velocity = velocity.move_toward(forward * MAX_MOVE_VELOCITY, MOVE_FORWARD_ACCEL * step)
 		elif move_back:
-			if velocity.length_squared() < MAX_MOVE_VELOCITY*MAX_MOVE_VELOCITY:
-				velocity = velocity.move_toward(forward * -MAX_MOVE_VELOCITY, MOVE_BACK_ACCEL * step)
+			velocity = velocity.move_toward(forward * -MAX_MOVE_VELOCITY, MOVE_BACK_ACCEL * step)
+		
 		if not thruster_audio_player.playing:
 			thruster_audio_player.playing = true
 		if not thrust.visible:
