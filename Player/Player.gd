@@ -34,7 +34,6 @@ func exit_map() -> void:
 
 func _integrate_forces(state: PhysicsDirectBodyState2D) -> void:
 	var step := state.get_step()
-	var space_transform := state.get_transform()
 	
 	# Handle shooting.
 	var shoot := Input.is_action_pressed(&"shoot")
@@ -93,11 +92,11 @@ func _integrate_forces(state: PhysicsDirectBodyState2D) -> void:
 	state.set_linear_velocity(velocity)
 
 
-func _spawn_laser_at(position: Vector2) -> void:
+func _spawn_laser_at(laser_position: Vector2) -> void:
 	var laser : RigidBody2D = LASER_SCENE.instantiate()
 	
 	laser.rotation = global_rotation
-	laser.position = position
+	laser.position = laser_position
 	
 	laser.linear_velocity = global_transform.basis_xform(Vector2(0.0, -LASER_VELOCITY))
 	
