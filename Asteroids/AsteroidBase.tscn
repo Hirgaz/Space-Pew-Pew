@@ -1,0 +1,15 @@
+[gd_scene load_steps=2 format=3 uid="uid://oklj0tuhhc4r"]
+
+[ext_resource type="Script" path="res://Asteroids/Asteroid.gd" id="1_pr47t"]
+
+[node name="Asteroid" type="RigidBody2D"]
+collision_layer = 4
+collision_mask = 0
+gravity_scale = 0.0
+script = ExtResource("1_pr47t")
+
+[node name="Detector" type="Area2D" parent="."]
+collision_layer = 0
+collision_mask = 8
+
+[connection signal="body_entered" from="Detector" to="." method="_on_detector_body_entered"]
