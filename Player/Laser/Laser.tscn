@@ -7,7 +7,7 @@
 size = Vector2(10, 55)
 
 [node name="Laser" type="RigidBody2D"]
-collision_layer = 2
+collision_layer = 10
 gravity_scale = 0.0
 script = ExtResource("1_idrpm")
 
