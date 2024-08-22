@@ -4,7 +4,6 @@ extends Node2D
 @onready var asteroids_root := $AsteroidsRoot
 @onready var camera := $Camera2D
 @onready var spawn_point := $SpawnPath/SpawnPoint
-@onready var version_label := %VersionLabel
 @onready var world_bounds := $WorldBounds
 @onready var world_bounds_shape := $WorldBounds/WorldBoundsShape
 
@@ -23,9 +22,6 @@ func _ready() -> void:
 	# Detect window size changes.
 	get_window().size_changed.connect(_update_bounds)
 	_update_bounds()
-	
-	# Set version label.
-	version_label.text = "v: " + ProjectSettings.get(&"application/config/version")
 	
 	_on_spawn_timer_timeout()
 

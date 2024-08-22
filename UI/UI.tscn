@@ -1,0 +1,270 @@
+[gd_scene load_steps=6 format=3 uid="uid://c80n1scsjner4"]
+
+[ext_resource type="Texture2D" uid="uid://de5dalm8rljim" path="res://World/Background.png" id="1_cr6ap"]
+[ext_resource type="Script" path="res://UI/UI.gd" id="1_ddrgo"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_wrqxn"]
+bg_color = Color(0.6, 0.6, 0.6, 0.0627451)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_t2jpx"]
+bg_color = Color(0.435192, 0.435192, 0.435192, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_18yuf"]
+bg_color = Color(0.336608, 0.336608, 0.336608, 1)
+
+[node name="UI" type="Node"]
+process_mode = 3
+script = ExtResource("1_ddrgo")
+
+[node name="BGCanvasLayer" type="CanvasLayer" parent="."]
+layer = -1
+
+[node name="Background" type="Control" parent="BGCanvasLayer"]
+custom_minimum_size = Vector2(1152, 720)
+layout_mode = 3
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -576.0
+offset_top = -324.0
+offset_right = 576.0
+offset_bottom = 324.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 1
+
+[node name="TextureRect" type="TextureRect" parent="BGCanvasLayer/Background"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("1_cr6ap")
+stretch_mode = 1
+
+[node name="MarginContainer" type="MarginContainer" parent="BGCanvasLayer/Background"]
+layout_mode = 1
+anchors_preset = 3
+anchor_left = 1.0
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -18.0
+offset_top = -23.0
+grow_horizontal = 0
+grow_vertical = 0
+theme_override_constants/margin_right = 4
+theme_override_constants/margin_bottom = 4
+
+[node name="VersionLabel" type="Label" parent="BGCanvasLayer/Background/MarginContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_vertical = 1
+text = "v: "
+
+[node name="MenuCanvasLayer" type="CanvasLayer" parent="."]
+
+[node name="MainMenu" type="Control" parent="MenuCanvasLayer"]
+visible = false
+custom_minimum_size = Vector2(1152, 720)
+layout_mode = 3
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -576.0
+offset_top = -360.0
+offset_right = 576.0
+offset_bottom = 360.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="BG" type="Panel" parent="MenuCanvasLayer/MainMenu"]
+custom_minimum_size = Vector2(1152, 720)
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_wrqxn")
+
+[node name="Panel" type="Panel" parent="MenuCanvasLayer/MainMenu/BG"]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.3
+anchor_top = 0.2
+anchor_right = 0.7
+anchor_bottom = 0.8
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_t2jpx")
+
+[node name="MarginContainer" type="MarginContainer" parent="MenuCanvasLayer/MainMenu/BG/Panel"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/margin_left = 16
+theme_override_constants/margin_top = 16
+theme_override_constants/margin_right = 16
+theme_override_constants/margin_bottom = 16
+
+[node name="VBoxContainer" type="VBoxContainer" parent="MenuCanvasLayer/MainMenu/BG/Panel/MarginContainer"]
+layout_mode = 2
+
+[node name="Title" type="Label" parent="MenuCanvasLayer/MainMenu/BG/Panel/MarginContainer/VBoxContainer"]
+layout_mode = 2
+theme_override_styles/normal = SubResource("StyleBoxFlat_18yuf")
+text = "Space Pew Pew
+"
+horizontal_alignment = 1
+
+[node name="HSeparator" type="HSeparator" parent="MenuCanvasLayer/MainMenu/BG/Panel/MarginContainer/VBoxContainer"]
+layout_mode = 2
+theme_override_constants/separation = 16
+
+[node name="RestartButton" type="Button" parent="MenuCanvasLayer/MainMenu/BG/Panel/MarginContainer/VBoxContainer"]
+layout_mode = 2
+disabled = true
+text = "Restart"
+
+[node name="HSeparator2" type="HSeparator" parent="MenuCanvasLayer/MainMenu/BG/Panel/MarginContainer/VBoxContainer"]
+layout_mode = 2
+theme_override_constants/separation = 32
+
+[node name="MusicVolumeControl" type="HBoxContainer" parent="MenuCanvasLayer/MainMenu/BG/Panel/MarginContainer/VBoxContainer"]
+layout_mode = 2
+
+[node name="Text" type="Label" parent="MenuCanvasLayer/MainMenu/BG/Panel/MarginContainer/VBoxContainer/MusicVolumeControl"]
+custom_minimum_size = Vector2(80, 0)
+layout_mode = 2
+text = "Music"
+
+[node name="MusicVolumeSlider" type="HSlider" parent="MenuCanvasLayer/MainMenu/BG/Panel/MarginContainer/VBoxContainer/MusicVolumeControl"]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 4
+value = 100.0
+tick_count = 10
+ticks_on_borders = true
+
+[node name="MusicVolumeDisplay" type="Label" parent="MenuCanvasLayer/MainMenu/BG/Panel/MarginContainer/VBoxContainer/MusicVolumeControl"]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(50, 0)
+layout_mode = 2
+text = "100%"
+horizontal_alignment = 2
+
+[node name="VoiceVolumeControl" type="HBoxContainer" parent="MenuCanvasLayer/MainMenu/BG/Panel/MarginContainer/VBoxContainer"]
+layout_mode = 2
+
+[node name="Text" type="Label" parent="MenuCanvasLayer/MainMenu/BG/Panel/MarginContainer/VBoxContainer/VoiceVolumeControl"]
+custom_minimum_size = Vector2(80, 0)
+layout_mode = 2
+text = "Voice"
+
+[node name="VoiceVolumeSlider" type="HSlider" parent="MenuCanvasLayer/MainMenu/BG/Panel/MarginContainer/VBoxContainer/VoiceVolumeControl"]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 4
+value = 100.0
+tick_count = 10
+ticks_on_borders = true
+
+[node name="VoiceVolumeDisplay" type="Label" parent="MenuCanvasLayer/MainMenu/BG/Panel/MarginContainer/VBoxContainer/VoiceVolumeControl"]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(50, 0)
+layout_mode = 2
+text = "100%"
+horizontal_alignment = 2
+
+[node name="EffectsVolumeControl" type="HBoxContainer" parent="MenuCanvasLayer/MainMenu/BG/Panel/MarginContainer/VBoxContainer"]
+layout_mode = 2
+
+[node name="Text" type="Label" parent="MenuCanvasLayer/MainMenu/BG/Panel/MarginContainer/VBoxContainer/EffectsVolumeControl"]
+custom_minimum_size = Vector2(80, 0)
+layout_mode = 2
+text = "Effects"
+
+[node name="EffectsVolumeSlider" type="HSlider" parent="MenuCanvasLayer/MainMenu/BG/Panel/MarginContainer/VBoxContainer/EffectsVolumeControl"]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 4
+value = 100.0
+tick_count = 10
+ticks_on_borders = true
+
+[node name="EffectsVolumeDisplay" type="Label" parent="MenuCanvasLayer/MainMenu/BG/Panel/MarginContainer/VBoxContainer/EffectsVolumeControl"]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(50, 0)
+layout_mode = 2
+text = "100%"
+horizontal_alignment = 2
+
+[node name="UIVolumeControl" type="HBoxContainer" parent="MenuCanvasLayer/MainMenu/BG/Panel/MarginContainer/VBoxContainer"]
+layout_mode = 2
+
+[node name="Text" type="Label" parent="MenuCanvasLayer/MainMenu/BG/Panel/MarginContainer/VBoxContainer/UIVolumeControl"]
+custom_minimum_size = Vector2(80, 0)
+layout_mode = 2
+text = "UI"
+
+[node name="UIVolumeSlider" type="HSlider" parent="MenuCanvasLayer/MainMenu/BG/Panel/MarginContainer/VBoxContainer/UIVolumeControl"]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 4
+value = 100.0
+tick_count = 10
+ticks_on_borders = true
+
+[node name="UIVolumeDisplay" type="Label" parent="MenuCanvasLayer/MainMenu/BG/Panel/MarginContainer/VBoxContainer/UIVolumeControl"]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(50, 0)
+layout_mode = 2
+text = "100%"
+horizontal_alignment = 2
+
+[node name="HSeparator3" type="HSeparator" parent="MenuCanvasLayer/MainMenu/BG/Panel/MarginContainer/VBoxContainer"]
+layout_mode = 2
+theme_override_constants/separation = 16
+
+[node name="MainVolumeControl" type="HBoxContainer" parent="MenuCanvasLayer/MainMenu/BG/Panel/MarginContainer/VBoxContainer"]
+layout_mode = 2
+
+[node name="Text" type="Label" parent="MenuCanvasLayer/MainMenu/BG/Panel/MarginContainer/VBoxContainer/MainVolumeControl"]
+custom_minimum_size = Vector2(80, 0)
+layout_mode = 2
+text = "Main"
+
+[node name="MainVolumeSlider" type="HSlider" parent="MenuCanvasLayer/MainMenu/BG/Panel/MarginContainer/VBoxContainer/MainVolumeControl"]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 4
+value = 100.0
+tick_count = 10
+ticks_on_borders = true
+
+[node name="MainVolumeDisplay" type="Label" parent="MenuCanvasLayer/MainMenu/BG/Panel/MarginContainer/VBoxContainer/MainVolumeControl"]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(50, 0)
+layout_mode = 2
+text = "100%"
+horizontal_alignment = 2
+
+[connection signal="value_changed" from="MenuCanvasLayer/MainMenu/BG/Panel/MarginContainer/VBoxContainer/MusicVolumeControl/MusicVolumeSlider" to="." method="_on_music_volume_slider_value_changed"]
+[connection signal="value_changed" from="MenuCanvasLayer/MainMenu/BG/Panel/MarginContainer/VBoxContainer/VoiceVolumeControl/VoiceVolumeSlider" to="." method="_on_voice_volume_slider_value_changed"]
+[connection signal="value_changed" from="MenuCanvasLayer/MainMenu/BG/Panel/MarginContainer/VBoxContainer/EffectsVolumeControl/EffectsVolumeSlider" to="." method="_on_effects_volume_slider_value_changed"]
+[connection signal="value_changed" from="MenuCanvasLayer/MainMenu/BG/Panel/MarginContainer/VBoxContainer/UIVolumeControl/UIVolumeSlider" to="." method="_on_ui_volume_slider_value_changed"]
+[connection signal="value_changed" from="MenuCanvasLayer/MainMenu/BG/Panel/MarginContainer/VBoxContainer/MainVolumeControl/MainVolumeSlider" to="." method="_on_main_volume_slider_value_changed"]
