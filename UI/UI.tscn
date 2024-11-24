@@ -350,6 +350,8 @@ layout_mode = 2
 size_flags_vertical = 3
 theme_override_styles/normal = SubResource("StyleBoxFlat_18yuf")
 text = "TBA"
+fit_content = true
+scroll_active = false
 
 [node name="HSeparator" type="HSeparator" parent="MenuCanvasLayer/CreditsMenu/BG/Panel/MarginContainer/VBoxContainer/ScrollContainer/VBoxContainer"]
 layout_mode = 2
