@@ -1,6 +1,6 @@
 [gd_scene load_steps=4 format=3 uid="uid://dly1ntiva4j5k"]
 
-[ext_resource type="Script" path="res://Player/Laser/Laser.gd" id="1_idrpm"]
+[ext_resource type="Script" uid="uid://dbpfqrmjrx13c" path="res://Player/Laser/Laser.gd" id="1_idrpm"]
 [ext_resource type="Texture2D" uid="uid://b7fnn5wa0rhec" path="res://Player/Laser/LaserGreen.png" id="1_t20x8"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_lesc4"]
