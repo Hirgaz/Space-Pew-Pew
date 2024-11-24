@@ -15,6 +15,7 @@ extends Node
 @onready var main_slider := %MainVolumeSlider
 
 @onready var main_menu_base := $MenuCanvasLayer/MainMenu
+@onready var credits_menu_base := $MenuCanvasLayer/CreditsMenu
 
 var music_bus_index: int
 var voice_bus_index: int
@@ -52,6 +53,9 @@ func _ready() -> void:
 	var main_volume = db_to_linear(AudioServer.get_bus_volume_db(0)) * 100.0
 	main_slider.set_value_no_signal(main_volume)
 	main_display.text = "%d%%" % main_volume
+	
+	# Initialize Godot license label.
+	%GodotLicenseLabel.text = Engine.get_license_text()
 
 
 func _unhandled_input(event: InputEvent) -> void:
@@ -66,6 +70,14 @@ func toggle_menu() -> void:
 	else:
 		main_menu_base.visible = true
 		get_tree().paused = true
+
+
+func open_credits() -> void:
+	credits_menu_base.visible = true
+
+
+func close_credits() -> void:
+	credits_menu_base.visible = false
 
 
 func _on_music_volume_slider_value_changed(value: float) -> void:
@@ -87,3 +99,11 @@ func _on_ui_volume_slider_value_changed(value: float) -> void:
 func _on_main_volume_slider_value_changed(value: float) -> void:
 	AudioServer.set_bus_volume_db(0, linear_to_db(value / 100.0))
 	main_display.text = "%d%%" % value
+
+
+func _on_credits_button_pressed() -> void:
+	open_credits()
+
+
+func _on_close_button_pressed() -> void:
+	close_credits()
