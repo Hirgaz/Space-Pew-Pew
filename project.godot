@@ -14,7 +14,7 @@ config/name="Space Pew-Pew"
 config/description="A simple project just to develop some workflow and development skills and procedures, made in Godot"
 config/version="0.1.0"
 run/main_scene="res://World/World.tscn"
-config/features=PackedStringArray("4.4", "Forward Plus")
+config/features=PackedStringArray("4.5", "Forward Plus")
 config/icon="res://icon.svg"
 
 [autoload]
@@ -28,6 +28,8 @@ window/size/resizable=false
 window/size/window_width_override=1152
 window/size/window_height_override=720
 window/stretch/scale_mode="integer"
+window/stretch/aspect.web="expand"
+window/stretch/mode.web="viewport"
 
 [input]
 
@@ -73,3 +75,4 @@ renderer/rendering_method="gl_compatibility"
 renderer/rendering_method.mobile="gl_compatibility"
 environment/defaults/default_clear_color=Color(0, 0, 0, 1)
 anti_aliasing/quality/screen_space_aa=1
+anti_aliasing/quality/screen_space_aa.web=0

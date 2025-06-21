@@ -41,7 +41,7 @@ curve = SubResource("Curve2D_g6puy")
 
 [node name="SpawnPoint" type="PathFollow2D" parent="SpawnPath"]
 position = Vector2(1152, 0)
-rotation = 1.5708
+rotation = 1.5707964
 
 [node name="AsteroidsRoot" type="Node2D" parent="."]
 
