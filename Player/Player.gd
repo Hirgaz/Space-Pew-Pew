@@ -26,6 +26,7 @@ const LASER_VELOCITY = 500
 @onready var thruster_audio_player := $ThrusterAudioPlayer
 
 
+var lives := 5
 var shoot_time := 0.0
 var is_hit := false
 var hit_tween : Tween
@@ -49,7 +50,13 @@ func _get_hit() -> void:
 	if hit_tween:
 		hit_tween.kill()
 
-	# TODO: Handle life counter.
+	# Remove life, die if needed.
+	if lives == 1:
+		# TODO: Die.
+		pass
+	else:
+		lives -= 1
+		_update_lives()
 
 	hit_tween = get_tree().create_tween()
 	var pulse_tween := get_tree().create_tween().set_trans(Tween.TRANS_SINE)
@@ -69,6 +76,10 @@ func _end_hit() -> void:
 	is_hit = false
 	# Reset shoot cooldown.
 	shoot_time = SHOOT_COOLDOWN
+
+
+func _ready() -> void:
+	_update_lives()
 
 
 func _integrate_forces(state: PhysicsDirectBodyState2D) -> void:
@@ -147,3 +158,7 @@ func _spawn_laser() -> void:
 	laser_audio_player.get_stream_playback().play_stream(preload("res://Player/Laser/LaserSound.ogg"))
 	_spawn_laser_at(marker_left.global_position)
 	_spawn_laser_at(marker_right.global_position)
+
+
+func _update_lives() -> void:
+	get_node(^"/root/UI").update_health(lives)

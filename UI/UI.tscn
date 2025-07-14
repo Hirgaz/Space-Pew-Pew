@@ -1,7 +1,8 @@
-[gd_scene load_steps=6 format=3 uid="uid://c80n1scsjner4"]
+[gd_scene load_steps=7 format=3 uid="uid://c80n1scsjner4"]
 
 [ext_resource type="Texture2D" uid="uid://de5dalm8rljim" path="res://World/Background.png" id="1_cr6ap"]
 [ext_resource type="Script" uid="uid://lxg52782mjku" path="res://UI/UI.gd" id="1_ddrgo"]
+[ext_resource type="Texture2D" uid="uid://jr8cse33r852" path="res://Player/PlayerShipOrange.png" id="3_q0uhn"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_wrqxn"]
 bg_color = Color(0.6, 0.6, 0.6, 0.0627451)
@@ -64,6 +65,75 @@ unique_name_in_owner = true
 layout_mode = 2
 size_flags_vertical = 1
 text = "v: "
+
+[node name="OverlayCanvasLayer" type="CanvasLayer" parent="."]
+
+[node name="PlayerOverlay" type="Control" parent="OverlayCanvasLayer"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Control" type="Control" parent="OverlayCanvasLayer/PlayerOverlay"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="MarginContainer" type="MarginContainer" parent="OverlayCanvasLayer/PlayerOverlay/Control"]
+custom_minimum_size = Vector2(152, 92)
+layout_mode = 1
+offset_right = 152.0
+offset_bottom = 92.0
+theme_override_constants/margin_left = 16
+theme_override_constants/margin_top = 16
+
+[node name="HealthHolder" type="HBoxContainer" parent="OverlayCanvasLayer/PlayerOverlay/Control/MarginContainer"]
+custom_minimum_size = Vector2(120, 60)
+layout_mode = 2
+
+[node name="HealthCounter" type="Label" parent="OverlayCanvasLayer/PlayerOverlay/Control/MarginContainer/HealthHolder"]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_vertical = 1
+theme_override_font_sizes/font_size = 32
+text = "5x"
+vertical_alignment = 1
+
+[node name="HealthSingle" type="Control" parent="OverlayCanvasLayer/PlayerOverlay/Control/MarginContainer/HealthHolder"]
+custom_minimum_size = Vector2(60, 60)
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 4
+
+[node name="HealthHolder" type="Control" parent="OverlayCanvasLayer/PlayerOverlay/Control/MarginContainer/HealthHolder/HealthSingle"]
+custom_minimum_size = Vector2(60, 60)
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+rotation = 0.7853982
+pivot_offset = Vector2(30, 30)
+
+[node name="TextureRect" type="TextureRect" parent="OverlayCanvasLayer/PlayerOverlay/Control/MarginContainer/HealthHolder/HealthSingle/HealthHolder"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -56.0
+offset_top = -37.5
+offset_right = 56.0
+offset_bottom = 37.5
+grow_horizontal = 2
+grow_vertical = 2
+scale = Vector2(0.5, 0.5)
+pivot_offset = Vector2(56, 37.5)
+texture = ExtResource("3_q0uhn")
 
 [node name="MenuCanvasLayer" type="CanvasLayer" parent="."]
 

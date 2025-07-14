@@ -17,6 +17,8 @@ extends Node
 @onready var main_menu_base := $MenuCanvasLayer/MainMenu
 @onready var credits_menu_base := $MenuCanvasLayer/CreditsMenu
 
+@onready var health_counter := %HealthCounter
+
 var music_bus_index: int
 var voice_bus_index: int
 var effects_bus_index: int
@@ -107,3 +109,7 @@ func _on_credits_button_pressed() -> void:
 
 func _on_close_button_pressed() -> void:
 	close_credits()
+
+
+func update_health(lives: int) -> void:
+	health_counter.text = "%dx" % lives
