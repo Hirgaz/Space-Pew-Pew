@@ -11,6 +11,7 @@ size = Vector2(86, 58)
 [sub_resource type="AudioStreamPolyphonic" id="AudioStreamPolyphonic_47i0w"]
 
 [node name="Player" type="RigidBody2D"]
+collision_layer = 9
 gravity_scale = 0.0
 can_sleep = false
 script = ExtResource("1_gme6l")
