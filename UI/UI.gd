@@ -16,7 +16,12 @@ extends Node
 
 @onready var main_menu_base := $MenuCanvasLayer/MainMenu
 @onready var credits_menu_base := $MenuCanvasLayer/CreditsMenu
+@onready var game_over_menu_base := $MenuCanvasLayer/GameOverMenu
 
+@onready var quit_button_main := %QuitButtonMain
+@onready var quit_button_game_over := %QuitButtonGameOver
+
+@onready var player_overlay := $OverlayCanvasLayer/PlayerOverlay
 @onready var health_counter := %HealthCounter
 
 var music_bus_index: int
@@ -26,6 +31,11 @@ var ui_bus_index: int
 
 
 func _ready() -> void:
+	# Disable quit button on Web.
+	if OS.has_feature("web"):
+		quit_button_main.visible = false
+		quit_button_game_over.visible = false
+
 	# Set version label.
 	version_label.text = "v: " + ProjectSettings.get(&"application/config/version")
 
@@ -66,7 +76,11 @@ func _unhandled_input(event: InputEvent) -> void:
 
 
 func toggle_menu() -> void:
-	if main_menu_base.visible:
+	if game_over_menu_base.visible:
+		return
+	if credits_menu_base.visible:
+		credits_menu_base.visible = false
+	elif main_menu_base.visible:
 		main_menu_base.visible = false
 		get_tree().paused = false
 	else:
@@ -111,5 +125,14 @@ func _on_close_button_pressed() -> void:
 	close_credits()
 
 
+func _on_quit_button_pressed() -> void:
+	get_tree().quit()
+
+
 func update_health(lives: int) -> void:
 	health_counter.text = "%dx" % lives
+
+
+func game_over() -> void:
+	game_over_menu_base.visible = true
+	get_tree().paused = true

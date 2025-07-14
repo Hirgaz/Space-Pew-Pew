@@ -5,8 +5,8 @@
 [ext_resource type="Texture2D" uid="uid://bmg0sdfy43pxl" path="res://Player/Thrust.png" id="3_j14qt"]
 [ext_resource type="AudioStream" uid="uid://dcfnvhj0627d3" path="res://Player/Thruster.ogg" id="4_vlf3c"]
 
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_2kgax"]
-size = Vector2(86, 58)
+[sub_resource type="ConvexPolygonShape2D" id="ConvexPolygonShape2D_ddoul"]
+points = PackedVector2Array(0, -31, 45, 5, 30, 28, -30, 28, -45, 5)
 
 [sub_resource type="AudioStreamPolyphonic" id="AudioStreamPolyphonic_47i0w"]
 
@@ -17,7 +17,7 @@ can_sleep = false
 script = ExtResource("1_gme6l")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-shape = SubResource("RectangleShape2D_2kgax")
+shape = SubResource("ConvexPolygonShape2D_ddoul")
 
 [node name="Thrust" type="Sprite2D" parent="."]
 position = Vector2(0, 43)

@@ -22,6 +22,7 @@ func _spawn_parts() -> void:
 
 func _on_detector_body_entered(body: Node2D) -> void:
 	if body.has_method(&"hit_target") and body.hit_target():
+		# TODO: Add to score.
 		visible = false
 		_spawn_parts()
 		queue_free()

@@ -16,14 +16,15 @@ _data = {
 }
 point_count = 5
 
-[node name="World" type="Node2D"]
+[node name="World" type="Polygon2D"]
+clip_children = 1
+polygon = PackedVector2Array(576, 360, -576, 360, -576, -360, 576, -360)
 script = ExtResource("1_ys7y2")
 asteroid_scenes = Array[PackedScene]([ExtResource("2_wucef"), ExtResource("3_qhvly"), ExtResource("4_uhf5k"), ExtResource("5_0koeq")])
 
 [node name="Camera2D" type="Camera2D" parent="."]
 
 [node name="AudioListener2D" type="AudioListener2D" parent="."]
-current = true
 
 [node name="WorldBounds" type="Area2D" parent="."]
 collision_layer = 4

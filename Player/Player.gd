@@ -13,8 +13,8 @@ const MOVE_BACK_ACCEL = 128.0
 const MOVE_DECEL = 128.0
 const MAX_MOVE_VELOCITY = 256.0
 
-const HIT_COOLDOWN = 5.0
-const HIT_REPEAT = 5
+const HIT_COOLDOWN = 4.0
+const HIT_REPEAT = 6
 const SHOOT_COOLDOWN = 1.0 / 5.0
 const LASER_VELOCITY = 500
 
@@ -52,8 +52,8 @@ func _get_hit() -> void:
 
 	# Remove life, die if needed.
 	if lives == 1:
-		# TODO: Die.
-		pass
+		UI.game_over()
+		return
 	else:
 		lives -= 1
 		_update_lives()
@@ -161,4 +161,4 @@ func _spawn_laser() -> void:
 
 
 func _update_lives() -> void:
-	get_node(^"/root/UI").update_health(lives)
+	UI.update_health(lives)

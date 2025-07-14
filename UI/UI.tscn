@@ -4,14 +4,22 @@
 [ext_resource type="Script" uid="uid://lxg52782mjku" path="res://UI/UI.gd" id="1_ddrgo"]
 [ext_resource type="Texture2D" uid="uid://jr8cse33r852" path="res://Player/PlayerShipOrange.png" id="3_q0uhn"]
 
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_wrqxn"]
-bg_color = Color(0.6, 0.6, 0.6, 0.0627451)
-
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_t2jpx"]
 bg_color = Color(0.435192, 0.435192, 0.435192, 1)
+corner_radius_top_left = 4
+corner_radius_top_right = 4
+corner_radius_bottom_right = 4
+corner_radius_bottom_left = 4
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_18yuf"]
 bg_color = Color(0.336608, 0.336608, 0.336608, 1)
+corner_radius_top_left = 4
+corner_radius_top_right = 4
+corner_radius_bottom_right = 4
+corner_radius_bottom_left = 4
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_wrqxn"]
+bg_color = Color(0.6, 0.6, 0.6, 0.0627451)
 
 [node name="UI" type="Node"]
 process_mode = 3
@@ -69,10 +77,17 @@ text = "v: "
 [node name="OverlayCanvasLayer" type="CanvasLayer" parent="."]
 
 [node name="PlayerOverlay" type="Control" parent="OverlayCanvasLayer"]
+custom_minimum_size = Vector2(1152, 720)
 layout_mode = 3
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -576.0
+offset_top = -360.0
+offset_right = 576.0
+offset_bottom = 360.0
 grow_horizontal = 2
 grow_vertical = 2
 
@@ -84,41 +99,74 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 
-[node name="MarginContainer" type="MarginContainer" parent="OverlayCanvasLayer/PlayerOverlay/Control"]
-custom_minimum_size = Vector2(152, 92)
+[node name="MarginContainer" type="MarginContainer" parent="OverlayCanvasLayer/PlayerOverlay"]
 layout_mode = 1
-offset_right = 152.0
-offset_bottom = 92.0
+offset_right = 16.0
+offset_bottom = 16.0
 theme_override_constants/margin_left = 16
 theme_override_constants/margin_top = 16
 
-[node name="HealthHolder" type="HBoxContainer" parent="OverlayCanvasLayer/PlayerOverlay/Control/MarginContainer"]
-custom_minimum_size = Vector2(120, 60)
+[node name="Panel" type="Panel" parent="OverlayCanvasLayer/PlayerOverlay/MarginContainer"]
+custom_minimum_size = Vector2(160, 80)
+layout_mode = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_t2jpx")
+
+[node name="MarginContainer" type="MarginContainer" parent="OverlayCanvasLayer/PlayerOverlay/MarginContainer/Panel"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/margin_left = 8
+theme_override_constants/margin_top = 8
+theme_override_constants/margin_right = 8
+theme_override_constants/margin_bottom = 8
+
+[node name="HealthHolder" type="HBoxContainer" parent="OverlayCanvasLayer/PlayerOverlay/MarginContainer/Panel/MarginContainer"]
 layout_mode = 2
 
-[node name="HealthCounter" type="Label" parent="OverlayCanvasLayer/PlayerOverlay/Control/MarginContainer/HealthHolder"]
+[node name="HealthCounter" type="Label" parent="OverlayCanvasLayer/PlayerOverlay/MarginContainer/Panel/MarginContainer/HealthHolder"]
 unique_name_in_owner = true
+custom_minimum_size = Vector2(65, 0)
 layout_mode = 2
 size_flags_vertical = 1
 theme_override_font_sizes/font_size = 32
-text = "5x"
+text = "99x"
+horizontal_alignment = 2
 vertical_alignment = 1
 
-[node name="HealthSingle" type="Control" parent="OverlayCanvasLayer/PlayerOverlay/Control/MarginContainer/HealthHolder"]
-custom_minimum_size = Vector2(60, 60)
+[node name="Control" type="Control" parent="OverlayCanvasLayer/PlayerOverlay/MarginContainer/Panel/MarginContainer/HealthHolder"]
 layout_mode = 2
 size_flags_horizontal = 3
+
+[node name="HealthSingle" type="Control" parent="OverlayCanvasLayer/PlayerOverlay/MarginContainer/Panel/MarginContainer/HealthHolder"]
+custom_minimum_size = Vector2(60, 60)
+layout_mode = 2
 size_flags_vertical = 4
 
-[node name="HealthHolder" type="Control" parent="OverlayCanvasLayer/PlayerOverlay/Control/MarginContainer/HealthHolder/HealthSingle"]
+[node name="Panel" type="Panel" parent="OverlayCanvasLayer/PlayerOverlay/MarginContainer/Panel/MarginContainer/HealthHolder/HealthSingle"]
 custom_minimum_size = Vector2(60, 60)
-anchors_preset = 0
-offset_right = 40.0
-offset_bottom = 40.0
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_18yuf")
+
+[node name="HealthHolder" type="Control" parent="OverlayCanvasLayer/PlayerOverlay/MarginContainer/Panel/MarginContainer/HealthHolder/HealthSingle/Panel"]
+custom_minimum_size = Vector2(60, 60)
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
 rotation = 0.7853982
 pivot_offset = Vector2(30, 30)
 
-[node name="TextureRect" type="TextureRect" parent="OverlayCanvasLayer/PlayerOverlay/Control/MarginContainer/HealthHolder/HealthSingle/HealthHolder"]
+[node name="TextureRect" type="TextureRect" parent="OverlayCanvasLayer/PlayerOverlay/MarginContainer/Panel/MarginContainer/HealthHolder/HealthSingle/Panel/HealthHolder"]
 layout_mode = 1
 anchors_preset = 8
 anchor_left = 0.5
@@ -126,9 +174,9 @@ anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
 offset_left = -56.0
-offset_top = -37.5
+offset_top = -40.0
 offset_right = 56.0
-offset_bottom = 37.5
+offset_bottom = 35.0
 grow_horizontal = 2
 grow_vertical = 2
 scale = Vector2(0.5, 0.5)
@@ -192,8 +240,7 @@ layout_mode = 2
 [node name="Title" type="Label" parent="MenuCanvasLayer/MainMenu/BG/Panel/MarginContainer/VBoxContainer"]
 layout_mode = 2
 theme_override_styles/normal = SubResource("StyleBoxFlat_18yuf")
-text = "Space Pew Pew
-"
+text = "Space Pew Pew"
 horizontal_alignment = 1
 
 [node name="HSeparator" type="HSeparator" parent="MenuCanvasLayer/MainMenu/BG/Panel/MarginContainer/VBoxContainer"]
@@ -202,6 +249,7 @@ theme_override_constants/separation = 16
 
 [node name="RestartButton" type="Button" parent="MenuCanvasLayer/MainMenu/BG/Panel/MarginContainer/VBoxContainer"]
 layout_mode = 2
+tooltip_text = "TBA"
 disabled = true
 text = "Restart"
 
@@ -341,6 +389,17 @@ theme_override_constants/separation = 16
 layout_mode = 2
 text = "Credits"
 
+[node name="HSeparator5" type="HSeparator" parent="MenuCanvasLayer/MainMenu/BG/Panel/MarginContainer/VBoxContainer"]
+layout_mode = 2
+theme_override_constants/separation = 16
+
+[node name="QuitButtonMain" type="Button" parent="MenuCanvasLayer/MainMenu/BG/Panel/MarginContainer/VBoxContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_horizontal = 3
+text = "Quit
+"
+
 [node name="CreditsMenu" type="Control" parent="MenuCanvasLayer"]
 visible = false
 layout_mode = 3
@@ -450,10 +509,92 @@ theme_override_constants/separation = 16
 layout_mode = 2
 text = "Close"
 
+[node name="GameOverMenu" type="Control" parent="MenuCanvasLayer"]
+visible = false
+custom_minimum_size = Vector2(1152, 720)
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="BG" type="Panel" parent="MenuCanvasLayer/GameOverMenu"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_wrqxn")
+
+[node name="Panel" type="Panel" parent="MenuCanvasLayer/GameOverMenu/BG"]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.35
+anchor_top = 0.4
+anchor_right = 0.65
+anchor_bottom = 0.6
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_t2jpx")
+
+[node name="MarginContainer" type="MarginContainer" parent="MenuCanvasLayer/GameOverMenu/BG/Panel"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/margin_left = 16
+theme_override_constants/margin_top = 16
+theme_override_constants/margin_right = 16
+theme_override_constants/margin_bottom = 16
+
+[node name="VBoxContainer" type="VBoxContainer" parent="MenuCanvasLayer/GameOverMenu/BG/Panel/MarginContainer"]
+layout_mode = 2
+
+[node name="Title" type="Label" parent="MenuCanvasLayer/GameOverMenu/BG/Panel/MarginContainer/VBoxContainer"]
+layout_mode = 2
+theme_override_styles/normal = SubResource("StyleBoxFlat_18yuf")
+text = "Game Over"
+horizontal_alignment = 1
+
+[node name="HSeparator" type="HSeparator" parent="MenuCanvasLayer/GameOverMenu/BG/Panel/MarginContainer/VBoxContainer"]
+layout_mode = 2
+theme_override_constants/separation = 16
+
+[node name="GameOverScore" type="Label" parent="MenuCanvasLayer/GameOverMenu/BG/Panel/MarginContainer/VBoxContainer"]
+layout_mode = 2
+text = "Score: TODO"
+
+[node name="HSeparator2" type="HSeparator" parent="MenuCanvasLayer/GameOverMenu/BG/Panel/MarginContainer/VBoxContainer"]
+layout_mode = 2
+theme_override_constants/separation = 16
+
+[node name="ButtonContainer" type="HBoxContainer" parent="MenuCanvasLayer/GameOverMenu/BG/Panel/MarginContainer/VBoxContainer"]
+layout_mode = 2
+
+[node name="RestartButton" type="Button" parent="MenuCanvasLayer/GameOverMenu/BG/Panel/MarginContainer/VBoxContainer/ButtonContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+tooltip_text = "TBA"
+disabled = true
+text = "Restart"
+
+[node name="QuitButtonGameOver" type="Button" parent="MenuCanvasLayer/GameOverMenu/BG/Panel/MarginContainer/VBoxContainer/ButtonContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_horizontal = 3
+text = "Quit
+"
+
 [connection signal="value_changed" from="MenuCanvasLayer/MainMenu/BG/Panel/MarginContainer/VBoxContainer/MusicVolumeControl/MusicVolumeSlider" to="." method="_on_music_volume_slider_value_changed"]
 [connection signal="value_changed" from="MenuCanvasLayer/MainMenu/BG/Panel/MarginContainer/VBoxContainer/VoiceVolumeControl/VoiceVolumeSlider" to="." method="_on_voice_volume_slider_value_changed"]
 [connection signal="value_changed" from="MenuCanvasLayer/MainMenu/BG/Panel/MarginContainer/VBoxContainer/EffectsVolumeControl/EffectsVolumeSlider" to="." method="_on_effects_volume_slider_value_changed"]
 [connection signal="value_changed" from="MenuCanvasLayer/MainMenu/BG/Panel/MarginContainer/VBoxContainer/UIVolumeControl/UIVolumeSlider" to="." method="_on_ui_volume_slider_value_changed"]
 [connection signal="value_changed" from="MenuCanvasLayer/MainMenu/BG/Panel/MarginContainer/VBoxContainer/MainVolumeControl/MainVolumeSlider" to="." method="_on_main_volume_slider_value_changed"]
 [connection signal="pressed" from="MenuCanvasLayer/MainMenu/BG/Panel/MarginContainer/VBoxContainer/CreditsButton" to="." method="_on_credits_button_pressed"]
+[connection signal="pressed" from="MenuCanvasLayer/MainMenu/BG/Panel/MarginContainer/VBoxContainer/QuitButtonMain" to="." method="_on_quit_button_pressed"]
 [connection signal="pressed" from="MenuCanvasLayer/CreditsMenu/BG/Panel/MarginContainer/VBoxContainer/CloseButton" to="." method="_on_close_button_pressed"]
+[connection signal="pressed" from="MenuCanvasLayer/GameOverMenu/BG/Panel/MarginContainer/VBoxContainer/ButtonContainer/QuitButtonGameOver" to="." method="_on_quit_button_pressed"]
