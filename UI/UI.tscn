@@ -1,11 +1,11 @@
-[gd_scene load_steps=7 format=3 uid="uid://c80n1scsjner4"]
+[gd_scene load_steps=9 format=3 uid="uid://c80n1scsjner4"]
 
 [ext_resource type="Texture2D" uid="uid://de5dalm8rljim" path="res://World/Background.png" id="1_cr6ap"]
 [ext_resource type="Script" uid="uid://lxg52782mjku" path="res://UI/UI.gd" id="1_ddrgo"]
 [ext_resource type="Texture2D" uid="uid://jr8cse33r852" path="res://Player/PlayerShipOrange.png" id="3_q0uhn"]
 
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_t2jpx"]
-bg_color = Color(0.435192, 0.435192, 0.435192, 1)
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_q0uhn"]
+bg_color = Color(0.44, 0.44, 0.44, 0.49803922)
 corner_radius_top_left = 4
 corner_radius_top_right = 4
 corner_radius_bottom_right = 4
@@ -20,6 +20,15 @@ corner_radius_bottom_left = 4
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_wrqxn"]
 bg_color = Color(0.6, 0.6, 0.6, 0.0627451)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_t2jpx"]
+bg_color = Color(0.435192, 0.435192, 0.435192, 1)
+corner_radius_top_left = 4
+corner_radius_top_right = 4
+corner_radius_bottom_right = 4
+corner_radius_bottom_left = 4
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_q0uhn"]
 
 [node name="UI" type="Node"]
 process_mode = 3
@@ -91,7 +100,7 @@ offset_bottom = 360.0
 grow_horizontal = 2
 grow_vertical = 2
 
-[node name="Control" type="Control" parent="OverlayCanvasLayer/PlayerOverlay"]
+[node name="HealthOverlay" type="Control" parent="OverlayCanvasLayer/PlayerOverlay"]
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -99,19 +108,19 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 
-[node name="MarginContainer" type="MarginContainer" parent="OverlayCanvasLayer/PlayerOverlay"]
+[node name="MarginContainer" type="MarginContainer" parent="OverlayCanvasLayer/PlayerOverlay/HealthOverlay"]
 layout_mode = 1
-offset_right = 16.0
-offset_bottom = 16.0
+offset_right = 176.0
+offset_bottom = 96.0
 theme_override_constants/margin_left = 16
 theme_override_constants/margin_top = 16
 
-[node name="Panel" type="Panel" parent="OverlayCanvasLayer/PlayerOverlay/MarginContainer"]
+[node name="Panel" type="Panel" parent="OverlayCanvasLayer/PlayerOverlay/HealthOverlay/MarginContainer"]
 custom_minimum_size = Vector2(160, 80)
 layout_mode = 2
-theme_override_styles/panel = SubResource("StyleBoxFlat_t2jpx")
+theme_override_styles/panel = SubResource("StyleBoxFlat_q0uhn")
 
-[node name="MarginContainer" type="MarginContainer" parent="OverlayCanvasLayer/PlayerOverlay/MarginContainer/Panel"]
+[node name="MarginContainer" type="MarginContainer" parent="OverlayCanvasLayer/PlayerOverlay/HealthOverlay/MarginContainer/Panel"]
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -123,10 +132,10 @@ theme_override_constants/margin_top = 8
 theme_override_constants/margin_right = 8
 theme_override_constants/margin_bottom = 8
 
-[node name="HealthHolder" type="HBoxContainer" parent="OverlayCanvasLayer/PlayerOverlay/MarginContainer/Panel/MarginContainer"]
+[node name="HealthHolder" type="HBoxContainer" parent="OverlayCanvasLayer/PlayerOverlay/HealthOverlay/MarginContainer/Panel/MarginContainer"]
 layout_mode = 2
 
-[node name="HealthCounter" type="Label" parent="OverlayCanvasLayer/PlayerOverlay/MarginContainer/Panel/MarginContainer/HealthHolder"]
+[node name="HealthCounter" type="Label" parent="OverlayCanvasLayer/PlayerOverlay/HealthOverlay/MarginContainer/Panel/MarginContainer/HealthHolder"]
 unique_name_in_owner = true
 custom_minimum_size = Vector2(65, 0)
 layout_mode = 2
@@ -136,16 +145,16 @@ text = "99x"
 horizontal_alignment = 2
 vertical_alignment = 1
 
-[node name="Control" type="Control" parent="OverlayCanvasLayer/PlayerOverlay/MarginContainer/Panel/MarginContainer/HealthHolder"]
+[node name="Control" type="Control" parent="OverlayCanvasLayer/PlayerOverlay/HealthOverlay/MarginContainer/Panel/MarginContainer/HealthHolder"]
 layout_mode = 2
 size_flags_horizontal = 3
 
-[node name="HealthSingle" type="Control" parent="OverlayCanvasLayer/PlayerOverlay/MarginContainer/Panel/MarginContainer/HealthHolder"]
+[node name="HealthSingle" type="Control" parent="OverlayCanvasLayer/PlayerOverlay/HealthOverlay/MarginContainer/Panel/MarginContainer/HealthHolder"]
 custom_minimum_size = Vector2(60, 60)
 layout_mode = 2
 size_flags_vertical = 4
 
-[node name="Panel" type="Panel" parent="OverlayCanvasLayer/PlayerOverlay/MarginContainer/Panel/MarginContainer/HealthHolder/HealthSingle"]
+[node name="Panel" type="Panel" parent="OverlayCanvasLayer/PlayerOverlay/HealthOverlay/MarginContainer/Panel/MarginContainer/HealthHolder/HealthSingle"]
 custom_minimum_size = Vector2(60, 60)
 layout_mode = 1
 anchors_preset = 15
@@ -155,7 +164,7 @@ grow_horizontal = 2
 grow_vertical = 2
 theme_override_styles/panel = SubResource("StyleBoxFlat_18yuf")
 
-[node name="HealthHolder" type="Control" parent="OverlayCanvasLayer/PlayerOverlay/MarginContainer/Panel/MarginContainer/HealthHolder/HealthSingle/Panel"]
+[node name="HealthHolder" type="Control" parent="OverlayCanvasLayer/PlayerOverlay/HealthOverlay/MarginContainer/Panel/MarginContainer/HealthHolder/HealthSingle/Panel"]
 custom_minimum_size = Vector2(60, 60)
 layout_mode = 1
 anchors_preset = 15
@@ -166,7 +175,7 @@ grow_vertical = 2
 rotation = 0.7853982
 pivot_offset = Vector2(30, 30)
 
-[node name="TextureRect" type="TextureRect" parent="OverlayCanvasLayer/PlayerOverlay/MarginContainer/Panel/MarginContainer/HealthHolder/HealthSingle/Panel/HealthHolder"]
+[node name="TextureRect" type="TextureRect" parent="OverlayCanvasLayer/PlayerOverlay/HealthOverlay/MarginContainer/Panel/MarginContainer/HealthHolder/HealthSingle/Panel/HealthHolder"]
 layout_mode = 1
 anchors_preset = 8
 anchor_left = 0.5
@@ -182,6 +191,51 @@ grow_vertical = 2
 scale = Vector2(0.5, 0.5)
 pivot_offset = Vector2(56, 37.5)
 texture = ExtResource("3_q0uhn")
+
+[node name="HelpOverlay" type="Control" parent="OverlayCanvasLayer/PlayerOverlay"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="MarginContainer" type="MarginContainer" parent="OverlayCanvasLayer/PlayerOverlay/HelpOverlay"]
+layout_mode = 1
+anchors_preset = 1
+anchor_left = 1.0
+anchor_right = 1.0
+offset_left = -112.0
+offset_bottom = 80.0
+grow_horizontal = 0
+theme_override_constants/margin_top = 16
+theme_override_constants/margin_right = 16
+
+[node name="Panel" type="Panel" parent="OverlayCanvasLayer/PlayerOverlay/HelpOverlay/MarginContainer"]
+custom_minimum_size = Vector2(80, 80)
+layout_mode = 2
+size_flags_horizontal = 8
+size_flags_vertical = 4
+theme_override_styles/panel = SubResource("StyleBoxFlat_q0uhn")
+
+[node name="MarginContainer" type="MarginContainer" parent="OverlayCanvasLayer/PlayerOverlay/HelpOverlay/MarginContainer/Panel"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/margin_left = 16
+theme_override_constants/margin_top = 16
+theme_override_constants/margin_right = 16
+theme_override_constants/margin_bottom = 16
+
+[node name="HelpButton" type="Button" parent="OverlayCanvasLayer/PlayerOverlay/HelpOverlay/MarginContainer/Panel/MarginContainer"]
+custom_minimum_size = Vector2(60, 60)
+layout_mode = 2
+tooltip_text = "Open the Instructions and controls Menu"
+theme_override_font_sizes/font_size = 32
+text = "?"
 
 [node name="MenuCanvasLayer" type="CanvasLayer" parent="."]
 
@@ -260,6 +314,11 @@ theme_override_constants/separation = 32
 [node name="MusicVolumeControl" type="HBoxContainer" parent="MenuCanvasLayer/MainMenu/BG/Panel/MarginContainer/VBoxContainer"]
 layout_mode = 2
 
+[node name="MusicVolumeEnabled" type="CheckBox" parent="MenuCanvasLayer/MainMenu/BG/Panel/MarginContainer/VBoxContainer/MusicVolumeControl"]
+unique_name_in_owner = true
+layout_mode = 2
+button_pressed = true
+
 [node name="Text" type="Label" parent="MenuCanvasLayer/MainMenu/BG/Panel/MarginContainer/VBoxContainer/MusicVolumeControl"]
 custom_minimum_size = Vector2(80, 0)
 layout_mode = 2
@@ -283,6 +342,11 @@ horizontal_alignment = 2
 
 [node name="VoiceVolumeControl" type="HBoxContainer" parent="MenuCanvasLayer/MainMenu/BG/Panel/MarginContainer/VBoxContainer"]
 layout_mode = 2
+
+[node name="VoiceVolumeEnabled" type="CheckBox" parent="MenuCanvasLayer/MainMenu/BG/Panel/MarginContainer/VBoxContainer/VoiceVolumeControl"]
+unique_name_in_owner = true
+layout_mode = 2
+button_pressed = true
 
 [node name="Text" type="Label" parent="MenuCanvasLayer/MainMenu/BG/Panel/MarginContainer/VBoxContainer/VoiceVolumeControl"]
 custom_minimum_size = Vector2(80, 0)
@@ -308,6 +372,11 @@ horizontal_alignment = 2
 [node name="EffectsVolumeControl" type="HBoxContainer" parent="MenuCanvasLayer/MainMenu/BG/Panel/MarginContainer/VBoxContainer"]
 layout_mode = 2
 
+[node name="EffectsVolumeEnabled" type="CheckBox" parent="MenuCanvasLayer/MainMenu/BG/Panel/MarginContainer/VBoxContainer/EffectsVolumeControl"]
+unique_name_in_owner = true
+layout_mode = 2
+button_pressed = true
+
 [node name="Text" type="Label" parent="MenuCanvasLayer/MainMenu/BG/Panel/MarginContainer/VBoxContainer/EffectsVolumeControl"]
 custom_minimum_size = Vector2(80, 0)
 layout_mode = 2
@@ -331,6 +400,11 @@ horizontal_alignment = 2
 
 [node name="UIVolumeControl" type="HBoxContainer" parent="MenuCanvasLayer/MainMenu/BG/Panel/MarginContainer/VBoxContainer"]
 layout_mode = 2
+
+[node name="UIVolumeEnabled" type="CheckBox" parent="MenuCanvasLayer/MainMenu/BG/Panel/MarginContainer/VBoxContainer/UIVolumeControl"]
+unique_name_in_owner = true
+layout_mode = 2
+button_pressed = true
 
 [node name="Text" type="Label" parent="MenuCanvasLayer/MainMenu/BG/Panel/MarginContainer/VBoxContainer/UIVolumeControl"]
 custom_minimum_size = Vector2(80, 0)
@@ -360,6 +434,11 @@ theme_override_constants/separation = 16
 [node name="MainVolumeControl" type="HBoxContainer" parent="MenuCanvasLayer/MainMenu/BG/Panel/MarginContainer/VBoxContainer"]
 layout_mode = 2
 
+[node name="MainVolumeEnabled" type="CheckBox" parent="MenuCanvasLayer/MainMenu/BG/Panel/MarginContainer/VBoxContainer/MainVolumeControl"]
+unique_name_in_owner = true
+layout_mode = 2
+button_pressed = true
+
 [node name="Text" type="Label" parent="MenuCanvasLayer/MainMenu/BG/Panel/MarginContainer/VBoxContainer/MainVolumeControl"]
 custom_minimum_size = Vector2(80, 0)
 layout_mode = 2
@@ -388,6 +467,11 @@ theme_override_constants/separation = 16
 [node name="CreditsButton" type="Button" parent="MenuCanvasLayer/MainMenu/BG/Panel/MarginContainer/VBoxContainer"]
 layout_mode = 2
 text = "Credits"
+
+[node name="HelpButton" type="Button" parent="MenuCanvasLayer/MainMenu/BG/Panel/MarginContainer/VBoxContainer"]
+layout_mode = 2
+tooltip_text = "Open the Instructions and controls Menu"
+text = "Help"
 
 [node name="HSeparator5" type="HSeparator" parent="MenuCanvasLayer/MainMenu/BG/Panel/MarginContainer/VBoxContainer"]
 layout_mode = 2
@@ -455,8 +539,7 @@ layout_mode = 2
 [node name="Title" type="Label" parent="MenuCanvasLayer/CreditsMenu/BG/Panel/MarginContainer/VBoxContainer"]
 layout_mode = 2
 theme_override_styles/normal = SubResource("StyleBoxFlat_18yuf")
-text = "Credits
-"
+text = "Credits"
 horizontal_alignment = 1
 
 [node name="HSeparator" type="HSeparator" parent="MenuCanvasLayer/CreditsMenu/BG/Panel/MarginContainer/VBoxContainer"]
@@ -489,8 +572,7 @@ theme_override_constants/separation = 16
 [node name="GodotLicenseHeader" type="Label" parent="MenuCanvasLayer/CreditsMenu/BG/Panel/MarginContainer/VBoxContainer/ScrollContainer/VBoxContainer"]
 layout_mode = 2
 theme_override_styles/normal = SubResource("StyleBoxFlat_18yuf")
-text = "Godot Engine License
-"
+text = "Godot Engine License"
 horizontal_alignment = 1
 
 [node name="GodotLicenseLabel" type="RichTextLabel" parent="MenuCanvasLayer/CreditsMenu/BG/Panel/MarginContainer/VBoxContainer/ScrollContainer/VBoxContainer"]
@@ -505,7 +587,108 @@ scroll_active = false
 layout_mode = 2
 theme_override_constants/separation = 16
 
-[node name="CloseButton" type="Button" parent="MenuCanvasLayer/CreditsMenu/BG/Panel/MarginContainer/VBoxContainer"]
+[node name="CloseCreditsButton" type="Button" parent="MenuCanvasLayer/CreditsMenu/BG/Panel/MarginContainer/VBoxContainer"]
+layout_mode = 2
+text = "Close"
+
+[node name="HelpMenu" type="Control" parent="MenuCanvasLayer"]
+visible = false
+layout_mode = 3
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -576.0
+offset_top = -360.0
+offset_right = 576.0
+offset_bottom = 360.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="BG" type="Panel" parent="MenuCanvasLayer/HelpMenu"]
+custom_minimum_size = Vector2(1152, 720)
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_wrqxn")
+
+[node name="Panel" type="Panel" parent="MenuCanvasLayer/HelpMenu/BG"]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.1
+anchor_top = 0.1
+anchor_right = 0.9
+anchor_bottom = 0.9
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_t2jpx")
+
+[node name="MarginContainer" type="MarginContainer" parent="MenuCanvasLayer/HelpMenu/BG/Panel"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_vertical = 3
+theme_override_constants/margin_left = 16
+theme_override_constants/margin_top = 16
+theme_override_constants/margin_right = 16
+theme_override_constants/margin_bottom = 16
+
+[node name="VBoxContainer" type="VBoxContainer" parent="MenuCanvasLayer/HelpMenu/BG/Panel/MarginContainer"]
+layout_mode = 2
+
+[node name="Title" type="Label" parent="MenuCanvasLayer/HelpMenu/BG/Panel/MarginContainer/VBoxContainer"]
+layout_mode = 2
+theme_override_styles/normal = SubResource("StyleBoxFlat_18yuf")
+text = "Help"
+horizontal_alignment = 1
+
+[node name="TabContainer" type="TabContainer" parent="MenuCanvasLayer/HelpMenu/BG/Panel/MarginContainer/VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 3
+theme_override_styles/panel = SubResource("StyleBoxEmpty_q0uhn")
+current_tab = 0
+
+[node name="How To Play" type="VBoxContainer" parent="MenuCanvasLayer/HelpMenu/BG/Panel/MarginContainer/VBoxContainer/TabContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+metadata/_tab_index = 0
+
+[node name="InstructionsLabel" type="RichTextLabel" parent="MenuCanvasLayer/HelpMenu/BG/Panel/MarginContainer/VBoxContainer/TabContainer/How To Play"]
+layout_mode = 2
+size_flags_vertical = 3
+theme_override_styles/normal = SubResource("StyleBoxFlat_18yuf")
+text = "TBA"
+fit_content = true
+scroll_active = false
+
+[node name="Controls" type="VBoxContainer" parent="MenuCanvasLayer/HelpMenu/BG/Panel/MarginContainer/VBoxContainer/TabContainer"]
+visible = false
+layout_mode = 2
+metadata/_tab_index = 1
+
+[node name="MarginContainer" type="MarginContainer" parent="MenuCanvasLayer/HelpMenu/BG/Panel/MarginContainer/VBoxContainer/TabContainer/Controls"]
+layout_mode = 2
+size_flags_vertical = 3
+
+[node name="VBoxContainer" type="VBoxContainer" parent="MenuCanvasLayer/HelpMenu/BG/Panel/MarginContainer/VBoxContainer/TabContainer/Controls/MarginContainer"]
+layout_mode = 2
+
+[node name="ControlsTree" type="Tree" parent="MenuCanvasLayer/HelpMenu/BG/Panel/MarginContainer/VBoxContainer/TabContainer/Controls/MarginContainer/VBoxContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_vertical = 3
+columns = 3
+hide_root = true
+
+[node name="CloseHelpButton" type="Button" parent="MenuCanvasLayer/HelpMenu/BG/Panel/MarginContainer/VBoxContainer"]
 layout_mode = 2
 text = "Close"
 
@@ -589,12 +772,20 @@ size_flags_horizontal = 3
 text = "Quit
 "
 
+[connection signal="pressed" from="OverlayCanvasLayer/PlayerOverlay/HelpOverlay/MarginContainer/Panel/MarginContainer/HelpButton" to="." method="_on_help_button_pressed"]
+[connection signal="toggled" from="MenuCanvasLayer/MainMenu/BG/Panel/MarginContainer/VBoxContainer/MusicVolumeControl/MusicVolumeEnabled" to="." method="_on_music_volume_enabled_toggled"]
 [connection signal="value_changed" from="MenuCanvasLayer/MainMenu/BG/Panel/MarginContainer/VBoxContainer/MusicVolumeControl/MusicVolumeSlider" to="." method="_on_music_volume_slider_value_changed"]
+[connection signal="toggled" from="MenuCanvasLayer/MainMenu/BG/Panel/MarginContainer/VBoxContainer/VoiceVolumeControl/VoiceVolumeEnabled" to="." method="_on_voice_volume_enabled_toggled"]
 [connection signal="value_changed" from="MenuCanvasLayer/MainMenu/BG/Panel/MarginContainer/VBoxContainer/VoiceVolumeControl/VoiceVolumeSlider" to="." method="_on_voice_volume_slider_value_changed"]
+[connection signal="toggled" from="MenuCanvasLayer/MainMenu/BG/Panel/MarginContainer/VBoxContainer/EffectsVolumeControl/EffectsVolumeEnabled" to="." method="_on_effects_volume_enabled_toggled"]
 [connection signal="value_changed" from="MenuCanvasLayer/MainMenu/BG/Panel/MarginContainer/VBoxContainer/EffectsVolumeControl/EffectsVolumeSlider" to="." method="_on_effects_volume_slider_value_changed"]
+[connection signal="toggled" from="MenuCanvasLayer/MainMenu/BG/Panel/MarginContainer/VBoxContainer/UIVolumeControl/UIVolumeEnabled" to="." method="_on_ui_volume_enabled_toggled"]
 [connection signal="value_changed" from="MenuCanvasLayer/MainMenu/BG/Panel/MarginContainer/VBoxContainer/UIVolumeControl/UIVolumeSlider" to="." method="_on_ui_volume_slider_value_changed"]
+[connection signal="toggled" from="MenuCanvasLayer/MainMenu/BG/Panel/MarginContainer/VBoxContainer/MainVolumeControl/MainVolumeEnabled" to="." method="_on_main_volume_enabled_toggled"]
 [connection signal="value_changed" from="MenuCanvasLayer/MainMenu/BG/Panel/MarginContainer/VBoxContainer/MainVolumeControl/MainVolumeSlider" to="." method="_on_main_volume_slider_value_changed"]
 [connection signal="pressed" from="MenuCanvasLayer/MainMenu/BG/Panel/MarginContainer/VBoxContainer/CreditsButton" to="." method="_on_credits_button_pressed"]
+[connection signal="pressed" from="MenuCanvasLayer/MainMenu/BG/Panel/MarginContainer/VBoxContainer/HelpButton" to="." method="_on_help_button_pressed"]
 [connection signal="pressed" from="MenuCanvasLayer/MainMenu/BG/Panel/MarginContainer/VBoxContainer/QuitButtonMain" to="." method="_on_quit_button_pressed"]
-[connection signal="pressed" from="MenuCanvasLayer/CreditsMenu/BG/Panel/MarginContainer/VBoxContainer/CloseButton" to="." method="_on_close_button_pressed"]
+[connection signal="pressed" from="MenuCanvasLayer/CreditsMenu/BG/Panel/MarginContainer/VBoxContainer/CloseCreditsButton" to="." method="_on_close_credits_button_pressed"]
+[connection signal="pressed" from="MenuCanvasLayer/HelpMenu/BG/Panel/MarginContainer/VBoxContainer/CloseHelpButton" to="." method="_on_close_help_button_pressed"]
 [connection signal="pressed" from="MenuCanvasLayer/GameOverMenu/BG/Panel/MarginContainer/VBoxContainer/ButtonContainer/QuitButtonGameOver" to="." method="_on_quit_button_pressed"]
