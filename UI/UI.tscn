@@ -303,8 +303,7 @@ theme_override_constants/separation = 16
 
 [node name="RestartButton" type="Button" parent="MenuCanvasLayer/MainMenu/BG/Panel/MarginContainer/VBoxContainer"]
 layout_mode = 2
-tooltip_text = "TBA"
-disabled = true
+tooltip_text = "Restart the game"
 text = "Restart"
 
 [node name="HSeparator2" type="HSeparator" parent="MenuCanvasLayer/MainMenu/BG/Panel/MarginContainer/VBoxContainer"]
@@ -761,8 +760,7 @@ layout_mode = 2
 [node name="RestartButton" type="Button" parent="MenuCanvasLayer/GameOverMenu/BG/Panel/MarginContainer/VBoxContainer/ButtonContainer"]
 layout_mode = 2
 size_flags_horizontal = 3
-tooltip_text = "TBA"
-disabled = true
+tooltip_text = "Restart the game"
 text = "Restart"
 
 [node name="QuitButtonGameOver" type="Button" parent="MenuCanvasLayer/GameOverMenu/BG/Panel/MarginContainer/VBoxContainer/ButtonContainer"]
@@ -773,6 +771,7 @@ text = "Quit
 "
 
 [connection signal="pressed" from="OverlayCanvasLayer/PlayerOverlay/HelpOverlay/MarginContainer/Panel/MarginContainer/HelpButton" to="." method="_on_help_button_pressed"]
+[connection signal="pressed" from="MenuCanvasLayer/MainMenu/BG/Panel/MarginContainer/VBoxContainer/RestartButton" to="." method="_on_restart_button_pressed"]
 [connection signal="toggled" from="MenuCanvasLayer/MainMenu/BG/Panel/MarginContainer/VBoxContainer/MusicVolumeControl/MusicVolumeEnabled" to="." method="_on_music_volume_enabled_toggled"]
 [connection signal="value_changed" from="MenuCanvasLayer/MainMenu/BG/Panel/MarginContainer/VBoxContainer/MusicVolumeControl/MusicVolumeSlider" to="." method="_on_music_volume_slider_value_changed"]
 [connection signal="toggled" from="MenuCanvasLayer/MainMenu/BG/Panel/MarginContainer/VBoxContainer/VoiceVolumeControl/VoiceVolumeEnabled" to="." method="_on_voice_volume_enabled_toggled"]
@@ -788,4 +787,5 @@ text = "Quit
 [connection signal="pressed" from="MenuCanvasLayer/MainMenu/BG/Panel/MarginContainer/VBoxContainer/QuitButtonMain" to="." method="_on_quit_button_pressed"]
 [connection signal="pressed" from="MenuCanvasLayer/CreditsMenu/BG/Panel/MarginContainer/VBoxContainer/CloseCreditsButton" to="." method="_on_close_credits_button_pressed"]
 [connection signal="pressed" from="MenuCanvasLayer/HelpMenu/BG/Panel/MarginContainer/VBoxContainer/CloseHelpButton" to="." method="_on_close_help_button_pressed"]
+[connection signal="pressed" from="MenuCanvasLayer/GameOverMenu/BG/Panel/MarginContainer/VBoxContainer/ButtonContainer/RestartButton" to="." method="_on_restart_button_pressed"]
 [connection signal="pressed" from="MenuCanvasLayer/GameOverMenu/BG/Panel/MarginContainer/VBoxContainer/ButtonContainer/QuitButtonGameOver" to="." method="_on_quit_button_pressed"]

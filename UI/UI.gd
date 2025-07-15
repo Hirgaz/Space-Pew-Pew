@@ -311,6 +311,13 @@ func _on_quit_button_pressed() -> void:
 	get_tree().quit()
 
 
+func _on_restart_button_pressed() -> void:
+	get_tree().reload_current_scene()
+	main_menu_base.visible = false
+	game_over_menu_base.visible = false
+	get_tree().paused = false
+
+
 func update_health(lives: int) -> void:
 	health_counter.text = "%dx" % lives
 
