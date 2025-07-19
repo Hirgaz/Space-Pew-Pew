@@ -10,11 +10,4 @@ We are not looking for people to contribute to this repository directly, though 
 
 ## Licensing
 
-Please see the [license file](LICENSE).
-
-## Additional credits
-
-The art is by the amazing [Kenny](https://www.kenney.nl/), this project wouldn't be possible without their amazing art!
-* [Space Shooter Redux](https://www.kenney.nl/assets/space-shooter-redux)
-* [UI Pack (Space Expansion)](https://www.kenney.nl/assets/ui-pack-space-expansion)
-* [Sci-fi Sounds](https://www.kenney.nl/assets/sci-fi-sounds)
+Please see the [license file](LICENSE.md).

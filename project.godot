@@ -15,7 +15,7 @@ config/description="A simple project just to develop some workflow and developme
 config/version="0.1.0"
 run/main_scene="res://World/World.tscn"
 config/features=PackedStringArray("4.5", "Forward Plus")
-config/icon="res://icon.svg"
+config/icon="res://Icon.svg"
 
 [autoload]
 

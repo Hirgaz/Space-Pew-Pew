@@ -3,11 +3,16 @@
 android/
 
 Export/*
-
 !Export/.gdignore
-
 export_presets.cfg
 
-# Automation related files
+# Temporary folder for asset management.
+Assets/*
+!Assets/.gdignore
+
+# Automation related files.
 __pycache__
 *.gen.*
+
+# Editor specific files.
+*.kate-swp

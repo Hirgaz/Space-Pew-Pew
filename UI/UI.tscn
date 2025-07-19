@@ -40,7 +40,6 @@ layer = -1
 [node name="Background" type="Control" parent="BGCanvasLayer"]
 custom_minimum_size = Vector2(1152, 720)
 layout_mode = 3
-anchors_preset = 8
 anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
@@ -65,7 +64,7 @@ stretch_mode = 1
 
 [node name="MarginContainer" type="MarginContainer" parent="BGCanvasLayer/Background"]
 layout_mode = 1
-anchors_preset = 3
+anchors_preset = -1
 anchor_left = 1.0
 anchor_top = 1.0
 anchor_right = 1.0
@@ -88,7 +87,6 @@ text = "v: "
 [node name="PlayerOverlay" type="Control" parent="OverlayCanvasLayer"]
 custom_minimum_size = Vector2(1152, 720)
 layout_mode = 3
-anchors_preset = 8
 anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
@@ -110,6 +108,7 @@ grow_vertical = 2
 
 [node name="MarginContainer" type="MarginContainer" parent="OverlayCanvasLayer/PlayerOverlay/HealthOverlay"]
 layout_mode = 1
+anchors_preset = -1
 offset_right = 176.0
 offset_bottom = 96.0
 theme_override_constants/margin_left = 16
@@ -177,7 +176,7 @@ pivot_offset = Vector2(30, 30)
 
 [node name="TextureRect" type="TextureRect" parent="OverlayCanvasLayer/PlayerOverlay/HealthOverlay/MarginContainer/Panel/MarginContainer/HealthHolder/HealthSingle/Panel/HealthHolder"]
 layout_mode = 1
-anchors_preset = 8
+anchors_preset = -1
 anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
@@ -202,7 +201,7 @@ grow_vertical = 2
 
 [node name="MarginContainer" type="MarginContainer" parent="OverlayCanvasLayer/PlayerOverlay/HelpOverlay"]
 layout_mode = 1
-anchors_preset = 1
+anchors_preset = -1
 anchor_left = 1.0
 anchor_right = 1.0
 offset_left = -112.0
@@ -243,7 +242,6 @@ text = "?"
 visible = false
 custom_minimum_size = Vector2(1152, 720)
 layout_mode = 3
-anchors_preset = 8
 anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
@@ -486,7 +484,6 @@ text = "Quit
 [node name="CreditsMenu" type="Control" parent="MenuCanvasLayer"]
 visible = false
 layout_mode = 3
-anchors_preset = 8
 anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
@@ -545,42 +542,11 @@ horizontal_alignment = 1
 layout_mode = 2
 theme_override_constants/separation = 16
 
-[node name="ScrollContainer" type="ScrollContainer" parent="MenuCanvasLayer/CreditsMenu/BG/Panel/MarginContainer/VBoxContainer"]
-layout_mode = 2
-size_flags_vertical = 3
-horizontal_scroll_mode = 0
-vertical_scroll_mode = 2
-
-[node name="VBoxContainer" type="VBoxContainer" parent="MenuCanvasLayer/CreditsMenu/BG/Panel/MarginContainer/VBoxContainer/ScrollContainer"]
-layout_mode = 2
-size_flags_horizontal = 3
-size_flags_vertical = 3
-
-[node name="GameCreditsLabel" type="RichTextLabel" parent="MenuCanvasLayer/CreditsMenu/BG/Panel/MarginContainer/VBoxContainer/ScrollContainer/VBoxContainer"]
-layout_mode = 2
-size_flags_vertical = 3
-theme_override_styles/normal = SubResource("StyleBoxFlat_18yuf")
-text = "TBA"
-fit_content = true
-scroll_active = false
-
-[node name="HSeparator" type="HSeparator" parent="MenuCanvasLayer/CreditsMenu/BG/Panel/MarginContainer/VBoxContainer/ScrollContainer/VBoxContainer"]
-layout_mode = 2
-theme_override_constants/separation = 16
-
-[node name="GodotLicenseHeader" type="Label" parent="MenuCanvasLayer/CreditsMenu/BG/Panel/MarginContainer/VBoxContainer/ScrollContainer/VBoxContainer"]
-layout_mode = 2
-theme_override_styles/normal = SubResource("StyleBoxFlat_18yuf")
-text = "Godot Engine License"
-horizontal_alignment = 1
-
-[node name="GodotLicenseLabel" type="RichTextLabel" parent="MenuCanvasLayer/CreditsMenu/BG/Panel/MarginContainer/VBoxContainer/ScrollContainer/VBoxContainer"]
+[node name="CreditsRichTextLabel" type="RichTextLabel" parent="MenuCanvasLayer/CreditsMenu/BG/Panel/MarginContainer/VBoxContainer"]
 unique_name_in_owner = true
 layout_mode = 2
 size_flags_vertical = 3
-theme_override_styles/normal = SubResource("StyleBoxFlat_18yuf")
-fit_content = true
-scroll_active = false
+bbcode_enabled = true
 
 [node name="HSeparator2" type="HSeparator" parent="MenuCanvasLayer/CreditsMenu/BG/Panel/MarginContainer/VBoxContainer"]
 layout_mode = 2
@@ -593,7 +559,6 @@ text = "Close"
 [node name="HelpMenu" type="Control" parent="MenuCanvasLayer"]
 visible = false
 layout_mode = 3
-anchors_preset = 8
 anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
@@ -785,6 +750,7 @@ text = "Quit
 [connection signal="pressed" from="MenuCanvasLayer/MainMenu/BG/Panel/MarginContainer/VBoxContainer/CreditsButton" to="." method="_on_credits_button_pressed"]
 [connection signal="pressed" from="MenuCanvasLayer/MainMenu/BG/Panel/MarginContainer/VBoxContainer/HelpButton" to="." method="_on_help_button_pressed"]
 [connection signal="pressed" from="MenuCanvasLayer/MainMenu/BG/Panel/MarginContainer/VBoxContainer/QuitButtonMain" to="." method="_on_quit_button_pressed"]
+[connection signal="meta_clicked" from="MenuCanvasLayer/CreditsMenu/BG/Panel/MarginContainer/VBoxContainer/CreditsRichTextLabel" to="." method="_on_credits_rich_text_label_meta_clicked"]
 [connection signal="pressed" from="MenuCanvasLayer/CreditsMenu/BG/Panel/MarginContainer/VBoxContainer/CloseCreditsButton" to="." method="_on_close_credits_button_pressed"]
 [connection signal="pressed" from="MenuCanvasLayer/HelpMenu/BG/Panel/MarginContainer/VBoxContainer/CloseHelpButton" to="." method="_on_close_help_button_pressed"]
 [connection signal="pressed" from="MenuCanvasLayer/GameOverMenu/BG/Panel/MarginContainer/VBoxContainer/ButtonContainer/RestartButton" to="." method="_on_restart_button_pressed"]

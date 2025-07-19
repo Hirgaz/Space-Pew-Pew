@@ -1,0 +1,85 @@
+[
+    {
+        "title": "Project Licenses",
+        "elements": [
+            {
+                "title": "Code License (MIT)",
+                "elements": [
+                    {
+                        "text": "MIT License\n\nCopyright (c) 2025-present Hirgaz Studios\n\nPermission is hereby granted, free of charge, to any person obtaining a copy\nof this software and associated documentation files (the \"Software\"), to deal\nin the Software without restriction, including without limitation the rights\nto use, copy, modify, merge, publish, distribute, sublicense, and/or sell\ncopies of the Software, and to permit persons to whom the Software is\nfurnished to do so, subject to the following conditions:\n\nThe above copyright notice and this permission notice shall be included in all\ncopies or substantial portions of the Software.\n\nTHE SOFTWARE IS PROVIDED \"AS IS\", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR\nIMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,\nFITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE\nAUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER\nLIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,\nOUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE\nSOFTWARE.",
+                    },
+                ],
+            },
+            {
+                "title": "Audio Licenses",
+                "elements": [
+                    {
+                        "title": "Creative Commons CC0",
+                        "url": "https://creativecommons.org/publicdomain/zero/1.0/",
+                        "elements": [
+                            {
+                                "from": "Sci-fi Sounds",
+                                "from_url": "https://www.kenney.nl/assets/sci-fi-sounds",
+                                "author": "Kenny",
+                                "author_url": "https://www.kenney.nl/",
+                                "files": [
+                                    "Player/Laser/LaserSound.ogg",
+                                    "Player/Thruster.ogg",
+                                ],
+                            },
+                        ],
+                    },
+                ],
+            },
+            {
+                "title": "Art Licenses",
+                "elements": [
+                    {
+                        "title": "Creative Commons CC0",
+                        "url": "https://creativecommons.org/publicdomain/zero/1.0/",
+                        "elements": [
+                            {
+                                "from": "UI Pack (Space Expansion)",
+                                "from_url": "https://www.kenney.nl/assets/ui-pack-space-expansion",
+                                "author": "Kenny",
+                                "author_url": "https://www.kenney.nl/",
+                                "files": [
+                                    "Icon.svg",
+                                ],
+                            },
+                            {
+                                "from": "Space Shooter Redux",
+                                "from_url": "https://www.kenney.nl/assets/space-shooter-redux",
+                                "author": "Kenny",
+                                "author_url": "https://www.kenney.nl/",
+                                "files": [
+                                    "Asteroids/AsteroidBrownBig1.png",
+                                    "Asteroids/AsteroidBrownBig2.png",
+                                    "Asteroids/AsteroidBrownBig3.png",
+                                    "Asteroids/AsteroidBrownBig4.png",
+                                    "Asteroids/MeteorBrownMed1.png",
+                                    "Asteroids/MeteorBrownMed3.png",
+                                    "Asteroids/MeteorBrownSmall1.png",
+                                    "Asteroids/MeteorBrownSmall2.png",
+                                    "Icon.svg",
+                                    "Player/Laser/LaserGreen.png",
+                                    "Player/PlayerShipOrange.png",
+                                    "Player/Thrust.png",
+                                    "World/Background.png",
+                                ],
+                            },
+                        ],
+                    },
+                ],
+            },
+            {
+                "title": "Godot Engine",
+                "elements": [
+                    {
+                        "link": "https://godotengine.org/license/",
+                    },
+                ],
+            },
+        ],
+    },
+]
