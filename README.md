@@ -10,4 +10,4 @@ We are not looking for people to contribute to this repository directly, though 
 
 ## Licensing
 
-Please see the [license file](LICENSE.md).
+Please see the [license file](LICENSE.md) and [copying](COPYING.md) files.

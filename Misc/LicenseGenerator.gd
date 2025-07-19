@@ -11,6 +11,7 @@ const FROM_ATTRIBUTE_NAME = "from"
 const FROM_URL_ATTRIBUTE_NAME = "from_url"
 const AUTHOR_ATTRIBUTE_NAME = "author"
 const AUTHOR_URL_ATTRIBUTE_NAME = "author_url"
+const SOURCE_ATTRIBUTE_NAME = "source"
 
 const LINK_PLAIN_TEMPLATE = "[%s]"
 const LINK_TEMPLATE = "[{1}]({0})"
@@ -43,12 +44,19 @@ func _build_element(data: Dictionary, output_file: FileAccess):
 	if data.has(LINK_ATTRIBUTE_NAME):
 		output_file.store_string(ENTRY_LINK_EMPTY_TEMPLATE.format(data))
 	elif data.has(TEXT_ATTRIBUTE_NAME):
-		# Just return the plain text data.
+		# Just use the plain text data.
 		output_file.store_string(data[TEXT_ATTRIBUTE_NAME] + "\n\n")
+	elif data.has(SOURCE_ATTRIBUTE_NAME):
+		var path = "res://" + data[SOURCE_ATTRIBUTE_NAME]
+		if not FileAccess.file_exists(path):
+			return
+		var source := FileAccess.get_file_as_string(path)
+		# Just use the plain text data.
+		output_file.store_string(source + "\n")
 	elif data.has(FILES_ATTRIBUTE_NAME):
 		# Should have at least from and author.
 		if not data.has_all([ FROM_ATTRIBUTE_NAME, AUTHOR_ATTRIBUTE_NAME ]):
-			return ""
+			return
 
 		var from = data[FROM_ATTRIBUTE_NAME]
 		var author = data[AUTHOR_ATTRIBUTE_NAME]
@@ -117,9 +125,9 @@ func _build_super_sections(data: Array, output_file: FileAccess):
 
 
 func _run():
-	var license_json := FileAccess.get_file_as_string("res://LICENSE.json")
+	var license_json := FileAccess.get_file_as_string("res://Misc/COPYING.json")
 	var license_data = JSON.parse_string(license_json)
-	var output_file := "res://LICENSE.md"
+	var output_file := "res://COPYING.md"
 	var output_file_access := FileAccess.open(output_file, FileAccess.WRITE)
 
 	if not output_file_access or not output_file_access.is_open():

@@ -10,6 +10,7 @@ const FROM_ATTRIBUTE_NAME = "from"
 const FROM_URL_ATTRIBUTE_NAME = "from_url"
 const AUTHOR_ATTRIBUTE_NAME = "author"
 const AUTHOR_URL_ATTRIBUTE_NAME = "author_url"
+const SOURCE_ATTRIBUTE_NAME = "source"
 
 const BODY_PRE = "[font_size=18]\n"
 const BODY_POST = "[/font_size]\n"
@@ -148,6 +149,13 @@ func _build_element(data: Dictionary) -> String:
 	elif data.has(TEXT_ATTRIBUTE_NAME):
 		# Just return the plain text data.
 		return BODY_PRE + data[TEXT_ATTRIBUTE_NAME] + BODY_POST
+	elif data.has(SOURCE_ATTRIBUTE_NAME):
+		var path = "res://" + data[SOURCE_ATTRIBUTE_NAME]
+		if not FileAccess.file_exists(path):
+			return ""
+		var source := FileAccess.get_file_as_string(path)
+		# Read the file and add.
+		return BODY_PRE + source + BODY_POST
 	elif data.has(FILES_ATTRIBUTE_NAME):
 		# Should have at least from and author.
 		if not data.has_all([ FROM_ATTRIBUTE_NAME, AUTHOR_ATTRIBUTE_NAME ]):
@@ -227,7 +235,7 @@ func _build_super_sections(data: Array) -> String:
 
 
 func _parse_license() -> String:
-	var license_json := FileAccess.get_file_as_string("res://LICENSE.json")
+	var license_json := FileAccess.get_file_as_string("res://Misc/COPYING.json")
 	var license_data = JSON.parse_string(license_json)
 
 	if license_data is not Array:

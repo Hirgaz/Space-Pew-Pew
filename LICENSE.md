@@ -1,7 +1,3 @@
-# Project Licenses
-
-## Code License (MIT)
-
 MIT License
 
 Copyright (c) 2025-present Hirgaz Studios
@@ -23,37 +19,3 @@ AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
 LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
 OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 SOFTWARE.
-
-## Audio Licenses
-
-### [Creative Commons CC0](https://creativecommons.org/publicdomain/zero/1.0/)
-
-* From [Sci-fi Sounds](https://www.kenney.nl/assets/sci-fi-sounds) by [Kenny](https://www.kenney.nl/):
-	- [`Player/Laser/LaserSound.ogg`](Player/Laser/LaserSound.ogg)
-	- [`Player/Thruster.ogg`](Player/Thruster.ogg)
-
-## Art Licenses
-
-### [Creative Commons CC0](https://creativecommons.org/publicdomain/zero/1.0/)
-
-* From [UI Pack (Space Expansion)](https://www.kenney.nl/assets/ui-pack-space-expansion) by [Kenny](https://www.kenney.nl/):
-	- [`Icon.svg`](Icon.svg)
-
-* From [Space Shooter Redux](https://www.kenney.nl/assets/space-shooter-redux) by [Kenny](https://www.kenney.nl/):
-	- [`Asteroids/AsteroidBrownBig1.png`](Asteroids/AsteroidBrownBig1.png)
-	- [`Asteroids/AsteroidBrownBig2.png`](Asteroids/AsteroidBrownBig2.png)
-	- [`Asteroids/AsteroidBrownBig3.png`](Asteroids/AsteroidBrownBig3.png)
-	- [`Asteroids/AsteroidBrownBig4.png`](Asteroids/AsteroidBrownBig4.png)
-	- [`Asteroids/MeteorBrownMed1.png`](Asteroids/MeteorBrownMed1.png)
-	- [`Asteroids/MeteorBrownMed3.png`](Asteroids/MeteorBrownMed3.png)
-	- [`Asteroids/MeteorBrownSmall1.png`](Asteroids/MeteorBrownSmall1.png)
-	- [`Asteroids/MeteorBrownSmall2.png`](Asteroids/MeteorBrownSmall2.png)
-	- [`Icon.svg`](Icon.svg)
-	- [`Player/Laser/LaserGreen.png`](Player/Laser/LaserGreen.png)
-	- [`Player/PlayerShipOrange.png`](Player/PlayerShipOrange.png)
-	- [`Player/Thrust.png`](Player/Thrust.png)
-	- [`World/Background.png`](World/Background.png)
-
-## Godot Engine
-
-- https://godotengine.org/license/
