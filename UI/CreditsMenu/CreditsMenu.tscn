@@ -1,0 +1,98 @@
+[gd_scene load_steps=5 format=3 uid="uid://m3mbkkkty30"]
+
+[ext_resource type="Script" uid="uid://dtubasbwerpo4" path="res://UI/CreditsMenu/CreditsMenu.gd" id="1_etorw"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_wrqxn"]
+bg_color = Color(0.6, 0.6, 0.6, 0.0627451)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_t2jpx"]
+bg_color = Color(0.435192, 0.435192, 0.435192, 1)
+corner_radius_top_left = 4
+corner_radius_top_right = 4
+corner_radius_bottom_right = 4
+corner_radius_bottom_left = 4
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_18yuf"]
+bg_color = Color(0.336608, 0.336608, 0.336608, 1)
+corner_radius_top_left = 4
+corner_radius_top_right = 4
+corner_radius_bottom_right = 4
+corner_radius_bottom_left = 4
+
+[node name="CreditsMenu" type="Control"]
+layout_mode = 3
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -576.0
+offset_top = -360.0
+offset_right = 576.0
+offset_bottom = 360.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_etorw")
+
+[node name="BG" type="Panel" parent="."]
+custom_minimum_size = Vector2(1152, 720)
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_wrqxn")
+
+[node name="Panel" type="Panel" parent="BG"]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.1
+anchor_top = 0.1
+anchor_right = 0.9
+anchor_bottom = 0.9
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_t2jpx")
+
+[node name="MarginContainer" type="MarginContainer" parent="BG/Panel"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_vertical = 3
+theme_override_constants/margin_left = 16
+theme_override_constants/margin_top = 16
+theme_override_constants/margin_right = 16
+theme_override_constants/margin_bottom = 16
+
+[node name="VBoxContainer" type="VBoxContainer" parent="BG/Panel/MarginContainer"]
+layout_mode = 2
+
+[node name="Title" type="Label" parent="BG/Panel/MarginContainer/VBoxContainer"]
+layout_mode = 2
+theme_override_styles/normal = SubResource("StyleBoxFlat_18yuf")
+text = "Credits"
+horizontal_alignment = 1
+
+[node name="HSeparator" type="HSeparator" parent="BG/Panel/MarginContainer/VBoxContainer"]
+layout_mode = 2
+theme_override_constants/separation = 16
+
+[node name="CreditsRichTextLabel" type="RichTextLabel" parent="BG/Panel/MarginContainer/VBoxContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_vertical = 3
+bbcode_enabled = true
+
+[node name="HSeparator2" type="HSeparator" parent="BG/Panel/MarginContainer/VBoxContainer"]
+layout_mode = 2
+theme_override_constants/separation = 16
+
+[node name="CloseButton" type="Button" parent="BG/Panel/MarginContainer/VBoxContainer"]
+layout_mode = 2
+text = "Close"
+
+[connection signal="meta_clicked" from="BG/Panel/MarginContainer/VBoxContainer/CreditsRichTextLabel" to="." method="_on_credits_rich_text_label_meta_clicked"]
+[connection signal="pressed" from="BG/Panel/MarginContainer/VBoxContainer/CloseButton" to="." method="_on_close_button_pressed"]

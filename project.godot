@@ -33,6 +33,11 @@ window/stretch/scale_mode="integer"
 window/stretch/aspect.web="expand"
 window/stretch/mode.web="viewport"
 
+[editor]
+
+naming/scene_name_casing=1
+naming/script_name_casing=1
+
 [gui]
 
 theme/custom="uid://cm64x20n7rprc"
