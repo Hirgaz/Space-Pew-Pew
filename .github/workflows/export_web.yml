@@ -1,0 +1,65 @@
+name: Export to Web and publish to GitHub pages
+on:
+  push:
+      branches:
+        - main
+
+jobs:
+  export-web:
+    if: github.repository == 'Hirgaz/Space-Pew-Pew'
+    name: Export to Web
+    runs-on: ubuntu-24.04
+    container:
+      image: ghcr.io/hirgaz/godot-exporter-web:latest
+
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Setup
+        run: |
+          mkdir -p ~/.local/share/godot/export_templates/
+          # Use non-3D Web version
+          unzip /root/godot_web_disable_3d_export_templates.zip -d /root/
+          mv -v /root/templates ~/.local/share/godot/export_templates/4.5.beta
+
+      - name: Export project to Web
+        run: |
+          BASEDIR="$PWD"
+
+          cp "$BASEDIR/.github/dist/export_presets.cfg" .
+
+          godot --verbose --headless --export-release "Web" "$BASEDIR/.github/dist/index.html"
+
+          # Remove unnecessary files.
+          rm -f "$BASEDIR/.github/dist/export_presets.cfg"
+
+      - name: Upload Artifact
+        uses: actions/upload-artifact@v4
+        with:
+          name: web
+          path: .github/dist
+
+  publish-page:
+    name: Publish to GitHub pages
+    concurrency: ci-${{ github.ref }}
+    needs: [export-web]
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Download Artifact
+        uses: actions/download-artifact@v4
+        with:
+          name: web
+          path: .github/dist
+
+      - name: Deploy to GitHub Pages 🚀
+        uses: JamesIves/github-pages-deploy-action@v4
+        with:
+          branch: gh_pages
+          folder: .github/dist
+          single-commit: true
+          ssh-key: ${{ secrets.DEPLOY_KEY }}
