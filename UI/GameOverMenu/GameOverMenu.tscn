@@ -95,8 +95,7 @@ text = "Restart"
 unique_name_in_owner = true
 layout_mode = 2
 size_flags_horizontal = 3
-text = "Quit
-"
+text = "Quit"
 
 [connection signal="pressed" from="BG/Panel/MarginContainer/VBoxContainer/ButtonContainer/RestartButton" to="." method="_on_restart_button_pressed"]
 [connection signal="pressed" from="BG/Panel/MarginContainer/VBoxContainer/ButtonContainer/QuitButton" to="." method="_on_quit_button_game_pressed"]

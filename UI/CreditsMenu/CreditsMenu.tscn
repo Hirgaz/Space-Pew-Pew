@@ -1,4 +1,4 @@
-[gd_scene load_steps=5 format=3 uid="uid://m3mbkkkty30"]
+[gd_scene load_steps=6 format=3 uid="uid://m3mbkkkty30"]
 
 [ext_resource type="Script" uid="uid://dtubasbwerpo4" path="res://UI/CreditsMenu/CreditsMenu.gd" id="1_etorw"]
 
@@ -18,6 +18,8 @@ corner_radius_top_left = 4
 corner_radius_top_right = 4
 corner_radius_bottom_right = 4
 corner_radius_bottom_left = 4
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_etorw"]
 
 [node name="CreditsMenu" type="Control"]
 layout_mode = 3
@@ -80,7 +82,71 @@ horizontal_alignment = 1
 layout_mode = 2
 theme_override_constants/separation = 16
 
-[node name="CreditsRichTextLabel" type="RichTextLabel" parent="BG/Panel/MarginContainer/VBoxContainer"]
+[node name="TabContainer" type="TabContainer" parent="BG/Panel/MarginContainer/VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 3
+theme_override_styles/panel = SubResource("StyleBoxEmpty_etorw")
+current_tab = 0
+
+[node name="Game" type="Control" parent="BG/Panel/MarginContainer/VBoxContainer/TabContainer"]
+layout_mode = 2
+metadata/_tab_index = 0
+
+[node name="GameCreditsRichTextLabel" type="RichTextLabel" parent="BG/Panel/MarginContainer/VBoxContainer/TabContainer/Game"]
+unique_name_in_owner = true
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_vertical = 3
+bbcode_enabled = true
+
+[node name="Engine" type="Control" parent="BG/Panel/MarginContainer/VBoxContainer/TabContainer"]
+visible = false
+layout_mode = 2
+metadata/_tab_index = 1
+
+[node name="Control" type="Control" parent="BG/Panel/MarginContainer/VBoxContainer/TabContainer/Engine"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="MarginContainer" type="MarginContainer" parent="BG/Panel/MarginContainer/VBoxContainer/TabContainer/Engine/Control"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/margin_top = 8
+
+[node name="VBoxContainer" type="VBoxContainer" parent="BG/Panel/MarginContainer/VBoxContainer/TabContainer/Engine/Control/MarginContainer"]
+layout_mode = 2
+
+[node name="HBoxContainer" type="HBoxContainer" parent="BG/Panel/MarginContainer/VBoxContainer/TabContainer/Engine/Control/MarginContainer/VBoxContainer"]
+layout_mode = 2
+theme_override_constants/separation = 16
+
+[node name="Label" type="Label" parent="BG/Panel/MarginContainer/VBoxContainer/TabContainer/Engine/Control/MarginContainer/VBoxContainer/HBoxContainer"]
+layout_mode = 2
+text = "License:"
+
+[node name="LicenseOptionButton" type="OptionButton" parent="BG/Panel/MarginContainer/VBoxContainer/TabContainer/Engine/Control/MarginContainer/VBoxContainer/HBoxContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_horizontal = 3
+tooltip_text = "Select license to view"
+
+[node name="HSeparator" type="HSeparator" parent="BG/Panel/MarginContainer/VBoxContainer/TabContainer/Engine/Control/MarginContainer/VBoxContainer"]
+layout_mode = 2
+theme_override_constants/separation = 16
+
+[node name="EngineCreditsRichTextLabel" type="RichTextLabel" parent="BG/Panel/MarginContainer/VBoxContainer/TabContainer/Engine/Control/MarginContainer/VBoxContainer"]
 unique_name_in_owner = true
 layout_mode = 2
 size_flags_vertical = 3
@@ -94,5 +160,7 @@ theme_override_constants/separation = 16
 layout_mode = 2
 text = "Close"
 
-[connection signal="meta_clicked" from="BG/Panel/MarginContainer/VBoxContainer/CreditsRichTextLabel" to="." method="_on_credits_rich_text_label_meta_clicked"]
+[connection signal="meta_clicked" from="BG/Panel/MarginContainer/VBoxContainer/TabContainer/Game/GameCreditsRichTextLabel" to="." method="_on_credits_rich_text_label_meta_clicked"]
+[connection signal="item_selected" from="BG/Panel/MarginContainer/VBoxContainer/TabContainer/Engine/Control/MarginContainer/VBoxContainer/HBoxContainer/LicenseOptionButton" to="." method="_on_license_option_button_item_selected"]
+[connection signal="meta_clicked" from="BG/Panel/MarginContainer/VBoxContainer/TabContainer/Engine/Control/MarginContainer/VBoxContainer/EngineCreditsRichTextLabel" to="." method="_on_credits_rich_text_label_meta_clicked"]
 [connection signal="pressed" from="BG/Panel/MarginContainer/VBoxContainer/CloseButton" to="." method="_on_close_button_pressed"]

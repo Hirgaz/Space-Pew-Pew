@@ -33,11 +33,15 @@ const FROM_TEMPLATE = "From {0} by {1}:"
 const FILE_TEMPLATE = "[ul bullet=-][code]res://{0}[/code][/ul]"
 
 
-@onready var credits_label := %CreditsRichTextLabel
+@onready var game_credits_label := %GameCreditsRichTextLabel
+
+@onready var license_option_button := %LicenseOptionButton
+@onready var engine_credits_label := %EngineCreditsRichTextLabel
 
 
 func _ready() -> void:
 	_fill_credits()
+	_fill_license_options()
 
 
 func _build_header(template: String, entry: Dictionary) -> String:
@@ -93,7 +97,7 @@ func _build_element(data: Dictionary) -> String:
 		return BODY_PRE + "[ul]" + entry + body + "\n[/ul]\n" + BODY_POST
 
 	else:
-		print("Rest: ", data)
+		#print("Rest: ", data)
 		return ""
 
 
@@ -157,7 +161,49 @@ func _parse_license() -> String:
 
 
 func _fill_credits() -> void:
-	credits_label.text = _parse_license()
+	game_credits_label.text = _parse_license()
+
+
+func _fill_credits_option(index: int) -> void:
+	var license_info_array : Array[Dictionary] = Engine.get_copyright_info()
+	if index >= license_info_array.size():
+		# Out of range
+		return
+
+	var license_info : Dictionary = license_info_array[index]
+	var license_parts : Array = license_info["parts"]
+
+	var licenses := {}
+
+	for part: Dictionary in license_parts:
+		var authors : Array = licenses.get_or_add(part["license"], [])
+		for author: String in part["copyright"]:
+			if not authors.has(author):
+				authors.push_back(author)
+
+	var license_string : String = ""
+
+	for license: String in licenses.keys():
+		license_string += "[font_size=20]" + license + "[/font_size]\n"
+		license_string += "\n[hr]\n\n"
+		var authors : Array = licenses[license]
+		for author: String in authors:
+			license_string += "[indent]" + author + "[/indent]\n"
+		license_string += "\n[hr]\n\n"
+		license_string += Engine.get_license_info()[license] + "\n\n"
+
+	engine_credits_label.text = license_string
+
+
+func _fill_license_options() -> void:
+	for entry in Engine.get_copyright_info():
+		license_option_button.add_item(entry["name"])
+	# Fill first entry automatically.
+	_fill_credits_option(0)
+
+
+func _on_license_option_button_item_selected(index: int) -> void:
+	_fill_credits_option(index)
 
 
 func _on_credits_rich_text_label_meta_clicked(meta: Variant) -> void:

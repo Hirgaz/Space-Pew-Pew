@@ -259,8 +259,7 @@ theme_override_constants/separation = 16
 unique_name_in_owner = true
 layout_mode = 2
 size_flags_horizontal = 3
-text = "Quit
-"
+text = "Quit"
 
 [connection signal="pressed" from="BG/Panel/MarginContainer/VBoxContainer/RestartButton" to="." method="_on_restart_button_pressed"]
 [connection signal="toggled" from="BG/Panel/MarginContainer/VBoxContainer/MusicVolumeControl/MusicVolumeEnabled" to="." method="_on_music_volume_enabled_toggled"]
