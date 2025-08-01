@@ -161,6 +161,7 @@ func _parse_license() -> String:
 
 
 func _fill_credits() -> void:
+	# TODO: Add translations for strings in CREDITS.json.
 	game_credits_label.text = _parse_license()
 
 

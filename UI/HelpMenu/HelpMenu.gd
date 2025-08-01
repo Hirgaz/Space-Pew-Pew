@@ -27,19 +27,19 @@ class ControlGroup:
 
 
 var CONTROL_ITEMS = [
-	ControlGroup.new("General", "General actions", [
-			ControlItem.new("Open Menu", "Open the main menu", &"open_menu"),
-			ControlItem.new("Open Help", "Open the help menu", &"open_help"),
+	ControlGroup.new(atr("General", &"HelpMenu"), atr("General actions", &"HelpMenu"), [
+			ControlItem.new(atr("Open Menu", &"HelpMenu"), atr("Open the main menu", &"HelpMenu"), &"open_menu"),
+			ControlItem.new(atr("Open Help", &"HelpMenu"), atr("Open the help menu", &"HelpMenu"), &"open_help"),
 		]),
-	ControlGroup.new("Movement", "Movement actions", [
-			ControlItem.new("Turn Left/Counter Clockwise", "Rotate the ship Left/Counter clockwise", &"turn_left"),
-			ControlItem.new("Turn Right/Clockwise", "Rotate the ship Right/Clockwise", &"turn_right"),
-			ControlItem.new("Move Forward/Accelerate", "Increase the ship speed", &"move_forward"),
-			ControlItem.new("Move Back/Decelerate", "Decrease the ship speed, or reverse", &"move_back"),
+	ControlGroup.new(atr("Movement", &"HelpMenu"), atr("Movement actions", &"HelpMenu"), [
+			ControlItem.new(atr("Turn Left/Counter Clockwise", &"HelpMenu"), atr("Rotate the ship Left/Counter clockwise", &"HelpMenu"), &"turn_left"),
+			ControlItem.new(atr("Turn Right/Clockwise", &"HelpMenu"), atr("Rotate the ship Right/Clockwise", &"HelpMenu"), &"turn_right"),
+			ControlItem.new(atr("Move Forward/Accelerate", &"HelpMenu"), atr("Increase the ship speed", &"HelpMenu"), &"move_forward"),
+			ControlItem.new(atr("Move Back/Decelerate", &"HelpMenu"), atr("Decrease the ship speed, or reverse", &"HelpMenu"), &"move_back"),
 		]),
-	ControlGroup.new("Actions", "Ship actions", [
-			ControlItem.new("Shoot", "Fire weapons", &"shoot"),
-			ControlItem.new("Shield", "Enable the shields (not implemented)", &"shield"),
+	ControlGroup.new(atr("Actions", &"HelpMenu"), atr("Ship actions", &"HelpMenu"), [
+			ControlItem.new(atr("Shoot", &"HelpMenu"), atr("Fire weapons", &"HelpMenu"), &"shoot"),
+			ControlItem.new(atr("Shield", &"HelpMenu"), atr("Enable the shields (not implemented)", &"HelpMenu"), &"shield"),
 		]),
 ]
 
@@ -58,9 +58,9 @@ func _controls_add_group_item(group: ControlGroup, parent: TreeItem) -> TreeItem
 	new_item.set_text(0, group.name)
 	new_item.set_tooltip_text(0, group.tooltip)
 	new_item.set_selectable(0, false)
-	new_item.set_text(1, "Primary")
+	new_item.set_text(1, atr("Primary", &"HelpMenu"))
 	new_item.set_selectable(1, false)
-	new_item.set_text(2, "Secondary")
+	new_item.set_text(2, atr("Secondary", &"HelpMenu"))
 	new_item.set_selectable(2, false)
 
 	return new_item
@@ -75,17 +75,18 @@ func _controls_add_control_item(item: ControlItem, parent: TreeItem) -> TreeItem
 	new_item.set_selectable(2, false)
 	var action_events := InputMap.action_get_events(item.action)
 
+	# TODO: Translate keys.
 	if action_events.size() >= 1:
 		var key_event := action_events[0] as InputEventKey
 		if key_event:
-			new_item.set_text(1, key_event.as_text_physical_keycode())
-			new_item.set_tooltip_text(1, key_event.as_text())
+			new_item.set_text(1, atr(key_event.as_text_physical_keycode()))
+			new_item.set_tooltip_text(1, atr(key_event.as_text()))
 
 	if action_events.size() >= 2:
 		var key_event := action_events[1] as InputEventKey
 		if key_event:
-			new_item.set_text(2, key_event.as_text_physical_keycode())
-			new_item.set_tooltip_text(2, key_event.as_text())
+			new_item.set_text(2, atr(key_event.as_text_physical_keycode()))
+			new_item.set_tooltip_text(2, atr(key_event.as_text()))
 
 	return new_item
 

@@ -71,6 +71,7 @@ theme_override_constants/margin_bottom = 16
 layout_mode = 2
 
 [node name="Title" type="Label" parent="BG/Panel/MarginContainer/VBoxContainer"]
+auto_translate_mode = 2
 layout_mode = 2
 theme_override_styles/normal = SubResource("StyleBoxFlat_18yuf")
 text = "Space Pew Pew"
@@ -113,6 +114,7 @@ ticks_on_borders = true
 
 [node name="MusicVolumeDisplay" type="Label" parent="BG/Panel/MarginContainer/VBoxContainer/MusicVolumeControl"]
 unique_name_in_owner = true
+auto_translate_mode = 2
 custom_minimum_size = Vector2(50, 0)
 layout_mode = 2
 text = "100%"
@@ -142,6 +144,7 @@ ticks_on_borders = true
 
 [node name="VoiceVolumeDisplay" type="Label" parent="BG/Panel/MarginContainer/VBoxContainer/VoiceVolumeControl"]
 unique_name_in_owner = true
+auto_translate_mode = 2
 custom_minimum_size = Vector2(50, 0)
 layout_mode = 2
 text = "100%"
@@ -171,6 +174,7 @@ ticks_on_borders = true
 
 [node name="EffectsVolumeDisplay" type="Label" parent="BG/Panel/MarginContainer/VBoxContainer/EffectsVolumeControl"]
 unique_name_in_owner = true
+auto_translate_mode = 2
 custom_minimum_size = Vector2(50, 0)
 layout_mode = 2
 text = "100%"
@@ -200,6 +204,7 @@ ticks_on_borders = true
 
 [node name="UIVolumeDisplay" type="Label" parent="BG/Panel/MarginContainer/VBoxContainer/UIVolumeControl"]
 unique_name_in_owner = true
+auto_translate_mode = 2
 custom_minimum_size = Vector2(50, 0)
 layout_mode = 2
 text = "100%"
@@ -233,6 +238,7 @@ ticks_on_borders = true
 
 [node name="MainVolumeDisplay" type="Label" parent="BG/Panel/MarginContainer/VBoxContainer/MainVolumeControl"]
 unique_name_in_owner = true
+auto_translate_mode = 2
 custom_minimum_size = Vector2(50, 0)
 layout_mode = 2
 text = "100%"
