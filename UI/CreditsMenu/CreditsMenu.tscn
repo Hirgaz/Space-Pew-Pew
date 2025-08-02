@@ -1,25 +1,9 @@
-[gd_scene load_steps=6 format=3 uid="uid://m3mbkkkty30"]
+[gd_scene load_steps=3 format=3 uid="uid://m3mbkkkty30"]
 
 [ext_resource type="Script" uid="uid://dtubasbwerpo4" path="res://UI/CreditsMenu/CreditsMenu.gd" id="1_etorw"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_wrqxn"]
 bg_color = Color(0.6, 0.6, 0.6, 0.0627451)
-
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_t2jpx"]
-bg_color = Color(0.435192, 0.435192, 0.435192, 1)
-corner_radius_top_left = 4
-corner_radius_top_right = 4
-corner_radius_bottom_right = 4
-corner_radius_bottom_left = 4
-
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_18yuf"]
-bg_color = Color(0.336608, 0.336608, 0.336608, 1)
-corner_radius_top_left = 4
-corner_radius_top_right = 4
-corner_radius_bottom_right = 4
-corner_radius_bottom_left = 4
-
-[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_etorw"]
 
 [node name="CreditsMenu" type="Control"]
 layout_mode = 3
@@ -54,7 +38,6 @@ anchor_right = 0.9
 anchor_bottom = 0.9
 grow_horizontal = 2
 grow_vertical = 2
-theme_override_styles/panel = SubResource("StyleBoxFlat_t2jpx")
 
 [node name="MarginContainer" type="MarginContainer" parent="BG/Panel"]
 layout_mode = 1
@@ -74,7 +57,7 @@ layout_mode = 2
 
 [node name="Title" type="Label" parent="BG/Panel/MarginContainer/VBoxContainer"]
 layout_mode = 2
-theme_override_styles/normal = SubResource("StyleBoxFlat_18yuf")
+theme_type_variation = &"LabelHeader"
 text = "Credits"
 horizontal_alignment = 1
 
@@ -85,7 +68,6 @@ theme_override_constants/separation = 16
 [node name="TabContainer" type="TabContainer" parent="BG/Panel/MarginContainer/VBoxContainer"]
 layout_mode = 2
 size_flags_vertical = 3
-theme_override_styles/panel = SubResource("StyleBoxEmpty_etorw")
 current_tab = 0
 
 [node name="Game" type="Control" parent="BG/Panel/MarginContainer/VBoxContainer/TabContainer"]
@@ -134,6 +116,7 @@ theme_override_constants/separation = 16
 
 [node name="Label" type="Label" parent="BG/Panel/MarginContainer/VBoxContainer/TabContainer/Engine/Control/MarginContainer/VBoxContainer/HBoxContainer"]
 layout_mode = 2
+theme_override_colors/font_color = Color(1, 1, 1, 1)
 text = "License:"
 
 [node name="LicenseOptionButton" type="OptionButton" parent="BG/Panel/MarginContainer/VBoxContainer/TabContainer/Engine/Control/MarginContainer/VBoxContainer/HBoxContainer"]
@@ -157,9 +140,11 @@ layout_mode = 2
 theme_override_constants/separation = 16
 
 [node name="CloseButton" type="Button" parent="BG/Panel/MarginContainer/VBoxContainer"]
+unique_name_in_owner = true
 layout_mode = 2
 text = "Close"
 
+[connection signal="visibility_changed" from="." to="." method="_on_visibility_changed"]
 [connection signal="meta_clicked" from="BG/Panel/MarginContainer/VBoxContainer/TabContainer/Game/GameCreditsRichTextLabel" to="." method="_on_credits_rich_text_label_meta_clicked"]
 [connection signal="item_selected" from="BG/Panel/MarginContainer/VBoxContainer/TabContainer/Engine/Control/MarginContainer/VBoxContainer/HBoxContainer/LicenseOptionButton" to="." method="_on_license_option_button_item_selected"]
 [connection signal="meta_clicked" from="BG/Panel/MarginContainer/VBoxContainer/TabContainer/Engine/Control/MarginContainer/VBoxContainer/EngineCreditsRichTextLabel" to="." method="_on_credits_rich_text_label_meta_clicked"]

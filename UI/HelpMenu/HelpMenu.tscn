@@ -1,25 +1,13 @@
-[gd_scene load_steps=6 format=3 uid="uid://bb1j8gc71nsxn"]
+[gd_scene load_steps=5 format=3 uid="uid://bb1j8gc71nsxn"]
 
 [ext_resource type="Script" uid="uid://5fsyxp0bca7q" path="res://UI/HelpMenu/HelpMenu.gd" id="1_t0fis"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_wrqxn"]
 bg_color = Color(0.6, 0.6, 0.6, 0.0627451)
 
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_t2jpx"]
-bg_color = Color(0.435192, 0.435192, 0.435192, 1)
-corner_radius_top_left = 4
-corner_radius_top_right = 4
-corner_radius_bottom_right = 4
-corner_radius_bottom_left = 4
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_t0fis"]
 
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_18yuf"]
-bg_color = Color(0.336608, 0.336608, 0.336608, 1)
-corner_radius_top_left = 4
-corner_radius_top_right = 4
-corner_radius_bottom_right = 4
-corner_radius_bottom_left = 4
-
-[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_q0uhn"]
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_ucktt"]
 
 [node name="HelpMenu" type="Control"]
 layout_mode = 3
@@ -54,7 +42,6 @@ anchor_right = 0.9
 anchor_bottom = 0.9
 grow_horizontal = 2
 grow_vertical = 2
-theme_override_styles/panel = SubResource("StyleBoxFlat_t2jpx")
 
 [node name="MarginContainer" type="MarginContainer" parent="BG/Panel"]
 layout_mode = 1
@@ -74,14 +61,13 @@ layout_mode = 2
 
 [node name="Title" type="Label" parent="BG/Panel/MarginContainer/VBoxContainer"]
 layout_mode = 2
-theme_override_styles/normal = SubResource("StyleBoxFlat_18yuf")
+theme_type_variation = &"LabelHeader"
 text = "Help"
 horizontal_alignment = 1
 
 [node name="TabContainer" type="TabContainer" parent="BG/Panel/MarginContainer/VBoxContainer"]
 layout_mode = 2
 size_flags_vertical = 3
-theme_override_styles/panel = SubResource("StyleBoxEmpty_q0uhn")
 current_tab = 0
 
 [node name="How To Play" type="VBoxContainer" parent="BG/Panel/MarginContainer/VBoxContainer/TabContainer"]
@@ -93,7 +79,7 @@ metadata/_tab_index = 0
 [node name="InstructionsLabel" type="RichTextLabel" parent="BG/Panel/MarginContainer/VBoxContainer/TabContainer/How To Play"]
 layout_mode = 2
 size_flags_vertical = 3
-theme_override_styles/normal = SubResource("StyleBoxFlat_18yuf")
+theme_override_styles/normal = SubResource("StyleBoxEmpty_t0fis")
 text = "TBA"
 fit_content = true
 scroll_active = false
@@ -114,11 +100,14 @@ layout_mode = 2
 unique_name_in_owner = true
 layout_mode = 2
 size_flags_vertical = 3
+theme_override_styles/panel = SubResource("StyleBoxEmpty_ucktt")
 columns = 3
 hide_root = true
 
 [node name="CloseButton" type="Button" parent="BG/Panel/MarginContainer/VBoxContainer"]
+unique_name_in_owner = true
 layout_mode = 2
 text = "Close"
 
+[connection signal="visibility_changed" from="." to="." method="_on_visibility_changed"]
 [connection signal="pressed" from="BG/Panel/MarginContainer/VBoxContainer/CloseButton" to="." method="_on_close_button_pressed"]

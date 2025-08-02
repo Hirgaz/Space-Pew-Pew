@@ -1,23 +1,9 @@
-[gd_scene load_steps=5 format=3 uid="uid://jgl7q1qs2evg"]
+[gd_scene load_steps=3 format=3 uid="uid://jgl7q1qs2evg"]
 
 [ext_resource type="Script" uid="uid://bbn038f07aw3g" path="res://UI/GameOverMenu/GameOverMenu.gd" id="1_1fvx2"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_wrqxn"]
 bg_color = Color(0.6, 0.6, 0.6, 0.0627451)
-
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_t2jpx"]
-bg_color = Color(0.435192, 0.435192, 0.435192, 1)
-corner_radius_top_left = 4
-corner_radius_top_right = 4
-corner_radius_bottom_right = 4
-corner_radius_bottom_left = 4
-
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_18yuf"]
-bg_color = Color(0.336608, 0.336608, 0.336608, 1)
-corner_radius_top_left = 4
-corner_radius_top_right = 4
-corner_radius_bottom_right = 4
-corner_radius_bottom_left = 4
 
 [node name="GameOverMenu" type="Control"]
 custom_minimum_size = Vector2(1152, 720)
@@ -47,7 +33,6 @@ anchor_right = 0.65
 anchor_bottom = 0.6
 grow_horizontal = 2
 grow_vertical = 2
-theme_override_styles/panel = SubResource("StyleBoxFlat_t2jpx")
 
 [node name="MarginContainer" type="MarginContainer" parent="BG/Panel"]
 layout_mode = 1
@@ -66,7 +51,7 @@ layout_mode = 2
 
 [node name="Title" type="Label" parent="BG/Panel/MarginContainer/VBoxContainer"]
 layout_mode = 2
-theme_override_styles/normal = SubResource("StyleBoxFlat_18yuf")
+theme_type_variation = &"LabelHeader"
 text = "Game Over"
 horizontal_alignment = 1
 

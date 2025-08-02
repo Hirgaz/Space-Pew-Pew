@@ -11,7 +11,7 @@ extends Node
 
 # Main Menu.
 
-@onready var main_menu_base := $MenuCanvasLayer/MainMenu
+@onready var main_menu_base : Control = $MenuCanvasLayer/MainMenu
 
 # Credits Menu.
 
@@ -53,6 +53,11 @@ func _on_main_menu_quit_pressed() -> void:
 	do_quit()
 
 
+
+func _on_main_menu_continue_pressed() -> void:
+	close_main_menu()
+
+
 func _on_main_menu_restart_pressed() -> void:
 	restart_game()
 
@@ -75,6 +80,16 @@ func _on_game_over_menu_restart_pressed() -> void:
 
 # Helper methods.
 
+func open_main_menu() -> void:
+	main_menu_base.visible = true
+	player_overlay.visible = false
+	get_tree().paused = true
+
+func close_main_menu() -> void:
+	main_menu_base.visible = false
+	player_overlay.visible = true
+	get_tree().paused = false
+
 func toggle_menu() -> void:
 	if game_over_menu_base.visible:
 		return
@@ -84,11 +99,9 @@ func toggle_menu() -> void:
 	elif help_menu_base.visible:
 		close_help()
 	elif main_menu_base.visible:
-		main_menu_base.visible = false
-		get_tree().paused = false
+		close_main_menu()
 	else:
-		main_menu_base.visible = true
-		get_tree().paused = true
+		open_main_menu()
 
 
 func toggle_help() -> void:

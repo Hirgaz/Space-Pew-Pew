@@ -55,6 +55,7 @@ visible = false
 visible = false
 
 [connection signal="help_pressed" from="OverlayCanvasLayer/PlayerOverlay/HelpOverlay" to="." method="_on_help_overlay_help_pressed"]
+[connection signal="continue_pressed" from="MenuCanvasLayer/MainMenu" to="." method="_on_main_menu_continue_pressed"]
 [connection signal="credits_pressed" from="MenuCanvasLayer/MainMenu" to="." method="_on_main_menu_credits_pressed"]
 [connection signal="help_pressed" from="MenuCanvasLayer/MainMenu" to="." method="_on_main_menu_help_pressed"]
 [connection signal="quit_pressed" from="MenuCanvasLayer/MainMenu" to="." method="_on_main_menu_quit_pressed"]

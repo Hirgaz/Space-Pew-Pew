@@ -20,6 +20,14 @@ msgstr ""
 "Content-Transfer-Encoding: 8-bit\n"
 
 #: UI/MainMenu/MainMenu.tscn
+msgid "Continue playing"
+msgstr ""
+
+#: UI/MainMenu/MainMenu.tscn
+msgid "Continue"
+msgstr ""
+
+#: UI/MainMenu/MainMenu.tscn
 #: UI/GameOverMenu/GameOverMenu.tscn
 msgid "Restart the game"
 msgstr ""
@@ -50,12 +58,16 @@ msgid "Main"
 msgstr ""
 
 #: UI/MainMenu/MainMenu.tscn
+msgid "Open the credits menu"
+msgstr ""
+
+#: UI/MainMenu/MainMenu.tscn
 #: UI/CreditsMenu/CreditsMenu.tscn
 msgid "Credits"
 msgstr ""
 
 #: UI/MainMenu/MainMenu.tscn
-msgid "Open the Instructions and controls Menu"
+msgid "Open the instructions and controls menu"
 msgstr ""
 
 #: UI/MainMenu/MainMenu.tscn

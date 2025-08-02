@@ -48,6 +48,8 @@ var CONTROL_ITEMS = [
 
 @onready var controls_tree : Tree = %ControlsTree
 
+@onready var close_button : Button = %CloseButton
+
 
 func _ready() -> void:
 	_fill_controls()
@@ -103,3 +105,8 @@ func _fill_controls() -> void:
 
 func _on_close_button_pressed() -> void:
 	close_pressed.emit()
+
+
+func _on_visibility_changed() -> void:
+	if visible:
+		close_button.grab_focus()

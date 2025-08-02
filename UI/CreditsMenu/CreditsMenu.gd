@@ -38,6 +38,8 @@ const FILE_TEMPLATE = "[ul bullet=-][code]res://{0}[/code][/ul]"
 @onready var license_option_button := %LicenseOptionButton
 @onready var engine_credits_label := %EngineCreditsRichTextLabel
 
+@onready var close_button := %CloseButton
+
 
 func _ready() -> void:
 	_fill_credits()
@@ -214,3 +216,8 @@ func _on_credits_rich_text_label_meta_clicked(meta: Variant) -> void:
 
 func _on_close_button_pressed() -> void:
 	close_pressed.emit()
+
+
+func _on_visibility_changed() -> void:
+	if visible:
+		close_button.grab_focus()

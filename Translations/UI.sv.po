@@ -14,15 +14,23 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: Space Pew-Pew\n"
-"MIME-Version: 1.0\n"
-"Content-Type: text/plain; charset=UTF-8\n"
 "POT-Creation-Date: 2025-08-01 19:35 +0200\n"
 "PO-Revision-Date: 2025-08-01 19:35 +0200\n"
-"Content-Transfer-Encoding: 8bit\n"
 "Last-Translator: A Thousand Ships\n"
 "Language-Team: Swedish\n"
 "Language: sv\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
+
+#: UI/MainMenu/MainMenu.tscn
+msgid "Continue playing"
+msgstr "Fortsätt spela"
+
+#: UI/MainMenu/MainMenu.tscn
+msgid "Continue"
+msgstr "Fortsätt"
 
 #: UI/MainMenu/MainMenu.tscn UI/GameOverMenu/GameOverMenu.tscn
 msgid "Restart the game"
@@ -52,12 +60,16 @@ msgstr "Gränssnitt"
 msgid "Main"
 msgstr "Huvudmeny"
 
+#: UI/MainMenu/MainMenu.tscn
+msgid "Open the credits menu"
+msgstr "Öppna eftertextmenyn"
+
 #: UI/MainMenu/MainMenu.tscn UI/CreditsMenu/CreditsMenu.tscn
 msgid "Credits"
 msgstr "Eftertexter"
 
 #: UI/MainMenu/MainMenu.tscn
-msgid "Open the Instructions and controls Menu"
+msgid "Open the instructions and controls menu"
 msgstr "Öppna instruktions- och kontrollmenyn"
 
 #: UI/MainMenu/MainMenu.tscn UI/HelpMenu/HelpMenu.tscn

@@ -36,8 +36,20 @@ SOFTWARE.
 
 ### [Creative Commons CC0](https://creativecommons.org/publicdomain/zero/1.0/)
 
-* From [UI Pack (Space Expansion)](https://www.kenney.nl/assets/ui-pack-space-expansion) by [Kenny](https://www.kenney.nl/):
+* From [UI Pack](https://kenney.nl/assets/ui-pack) by [Kenny](https://www.kenney.nl/):
+	- [`UI/Buttons/CheckRoundGrey.svg`](UI/Buttons/CheckRoundGrey.svg)
+	- [`UI/Buttons/CheckRoundGreyCircle.svg`](UI/Buttons/CheckRoundGreyCircle.svg)
+	- [`UI/Buttons/CheckSquareGrey.svg`](UI/Buttons/CheckSquareGrey.svg)
+	- [`UI/Buttons/CheckSquareGreyCheckmark.svg`](UI/Buttons/CheckSquareGreyCheckmark.svg)
+
+* From [UI Pack - Sci-Fi](https://www.kenney.nl/assets/ui-pack-sci-fi) by [Kenny](https://www.kenney.nl/):
 	- [`Icon.svg`](Icon.svg)
+	- [`UI/Panels/PanelGlass.svg`](UI/Panels/PanelGlass.svg)
+	- [`UI/Panels/PanelGlassScrews.svg`](UI/Panels/PanelGlassScrews.svg)
+	- [`UI/Panels/PanelSquare.svg`](UI/Panels/PanelSquare.svg)
+	- [`UI/Sliders/BarRoundSmall.svg`](UI/Sliders/BarRoundSmall.svg)
+	- [`UI/Sliders/BarRoundSmallSquare.svg`](UI/Sliders/BarRoundSmallSquare.svg)
+	- [`UI/Sliders/BarShadowRoundOutlineSmall.svg`](UI/Sliders/BarShadowRoundOutlineSmall.svg)
 
 * From [Space Shooter Redux](https://www.kenney.nl/assets/space-shooter-redux) by [Kenny](https://www.kenney.nl/):
 	- [`Asteroids/AsteroidBrownBig1.png`](Asteroids/AsteroidBrownBig1.png)

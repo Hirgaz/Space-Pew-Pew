@@ -1,6 +1,7 @@
 extends Control
 
 
+signal continue_pressed()
 signal restart_pressed()
 signal help_pressed()
 signal credits_pressed()
@@ -8,25 +9,32 @@ signal quit_pressed()
 
 
 @onready var music_enabled := %MusicVolumeEnabled
+@onready var music_text := %MusicVolumeText
 @onready var music_display := %MusicVolumeDisplay
 @onready var music_slider := %MusicVolumeSlider
 
 @onready var voice_enabled := %VoiceVolumeEnabled
+@onready var voice_text := %VoiceVolumeText
 @onready var voice_display := %VoiceVolumeDisplay
 @onready var voice_slider := %VoiceVolumeSlider
 
 @onready var effects_enabled := %EffectsVolumeEnabled
+@onready var effects_text := %EffectsVolumeText
 @onready var effects_display := %EffectsVolumeDisplay
 @onready var effects_slider := %EffectsVolumeSlider
 
 @onready var ui_enabled := %UIVolumeEnabled
+@onready var ui_text := %UIVolumeText
 @onready var ui_display := %UIVolumeDisplay
 @onready var ui_slider := %UIVolumeSlider
 
 @onready var main_enabled := %MainVolumeEnabled
+@onready var main_text := %MainVolumeText
 @onready var main_display := %MainVolumeDisplay
 @onready var main_slider := %MainVolumeSlider
 
+@onready var continue_button := %ContinueButton
+@onready var quit_vbox := %QuitVBoxContainer
 @onready var quit_button := %QuitButton
 
 
@@ -39,7 +47,7 @@ var ui_bus_index: int
 func _ready() -> void:
 	# Disable quit button on Web.
 	if OS.has_feature("web"):
-		quit_button.visible = false
+		quit_vbox.visible = false
 
 	# Get bus indices.
 	music_bus_index = AudioServer.get_bus_index(&"Music")
@@ -72,6 +80,29 @@ func _ready() -> void:
 	var main_volume = db_to_linear(AudioServer.get_bus_volume_db(0)) * 100.0
 	main_slider.set_value_no_signal(main_volume)
 	main_display.text = "%d%%" % main_volume
+
+
+func _update_volume_sizes() -> void:
+	# Compute minimum width, to compensate for translations.
+	var minimum_width : float = max(
+			music_text.get_minimum_size().x,
+			voice_text.get_minimum_size().x,
+			effects_text.get_minimum_size().x,
+			ui_text.get_minimum_size().x,
+			main_text.get_minimum_size().x,
+			80.0
+		)
+	music_text.custom_minimum_size.x = minimum_width
+	voice_text.custom_minimum_size.x = minimum_width
+	effects_text.custom_minimum_size.x = minimum_width
+	ui_text.custom_minimum_size.x = minimum_width
+	main_text.custom_minimum_size.x = minimum_width
+
+
+func _on_visibility_changed() -> void:
+	if visible:
+		_update_volume_sizes()
+		continue_button.grab_focus()
 
 
 # Volume Controls.
@@ -118,6 +149,10 @@ func _on_main_volume_enabled_toggled(toggled_on: bool) -> void:
 func _on_main_volume_slider_value_changed(value: float) -> void:
 	AudioServer.set_bus_volume_db(0, linear_to_db(value / 100.0))
 	main_display.text = "%d%%" % value
+
+
+func _on_continue_button_pressed() -> void:
+	continue_pressed.emit()
 
 
 func _on_restart_button_pressed() -> void:
