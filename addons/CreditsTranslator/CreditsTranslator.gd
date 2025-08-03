@@ -3,21 +3,21 @@ extends EditorPlugin
 
 
 const CreditsTranslationPlugin = preload("res://addons/CreditsTranslator/CreditsTranslationPlugin.gd")
-var credits_translation_plugin = CreditsTranslationPlugin.new()
+var credits_translation_plugin : CreditsTranslationPlugin
 
 func _enable_plugin() -> void:
-	add_translation_parser_plugin(credits_translation_plugin)
+	pass
 
 
 func _disable_plugin() -> void:
-	remove_translation_parser_plugin(credits_translation_plugin)
+	pass
 
 
 func _enter_tree() -> void:
-	# Initialization of the plugin goes here.
-	pass
+	credits_translation_plugin = CreditsTranslationPlugin.new()
+	add_translation_parser_plugin(credits_translation_plugin)
 
 
 func _exit_tree() -> void:
-	# Clean-up of the plugin goes here.
-	pass
+	remove_translation_parser_plugin(credits_translation_plugin)
+	credits_translation_plugin = null
