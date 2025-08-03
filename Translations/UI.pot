@@ -26,11 +26,6 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8-bit\n"
 
-#: UI/PlayerOverlay/HelpOverlay/HelpOverlay.tscn
-#: UI/MainMenu/MainMenu.tscn
-msgid "Open the instructions and controls menu"
-msgstr ""
-
 #: UI/MainMenu/MainMenu.tscn
 msgid "Continue playing"
 msgstr ""
@@ -76,6 +71,11 @@ msgstr ""
 #: UI/MainMenu/MainMenu.tscn
 #: UI/CreditsMenu/CreditsMenu.tscn
 msgid "Credits"
+msgstr ""
+
+#: UI/MainMenu/MainMenu.tscn
+#: UI/PlayerOverlay/HelpOverlay/HelpOverlay.gd
+msgid "Open the instructions and controls menu"
 msgstr ""
 
 #: UI/MainMenu/MainMenu.tscn
@@ -128,10 +128,6 @@ msgstr ""
 
 #: UI/CreditsMenu/CreditsMenu.tscn
 msgid "License:"
-msgstr ""
-
-#: UI/CreditsMenu/CreditsMenu.tscn
-msgid "Select license to view"
 msgstr ""
 
 #: UI/HelpMenu/HelpMenu.gd
@@ -252,6 +248,10 @@ msgstr ""
 #: UI/HelpMenu/HelpMenu.gd
 msgctxt "HelpMenu"
 msgid "Secondary"
+msgstr ""
+
+#: UI/CreditsMenu/CreditsMenu.gd
+msgid "Select license to view"
 msgstr ""
 
 #: UI/CreditsMenu/CreditsMenu.gd

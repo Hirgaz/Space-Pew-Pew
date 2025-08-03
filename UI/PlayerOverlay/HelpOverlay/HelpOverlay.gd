@@ -8,9 +8,8 @@ signal help_pressed()
 
 
 func _ready() -> void:
-	# TODO: Remove workaround for POT extraction.
-	help_button.text = "?" # NO_TRANSLATE
-	help_button.auto_translate_mode = Node.AUTO_TRANSLATE_MODE_DISABLED
+	# TODO: Workaround to ensure tooltip is correctly extracted by POT generator.
+	help_button.tooltip_text = "Open the instructions and controls menu"
 
 
 func _on_help_button_pressed() -> void:
