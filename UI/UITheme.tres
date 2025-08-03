@@ -1,4 +1,4 @@
-[gd_resource type="Theme" load_steps=37 format=3 uid="uid://cm64x20n7rprc"]
+[gd_resource type="Theme" load_steps=38 format=3 uid="uid://cm64x20n7rprc"]
 
 [ext_resource type="Texture2D" uid="uid://c0ntkc3qejyb0" path="res://UI/Panels/PanelGlass.svg" id="1_mudyb"]
 [ext_resource type="Texture2D" uid="uid://d4a0tssaohnfl" path="res://UI/Buttons/CheckSquareGreyCheckmark.svg" id="2_8es5p"]
@@ -126,6 +126,18 @@ texture_margin_left = 16.0
 texture_margin_top = 16.0
 texture_margin_right = 16.0
 texture_margin_bottom = 16.0
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_ysiqk"]
+content_margin_left = 0.0
+content_margin_top = 0.0
+content_margin_right = 0.0
+content_margin_bottom = 0.0
+texture = ExtResource("2_cy8pq")
+texture_margin_left = 8.0
+texture_margin_top = 8.0
+texture_margin_right = 8.0
+texture_margin_bottom = 8.0
+modulate_color = Color(1, 1, 1, 0.5)
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_yk8lq"]
 content_margin_left = 4.0
@@ -299,6 +311,8 @@ LabelHeader/colors/font_color = Color(1, 1, 1, 1)
 LabelHeader/styles/focus = SubResource("StyleBoxTexture_8es5p")
 LabelHeader/styles/normal = SubResource("StyleBoxTexture_8es5p")
 Panel/styles/panel = SubResource("StyleBoxTexture_elwv3")
+PanelOverlay/base_type = &"Panel"
+PanelOverlay/styles/panel = SubResource("StyleBoxTexture_ysiqk")
 PopupMenu/colors/font_accelerator_color = Color(0.7, 0.7, 0.7, 0.8)
 PopupMenu/colors/font_color = Color(0.47058824, 0.47058824, 0.47058824, 1)
 PopupMenu/colors/font_hover_color = Color(0.875, 0.875, 0.875, 1)

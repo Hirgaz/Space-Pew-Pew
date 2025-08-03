@@ -1,13 +1,6 @@
-[gd_scene load_steps=3 format=3 uid="uid://yxg1n6jbh50y"]
+[gd_scene load_steps=2 format=3 uid="uid://yxg1n6jbh50y"]
 
 [ext_resource type="Script" uid="uid://dxe1momgvx3m" path="res://UI/PlayerOverlay/HelpOverlay/HelpOverlay.gd" id="1_ljfko"]
-
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_q0uhn"]
-bg_color = Color(0.44, 0.44, 0.44, 0.49803922)
-corner_radius_top_left = 4
-corner_radius_top_right = 4
-corner_radius_bottom_right = 4
-corner_radius_bottom_left = 4
 
 [node name="HelpOverlay" type="Control"]
 layout_mode = 3
@@ -34,7 +27,7 @@ custom_minimum_size = Vector2(80, 80)
 layout_mode = 2
 size_flags_horizontal = 8
 size_flags_vertical = 4
-theme_override_styles/panel = SubResource("StyleBoxFlat_q0uhn")
+theme_type_variation = &"PanelOverlay"
 
 [node name="MarginContainer" type="MarginContainer" parent="MarginContainer/Panel"]
 layout_mode = 1

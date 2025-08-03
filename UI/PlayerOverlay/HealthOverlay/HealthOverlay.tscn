@@ -1,14 +1,7 @@
-[gd_scene load_steps=5 format=3 uid="uid://bf3y2jmqc0hgk"]
+[gd_scene load_steps=4 format=3 uid="uid://bf3y2jmqc0hgk"]
 
 [ext_resource type="Script" uid="uid://begd4ah748oxf" path="res://UI/PlayerOverlay/HealthOverlay/HealthOverlay.gd" id="1_5pl0f"]
 [ext_resource type="Texture2D" uid="uid://jr8cse33r852" path="res://Player/PlayerShipOrange.png" id="1_p887o"]
-
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_q0uhn"]
-bg_color = Color(0.44, 0.44, 0.44, 0.49803922)
-corner_radius_top_left = 4
-corner_radius_top_right = 4
-corner_radius_bottom_right = 4
-corner_radius_bottom_left = 4
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_18yuf"]
 bg_color = Color(0.336608, 0.336608, 0.336608, 1)
@@ -37,7 +30,7 @@ theme_override_constants/margin_top = 16
 [node name="Panel" type="Panel" parent="MarginContainer"]
 custom_minimum_size = Vector2(160, 80)
 layout_mode = 2
-theme_override_styles/panel = SubResource("StyleBoxFlat_q0uhn")
+theme_type_variation = &"PanelOverlay"
 
 [node name="MarginContainer" type="MarginContainer" parent="MarginContainer/Panel"]
 layout_mode = 1
