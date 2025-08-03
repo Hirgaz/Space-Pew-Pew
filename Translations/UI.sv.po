@@ -14,8 +14,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: Space Pew-Pew\n"
-"POT-Creation-Date: 2025-08-01 19:35 +0200\n"
-"PO-Revision-Date: 2025-08-01 19:35 +0200\n"
+"PO-Revision-Date: 2025-08-03 15:10+0200\n"
 "Last-Translator: A Thousand Ships\n"
 "Language-Team: Swedish\n"
 "Language: sv\n"
@@ -23,6 +22,10 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
+
+#: UI/PlayerOverlay/HelpOverlay/HelpOverlay.tscn UI/MainMenu/MainMenu.tscn
+msgid "Open the instructions and controls menu"
+msgstr "Öppna instruktions- och kontrollmenyn"
 
 #: UI/MainMenu/MainMenu.tscn
 msgid "Continue playing"
@@ -68,13 +71,13 @@ msgstr "Öppna eftertextmenyn"
 msgid "Credits"
 msgstr "Eftertexter"
 
-#: UI/MainMenu/MainMenu.tscn
-msgid "Open the instructions and controls menu"
-msgstr "Öppna instruktions- och kontrollmenyn"
-
 #: UI/MainMenu/MainMenu.tscn UI/HelpMenu/HelpMenu.tscn
 msgid "Help"
 msgstr "Hjälp"
+
+#: UI/MainMenu/MainMenu.tscn UI/GameOverMenu/GameOverMenu.tscn
+msgid "Quit the game"
+msgstr "Avsluta spelet"
 
 #: UI/MainMenu/MainMenu.tscn UI/GameOverMenu/GameOverMenu.tscn
 msgid "Quit"
@@ -101,8 +104,8 @@ msgid "Game Over"
 msgstr "Spelet Över"
 
 #: UI/GameOverMenu/GameOverMenu.tscn
-msgid "Score: TODO"
-msgstr "Poäng: TODO"
+msgid "Score:"
+msgstr "Resultat:"
 
 #: UI/CreditsMenu/CreditsMenu.tscn
 msgid "Game"
@@ -239,3 +242,34 @@ msgstr "Primär"
 msgctxt "HelpMenu"
 msgid "Secondary"
 msgstr "Sekundär"
+
+#: UI/CreditsMenu/CreditsMenu.gd
+msgctxt "Credits"
+msgid "From {0} by {1}:"
+msgstr "Från {0} av {1}:"
+
+#: UI/GameOverMenu/GameOverMenu.gd
+msgid "%5d point"
+msgid_plural "%5d points"
+msgstr[0] "%5d poäng"
+msgstr[1] "%5d poäng"
+
+#: Misc/COPYING.json
+msgctxt "Credits"
+msgid "Project Licenses"
+msgstr "Projectlicenser"
+
+#: Misc/COPYING.json
+msgctxt "Credits"
+msgid "Code License (MIT)"
+msgstr "Kodlicens (MIT)"
+
+#: Misc/COPYING.json
+msgctxt "Credits"
+msgid "Audio Licenses"
+msgstr "Ljudlicenser"
+
+#: Misc/COPYING.json
+msgctxt "Credits"
+msgid "Art Licenses"
+msgstr "Konstlicenser"

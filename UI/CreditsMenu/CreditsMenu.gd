@@ -15,6 +15,9 @@ const FROM_URL_ATTRIBUTE_NAME = "from_url"
 const AUTHOR_ATTRIBUTE_NAME = "author"
 const AUTHOR_URL_ATTRIBUTE_NAME = "author_url"
 const SOURCE_ATTRIBUTE_NAME = "source"
+const TRANSLATE_ATTRIBUTE_NAME = "translate"
+const TRANSLATE_FROM_ATTRIBUTE_NAME = "translate_from"
+const TRANSLATE_AUTHOR_ATTRIBUTE_NAME = "translate_author"
 
 const BODY_PRE = "[font_size=18]\n"
 const BODY_POST = "[/font_size]\n"
@@ -44,11 +47,17 @@ const FILE_TEMPLATE = "[ul bullet=-][code]res://{0}[/code][/ul]"
 func _ready() -> void:
 	_fill_credits()
 	_fill_license_options()
+	# TODO: Remove workaround for POT extraction.
+	license_option_button.auto_translate_mode = Node.AUTO_TRANSLATE_MODE_DISABLED
 
 
 func _build_header(template: String, entry: Dictionary) -> String:
 	if entry.has(TITLE_ATTRIBUTE_NAME):
 		var title = entry[TITLE_ATTRIBUTE_NAME] as String
+
+		if entry.get(TRANSLATE_ATTRIBUTE_NAME, false):
+			title = tr(title, &"Credits")
+
 		var url := ""
 		if entry.has(URL_ATTRIBUTE_NAME):
 			url = entry[URL_ATTRIBUTE_NAME] as String
@@ -65,14 +74,22 @@ func _build_element(data: Dictionary) -> String:
 	if data.has(LINK_ATTRIBUTE_NAME):
 		return BODY_PRE + ENTRY_LINK_EMPTY_TEMPLATE.format([data[LINK_ATTRIBUTE_NAME]]) + BODY_POST
 	elif data.has(TEXT_ATTRIBUTE_NAME):
-		# Just return the plain text data.
-		return BODY_PRE + data[TEXT_ATTRIBUTE_NAME] + BODY_POST
+		var body := data[TEXT_ATTRIBUTE_NAME] as String
+
+		if data.get(TRANSLATE_ATTRIBUTE_NAME, false):
+			body = tr(body, &"Credits")
+
+		return BODY_PRE + body + BODY_POST
 	elif data.has(SOURCE_ATTRIBUTE_NAME):
 		var path = "res://" + data[SOURCE_ATTRIBUTE_NAME]
 		if not FileAccess.file_exists(path):
 			return ""
+
 		var source := FileAccess.get_file_as_string(path)
-		# Read the file and add.
+
+		if data.get(TRANSLATE_ATTRIBUTE_NAME, false):
+			source = tr(source, &"Credits")
+
 		return BODY_PRE + source + BODY_POST
 	elif data.has(FILES_ATTRIBUTE_NAME):
 		# Should have at least from and author.
@@ -80,7 +97,14 @@ func _build_element(data: Dictionary) -> String:
 			return ""
 
 		var from = data[FROM_ATTRIBUTE_NAME]
+
+		if data.get(TRANSLATE_FROM_ATTRIBUTE_NAME, false):
+			from = tr(from, &"Credits")
+
 		var author = data[AUTHOR_ATTRIBUTE_NAME]
+
+		if data.get(TRANSLATE_AUTHOR_ATTRIBUTE_NAME, false):
+			author = tr(author, &"Credits")
 
 		if data.has(FROM_URL_ATTRIBUTE_NAME):
 			var url = data[FROM_URL_ATTRIBUTE_NAME]
@@ -90,7 +114,7 @@ func _build_element(data: Dictionary) -> String:
 			var url = data[AUTHOR_URL_ATTRIBUTE_NAME]
 			author = LINK_TEMPLATE.format([url, author])
 
-		var entry = FROM_TEMPLATE.format([from, author])
+		var entry = tr(FROM_TEMPLATE, &"Credits").format([from, author])
 
 		var body := ""
 		for file: String in data[FILES_ATTRIBUTE_NAME] as Array:
