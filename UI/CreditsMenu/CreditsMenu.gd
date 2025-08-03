@@ -187,7 +187,6 @@ func _parse_license() -> String:
 
 
 func _fill_credits() -> void:
-	# TODO: Add translations for strings in CREDITS.json.
 	game_credits_label.text = _parse_license()
 
 
@@ -200,13 +199,47 @@ func _fill_credits_option(index: int) -> void:
 	var license_info : Dictionary = license_info_array[index]
 	var license_parts : Array = license_info["parts"]
 
+	# TODO: Temporary remapping for edge case.
+	var remappings := { "BSD-3-Clause": "BSD-3-clause" }
+
+	# TODO: Handle multi-license cases by grouping licenses better.
+	var combined_license_regex := RegEx.create_from_string( \
+			"((?<name_1>.+) (and|or) (?<name_2>.+) (and|or) (?<name_3>.+) (and|or) (?<name_4>.+) (and|or) (?<name_5>.+))|" + \
+			"((?<name_1>.+) (and|or) (?<name_2>.+) (and|or) (?<name_3>.+) (and|or) (?<name_4>.+))|" + \
+			"((?<name_1>.+) (and|or) (?<name_2>.+) (and|or) (?<name_3>.+))|" + \
+			"((?<name_1>.+) (and|or) (?<name_2>.+))")
+
 	var licenses := {}
 
-	for part: Dictionary in license_parts:
-		var authors : Array = licenses.get_or_add(part["license"], [])
-		for author: String in part["copyright"]:
+	# Helper function to add entries.
+	var add_entries := func (license: String, copyright: Array) -> void:
+		if remappings.has(license):
+			license = remappings[license]
+
+		var authors : Array = licenses.get_or_add(license, [])
+		for author: String in copyright:
 			if not authors.has(author):
 				authors.push_back(author)
+
+	for part: Dictionary in license_parts:
+		var license : String = part["license"]
+		var check_combined := combined_license_regex.search(license)
+		if check_combined:
+			var name_1 := check_combined.get_string("name_1")
+			var name_2 := check_combined.get_string("name_2")
+			var name_3 := check_combined.get_string("name_3")
+			var name_4 := check_combined.get_string("name_4")
+			var name_5 := check_combined.get_string("name_5")
+			add_entries.call(name_1, part["copyright"])
+			add_entries.call(name_2, part["copyright"])
+			if name_3:
+				add_entries.call(name_3, part["copyright"])
+			if name_4:
+				add_entries.call(name_4, part["copyright"])
+			if name_5:
+				add_entries.call(name_5, part["copyright"])
+		else:
+			add_entries.call(license, part["copyright"])
 
 	var license_string : String = ""
 
@@ -217,7 +250,7 @@ func _fill_credits_option(index: int) -> void:
 		for author: String in authors:
 			license_string += "[indent]" + author + "[/indent]\n"
 		license_string += "\n[hr]\n\n"
-		license_string += Engine.get_license_info()[license] + "\n\n"
+		license_string += Engine.get_license_info().get(license, "N/A") + "\n\n"
 
 	engine_credits_label.text = license_string
 
