@@ -156,6 +156,7 @@ func restart_game() -> void:
 	# TODO: Move to game state helper.
 	get_tree().reload_current_scene()
 	main_menu_base.visible = false
+	player_overlay.visible = true
 	game_over_menu_base.visible = false
 	get_tree().paused = false
 
