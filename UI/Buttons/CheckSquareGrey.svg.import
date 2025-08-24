@@ -1,14 +1,14 @@
 [remap]
 
 importer="svg"
-type="SVGTexture"
+type="DPITexture"
 uid="uid://i6lg583cx5gx"
-path="res://.godot/imported/CheckSquareGrey.svg-ea0b6f7071854b232347b22e9ba8034d.svgtex"
+path="res://.godot/imported/CheckSquareGrey.svg-ea0b6f7071854b232347b22e9ba8034d.dpitex"
 
 [deps]
 
 source_file="res://UI/Buttons/CheckSquareGrey.svg"
-dest_files=["res://.godot/imported/CheckSquareGrey.svg-ea0b6f7071854b232347b22e9ba8034d.svgtex"]
+dest_files=["res://.godot/imported/CheckSquareGrey.svg-ea0b6f7071854b232347b22e9ba8034d.dpitex"]
 
 [params]
 

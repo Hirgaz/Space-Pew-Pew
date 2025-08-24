@@ -1,14 +1,14 @@
 [remap]
 
 importer="svg"
-type="SVGTexture"
+type="DPITexture"
 uid="uid://dowlhs2fsi1qp"
-path="res://.godot/imported/PanelSquare.svg-48613146d4027933c3a7c5a78a984221.svgtex"
+path="res://.godot/imported/PanelSquare.svg-48613146d4027933c3a7c5a78a984221.dpitex"
 
 [deps]
 
 source_file="res://UI/Panels/PanelSquare.svg"
-dest_files=["res://.godot/imported/PanelSquare.svg-48613146d4027933c3a7c5a78a984221.svgtex"]
+dest_files=["res://.godot/imported/PanelSquare.svg-48613146d4027933c3a7c5a78a984221.dpitex"]
 
 [params]
 

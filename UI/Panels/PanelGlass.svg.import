@@ -1,14 +1,14 @@
 [remap]
 
 importer="svg"
-type="SVGTexture"
+type="DPITexture"
 uid="uid://c0ntkc3qejyb0"
-path="res://.godot/imported/PanelGlass.svg-9415742a653d290460d271b6ee771605.svgtex"
+path="res://.godot/imported/PanelGlass.svg-9415742a653d290460d271b6ee771605.dpitex"
 
 [deps]
 
 source_file="res://UI/Panels/PanelGlass.svg"
-dest_files=["res://.godot/imported/PanelGlass.svg-9415742a653d290460d271b6ee771605.svgtex"]
+dest_files=["res://.godot/imported/PanelGlass.svg-9415742a653d290460d271b6ee771605.dpitex"]
 
 [params]
 

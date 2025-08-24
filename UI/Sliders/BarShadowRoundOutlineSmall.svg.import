@@ -1,14 +1,14 @@
 [remap]
 
 importer="svg"
-type="SVGTexture"
+type="DPITexture"
 uid="uid://cs1cvdej438xj"
-path="res://.godot/imported/BarShadowRoundOutlineSmall.svg-cb83d72c75b12807a18d8fe88fa88a95.svgtex"
+path="res://.godot/imported/BarShadowRoundOutlineSmall.svg-cb83d72c75b12807a18d8fe88fa88a95.dpitex"
 
 [deps]
 
 source_file="res://UI/Sliders/BarShadowRoundOutlineSmall.svg"
-dest_files=["res://.godot/imported/BarShadowRoundOutlineSmall.svg-cb83d72c75b12807a18d8fe88fa88a95.svgtex"]
+dest_files=["res://.godot/imported/BarShadowRoundOutlineSmall.svg-cb83d72c75b12807a18d8fe88fa88a95.dpitex"]
 
 [params]
 
