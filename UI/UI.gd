@@ -36,9 +36,7 @@ func _unhandled_input(event: InputEvent) -> void:
 
 
 func _ready() -> void:
-	# Hack to fix textures.
-	get_window().size_changed.connect(_update_textures)
-	_update_textures()
+	_ensure_texture_sizing()
 
 
 # Callbacks.
@@ -84,18 +82,19 @@ func _on_game_over_menu_restart_pressed() -> void:
 	restart_game()
 
 
-func _update_textures() -> void:
-	# Hack to fix textures.
-	preload("res://UI/Buttons/CheckRoundGrey.svg").get_image()
-	preload("res://UI/Buttons/CheckRoundGreyCircle.svg").get_image()
-	preload("res://UI/Buttons/CheckSquareGrey.svg").get_image()
-	preload("res://UI/Buttons/CheckSquareGreyCheckmark.svg").get_image()
-	preload("res://UI/Panels/PanelGlass.svg").get_image()
-	preload("res://UI/Panels/PanelGlassScrews.svg").get_image()
-	preload("res://UI/Panels/PanelSquare.svg").get_image()
-	preload("res://UI/Sliders/BarRoundSmall.svg").get_image()
-	preload("res://UI/Sliders/BarRoundSmallSquare.svg").get_image()
-	preload("res://UI/Sliders/BarShadowRoundOutlineSmall.svg").get_image()
+func _ensure_texture_sizing() -> void:
+	preload("res://UI/Buttons/CheckRoundGrey.svg").set_size_override(Vector2i(16, 16))
+	preload("res://UI/Buttons/CheckRoundGreyCircle.svg").set_size_override(Vector2i(16, 16))
+	preload("res://UI/Buttons/CheckSquareGrey.svg").set_size_override(Vector2i(24, 24))
+	preload("res://UI/Buttons/CheckSquareGreyCheckmark.svg").set_size_override(Vector2i(24, 24))
+
+	preload("res://UI/Panels/PanelGlass.svg").set_size_override(Vector2i(64, 64))
+	preload("res://UI/Panels/PanelGlassScrews.svg").set_size_override(Vector2i(64, 64))
+	preload("res://UI/Panels/PanelSquare.svg").set_size_override(Vector2i(64, 64))
+
+	preload("res://UI/Sliders/BarRoundSmall.svg").set_size_override(Vector2i(96, 16))
+	preload("res://UI/Sliders/BarRoundSmallSquare.svg").set_size_override(Vector2i(16, 16))
+	preload("res://UI/Sliders/BarShadowRoundOutlineSmall.svg").set_size_override(Vector2i(96, 16))
 
 
 # Helper methods.
