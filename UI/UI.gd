@@ -35,6 +35,12 @@ func _unhandled_input(event: InputEvent) -> void:
 		toggle_help()
 
 
+func _ready() -> void:
+	# Hack to fix textures.
+	get_window().size_changed.connect(_update_textures)
+	_update_textures()
+
+
 # Callbacks.
 
 func _on_help_overlay_help_pressed() -> void:
@@ -76,6 +82,20 @@ func _on_game_over_menu_quit_pressed() -> void:
 
 func _on_game_over_menu_restart_pressed() -> void:
 	restart_game()
+
+
+func _update_textures() -> void:
+	# Hack to fix textures.
+	preload("res://UI/Buttons/CheckRoundGrey.svg").get_image()
+	preload("res://UI/Buttons/CheckRoundGreyCircle.svg").get_image()
+	preload("res://UI/Buttons/CheckSquareGrey.svg").get_image()
+	preload("res://UI/Buttons/CheckSquareGreyCheckmark.svg").get_image()
+	preload("res://UI/Panels/PanelGlass.svg").get_image()
+	preload("res://UI/Panels/PanelGlassScrews.svg").get_image()
+	preload("res://UI/Panels/PanelSquare.svg").get_image()
+	preload("res://UI/Sliders/BarRoundSmall.svg").get_image()
+	preload("res://UI/Sliders/BarRoundSmallSquare.svg").get_image()
+	preload("res://UI/Sliders/BarShadowRoundOutlineSmall.svg").get_image()
 
 
 # Helper methods.
