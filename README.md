@@ -10,4 +10,6 @@ We are not looking for people to contribute to this repository directly, though 
 
 ## Licensing
 
-Please see the [license](LICENSE.md) and [copying](COPYING.md) files.
+Much of the art is by the amazing [Kenny](https://www.kenney.nl/), this project wouldn't be possible without their amazing art!
+
+Please see the [license](LICENSE.md) and [copying](COPYING.md) files for more details.
