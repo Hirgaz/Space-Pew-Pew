@@ -19,9 +19,9 @@ jobs:
       - name: Setup
         run: |
           mkdir -p ~/.local/share/godot/export_templates/
-          # Use non-3D Web version
+          # Use non-3D Web version.
           unzip /root/godot_web_disable_3d_export_templates.zip -d /root/
-          mv -v /root/templates ~/.local/share/godot/export_templates/4.5.beta
+          mv -v /root/templates ~/.local/share/godot/export_templates/4.5.rc
 
       - name: Export project to Web
         run: |
