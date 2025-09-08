@@ -8,6 +8,13 @@
 # res://UI/CreditsMenu/CreditsMenu.tscn
 # res://UI/Background/Background.tscn
 # res://UI/HelpMenu/HelpMenu.gd
+# res://UI/CreditsMenu/CreditsMenu.gd
+# res://UI/GameOverMenu/GameOverMenu.gd
+# res://UI/MainMenu/MainMenu.gd
+# res://UI/PlayerOverlay/HealthOverlay/HealthOverlay.gd
+# res://UI/PlayerOverlay/HelpOverlay/HelpOverlay.gd
+# res://UI/UI.gd
+# res://Misc/COPYING.json
 #
 # A Thousand Ships, 2025.
 #
@@ -57,7 +64,7 @@ msgstr "Gränssnitt"
 
 #: UI/MainMenu/MainMenu.tscn
 msgid "Main"
-msgstr "Huvudmeny"
+msgstr "Primär"
 
 #: UI/MainMenu/MainMenu.tscn
 msgid "Open the credits menu"
