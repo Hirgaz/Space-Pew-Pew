@@ -14,7 +14,7 @@ config/name="Space Pew-Pew"
 config/description="A simple project just to develop some workflow and development skills and procedures, made in Godot"
 config/version="0.1.0"
 run/main_scene="res://World/World.tscn"
-config/features=PackedStringArray("4.5", "GL Compatibility")
+config/features=PackedStringArray("4.6", "GL Compatibility")
 config/icon="res://Icon.svg"
 
 [autoload]

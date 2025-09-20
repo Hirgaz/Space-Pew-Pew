@@ -47,8 +47,6 @@ const FILE_TEMPLATE = "[ul bullet=-][code]res://{0}[/code][/ul]"
 func _ready() -> void:
 	_fill_credits()
 	_fill_license_options()
-	# TODO: Workaround to ensure tooltip is correctly extracted by POT generator.
-	license_option_button.tooltip_text = "Select license to view"
 
 
 func _build_header(template: String, entry: Dictionary) -> String:

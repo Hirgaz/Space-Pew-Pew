@@ -30,6 +30,10 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
 
+#: UI/PlayerOverlay/HelpOverlay/HelpOverlay.tscn UI/MainMenu/MainMenu.tscn
+msgid "Open the instructions and controls menu"
+msgstr "Öppna instruktions- och kontrollmenyn"
+
 #: UI/MainMenu/MainMenu.tscn
 msgid "Continue playing"
 msgstr "Fortsätt spela"
@@ -73,10 +77,6 @@ msgstr "Öppna eftertextmenyn"
 #: UI/MainMenu/MainMenu.tscn UI/CreditsMenu/CreditsMenu.tscn
 msgid "Credits"
 msgstr "Eftertexter"
-
-#: UI/MainMenu/MainMenu.tscn UI/PlayerOverlay/HelpOverlay/HelpOverlay.gd
-msgid "Open the instructions and controls menu"
-msgstr "Öppna instruktions- och kontrollmenyn"
 
 #: UI/MainMenu/MainMenu.tscn UI/HelpMenu/HelpMenu.tscn
 msgid "Help"
@@ -125,6 +125,10 @@ msgstr "Motor"
 #: UI/CreditsMenu/CreditsMenu.tscn
 msgid "License:"
 msgstr "Licens:"
+
+#: UI/CreditsMenu/CreditsMenu.tscn
+msgid "Select license to view"
+msgstr "Välj licens att visa"
 
 #: UI/HelpMenu/HelpMenu.gd
 msgctxt "HelpMenu"
@@ -245,10 +249,6 @@ msgstr "Primär"
 msgctxt "HelpMenu"
 msgid "Secondary"
 msgstr "Sekundär"
-
-#: UI/CreditsMenu/CreditsMenu.gd
-msgid "Select license to view"
-msgstr "Välj licens att visa"
 
 #: UI/CreditsMenu/CreditsMenu.gd
 msgctxt "Credits"
