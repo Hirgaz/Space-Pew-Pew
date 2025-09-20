@@ -1,6 +1,9 @@
 extends Control
 
 
+const SETTINGS_FILE_PATH = "user://settings.cfg"
+
+
 signal continue_pressed()
 signal restart_pressed()
 signal help_pressed()
@@ -43,11 +46,15 @@ var voice_bus_index: int
 var effects_bus_index: int
 var ui_bus_index: int
 
+var config_file := ConfigFile.new()
+
 
 func _ready() -> void:
 	# Disable quit button on Web.
 	if OS.has_feature("web"):
 		quit_vbox.visible = false
+
+	_load_settings()
 
 	# Get bus indices.
 	music_bus_index = AudioServer.get_bus_index(&"Music")
@@ -56,30 +63,45 @@ func _ready() -> void:
 	ui_bus_index = AudioServer.get_bus_index(&"UI")
 
 	# Update volumes and mute.
-	music_enabled.set_pressed_no_signal(not AudioServer.is_bus_mute(music_bus_index))
-	var music_volume = db_to_linear(AudioServer.get_bus_volume_db(music_bus_index)) * 100.0
-	music_slider.set_value_no_signal(music_volume)
-	music_display.text = "%d%%" % music_volume
+	var is_enabled : bool = config_file.get_value("audio", "music_enabled", true)
+	AudioServer.set_bus_mute(music_bus_index, not is_enabled)
+	music_enabled.set_pressed_no_signal(is_enabled)
+	var volume : float = config_file.get_value("audio", "music_volume", 100.0)
+	AudioServer.set_bus_volume_db(music_bus_index, linear_to_db(volume / 100.0))
+	music_slider.set_value_no_signal(volume)
+	music_display.text = "%d%%" % volume
 
-	voice_enabled.set_pressed_no_signal(not AudioServer.is_bus_mute(voice_bus_index))
-	var voice_volume = db_to_linear(AudioServer.get_bus_volume_db(voice_bus_index)) * 100.0
-	voice_slider.set_value_no_signal(voice_volume)
-	voice_display.text = "%d%%" % voice_volume
+	is_enabled = config_file.get_value("audio", "voice_enabled", true)
+	AudioServer.set_bus_mute(voice_bus_index, not is_enabled)
+	voice_enabled.set_pressed_no_signal(is_enabled)
+	volume = config_file.get_value("audio", "voice_volume", 100.0)
+	AudioServer.set_bus_volume_db(voice_bus_index, linear_to_db(volume / 100.0))
+	voice_slider.set_value_no_signal(volume)
+	voice_display.text = "%d%%" % volume
 
-	effects_enabled.set_pressed_no_signal(not AudioServer.is_bus_mute(effects_bus_index))
-	var effects_volume = db_to_linear(AudioServer.get_bus_volume_db(effects_bus_index)) * 100.0
-	effects_slider.set_value_no_signal(effects_volume)
-	effects_display.text = "%d%%" % effects_volume
+	is_enabled = config_file.get_value("audio", "effects_enabled", true)
+	AudioServer.set_bus_mute(effects_bus_index, not is_enabled)
+	effects_enabled.set_pressed_no_signal(is_enabled)
+	volume = config_file.get_value("audio", "effects_volume", 100.0)
+	AudioServer.set_bus_volume_db(effects_bus_index, linear_to_db(volume / 100.0))
+	effects_slider.set_value_no_signal(volume)
+	effects_display.text = "%d%%" % volume
 
-	ui_enabled.set_pressed_no_signal(not AudioServer.is_bus_mute(ui_bus_index))
-	var ui_volume = db_to_linear(AudioServer.get_bus_volume_db(ui_bus_index)) * 100.0
-	ui_slider.set_value_no_signal(ui_volume)
-	ui_display.text = "%d%%" % ui_volume
+	is_enabled = config_file.get_value("audio", "ui_enabled", true)
+	AudioServer.set_bus_mute(ui_bus_index, not is_enabled)
+	ui_enabled.set_pressed_no_signal(is_enabled)
+	volume = config_file.get_value("audio", "ui_volume", 100.0)
+	AudioServer.set_bus_volume_db(ui_bus_index, linear_to_db(volume / 100.0))
+	ui_slider.set_value_no_signal(volume)
+	ui_display.text = "%d%%" % volume
 
-	main_enabled.set_pressed_no_signal(not AudioServer.is_bus_mute(0))
-	var main_volume = db_to_linear(AudioServer.get_bus_volume_db(0)) * 100.0
-	main_slider.set_value_no_signal(main_volume)
-	main_display.text = "%d%%" % main_volume
+	is_enabled = config_file.get_value("audio", "main_enabled", true)
+	AudioServer.set_bus_mute(0, not is_enabled)
+	main_enabled.set_pressed_no_signal(is_enabled)
+	volume = config_file.get_value("audio", "main_volume", 100.0)
+	AudioServer.set_bus_volume_db(0, linear_to_db(volume / 100.0))
+	main_slider.set_value_no_signal(volume)
+	main_display.text = "%d%%" % volume
 
 
 func _update_volume_sizes() -> void:
@@ -105,67 +127,122 @@ func _on_visibility_changed() -> void:
 		continue_button.grab_focus()
 
 
+func _load_settings() -> void:
+	# Only load if the user filesystem is persistent.
+	if OS.is_userfs_persistent():
+		# Try to load the settings.
+		config_file.load(SETTINGS_FILE_PATH)
+
+		# Fill defaults if missing.
+		if not config_file.has_section_key("audio", "main_enabled"):
+			config_file.set_value("audio", "main_enabled", true)
+		if not config_file.has_section_key("audio", "main_volume"):
+			config_file.set_value("audio", "main_volume", 100.0)
+
+		if not config_file.has_section_key("audio", "music_enabled"):
+			config_file.set_value("audio", "music_enabled", true)
+		if not config_file.has_section_key("audio", "music_volume"):
+			config_file.set_value("audio", "music_volume", 100.0)
+
+		if not config_file.has_section_key("audio", "voice_enabled"):
+			config_file.set_value("audio", "voice_enabled", true)
+		if not config_file.has_section_key("audio", "voice_volume"):
+			config_file.set_value("audio", "voice_volume", 100.0)
+
+		if not config_file.has_section_key("audio", "effects_enabled"):
+			config_file.set_value("audio", "effects_enabled", true)
+		if not config_file.has_section_key("audio", "effects_volume"):
+			config_file.set_value("audio", "effects_volume", 100.0)
+
+		if not config_file.has_section_key("audio", "ui_enabled"):
+			config_file.set_value("audio", "ui_enabled", true)
+		if not config_file.has_section_key("audio", "ui_volume"):
+			config_file.set_value("audio", "ui_volume", 100.0)
+
+
+func _save_settings() -> void:
+	# Only save if the user filesystem is persistent.
+	if OS.is_userfs_persistent():
+		# Write volumes.
+		config_file.save(SETTINGS_FILE_PATH)
+
+
 # Volume Controls.
 
 func _on_music_volume_enabled_toggled(toggled_on: bool) -> void:
 	AudioServer.set_bus_mute(music_bus_index, not toggled_on)
+	config_file.set_value("audio", "music_enabled", toggled_on)
 
 
 func _on_music_volume_slider_value_changed(value: float) -> void:
 	AudioServer.set_bus_volume_db(music_bus_index, linear_to_db(value / 100.0))
 	music_display.text = "%d%%" % value
+	config_file.set_value("audio", "music_volume", value)
 
 func _on_voice_volume_enabled_toggled(toggled_on: bool) -> void:
 	AudioServer.set_bus_mute(voice_bus_index, not toggled_on)
+	config_file.set_value("audio", "voice_enabled", toggled_on)
 
 
 func _on_voice_volume_slider_value_changed(value: float) -> void:
 	AudioServer.set_bus_volume_db(voice_bus_index, linear_to_db(value / 100.0))
 	voice_display.text = "%d%%" % value
+	config_file.set_value("audio", "voice_volume", value)
 
 
 func _on_effects_volume_enabled_toggled(toggled_on: bool) -> void:
 	AudioServer.set_bus_mute(effects_bus_index, not toggled_on)
+	config_file.set_value("audio", "effects_enabled", toggled_on)
 
 
 func _on_effects_volume_slider_value_changed(value: float) -> void:
 	AudioServer.set_bus_volume_db(effects_bus_index, linear_to_db(value / 100.0))
 	effects_display.text = "%d%%" % value
+	config_file.set_value("audio", "effects_volume", value)
 
 
 func _on_ui_volume_enabled_toggled(toggled_on: bool) -> void:
 	AudioServer.set_bus_mute(ui_bus_index, not toggled_on)
+	config_file.set_value("audio", "ui_enabled", toggled_on)
 
 
 func _on_ui_volume_slider_value_changed(value: float) -> void:
 	AudioServer.set_bus_volume_db(ui_bus_index, linear_to_db(value / 100.0))
 	ui_display.text = "%d%%" % value
+	config_file.set_value("audio", "ui_volume", value)
 
 
 func _on_main_volume_enabled_toggled(toggled_on: bool) -> void:
 	AudioServer.set_bus_mute(0, not toggled_on)
+	config_file.set_value("audio", "main_enabled", toggled_on)
 
 
 func _on_main_volume_slider_value_changed(value: float) -> void:
 	AudioServer.set_bus_volume_db(0, linear_to_db(value / 100.0))
 	main_display.text = "%d%%" % value
+	config_file.set_value("audio", "main_volume", value)
 
 
 func _on_continue_button_pressed() -> void:
+	_save_settings()
 	continue_pressed.emit()
 
 
 func _on_restart_button_pressed() -> void:
+	_save_settings()
 	restart_pressed.emit()
 
 
 func _on_help_button_pressed() -> void:
+	_save_settings()
 	help_pressed.emit()
 
 
 func _on_credits_button_pressed() -> void:
+	_save_settings()
 	credits_pressed.emit()
 
 
 func _on_quit_button_pressed() -> void:
+	_save_settings()
 	quit_pressed.emit()
