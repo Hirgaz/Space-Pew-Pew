@@ -197,8 +197,9 @@ func _fill_credits_option(index: int) -> void:
 	var license_info : Dictionary = license_info_array[index]
 	var license_parts : Array = license_info["parts"]
 
-	# TODO: Temporary remapping for edge case.
-	var remappings := { "BSD-3-Clause": "BSD-3-clause" }
+	# TODO: Add some proper entry for "public-domain".
+
+	# TODO: Handle links in the entries.
 
 	# TODO: Handle multi-license cases by grouping licenses better.
 	var combined_license_regex := RegEx.create_from_string( \
@@ -211,9 +212,6 @@ func _fill_credits_option(index: int) -> void:
 
 	# Helper function to add entries.
 	var add_entries := func (license: String, copyright: Array) -> void:
-		if remappings.has(license):
-			license = remappings[license]
-
 		var authors : Array = licenses.get_or_add(license, [])
 		for author: String in copyright:
 			if not authors.has(author):
