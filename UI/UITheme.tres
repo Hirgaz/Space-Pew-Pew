@@ -1,4 +1,4 @@
-[gd_resource type="Theme" load_steps=38 format=3 uid="uid://cm64x20n7rprc"]
+[gd_resource type="Theme" format=3 uid="uid://cm64x20n7rprc"]
 
 [ext_resource type="Texture2D" uid="uid://c0ntkc3qejyb0" path="res://UI/Panels/PanelGlass.svg" id="1_mudyb"]
 [ext_resource type="Texture2D" uid="uid://d4a0tssaohnfl" path="res://UI/Buttons/CheckSquareGreyCheckmark.svg" id="2_8es5p"]

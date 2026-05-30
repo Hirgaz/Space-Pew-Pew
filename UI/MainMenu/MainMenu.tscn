@@ -1,13 +1,14 @@
-[gd_scene load_steps=3 format=3 uid="uid://bugy62uxcxi52"]
+[gd_scene format=3 uid="uid://bugy62uxcxi52"]
 
 [ext_resource type="Script" uid="uid://ol2p7ehj8lia" path="res://UI/MainMenu/MainMenu.gd" id="1_8fkdr"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_wrqxn"]
 bg_color = Color(0.6, 0.6, 0.6, 0.0627451)
 
-[node name="MainMenu" type="Control"]
+[node name="MainMenu" type="Control" unique_id=1527603676]
 custom_minimum_size = Vector2(1152, 720)
 layout_mode = 3
+anchors_preset = 8
 anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
@@ -20,7 +21,7 @@ grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource("1_8fkdr")
 
-[node name="BG" type="Panel" parent="."]
+[node name="BG" type="Panel" parent="." unique_id=1000761208]
 custom_minimum_size = Vector2(1152, 720)
 layout_mode = 1
 anchors_preset = 15
@@ -30,7 +31,7 @@ grow_horizontal = 2
 grow_vertical = 2
 theme_override_styles/panel = SubResource("StyleBoxFlat_wrqxn")
 
-[node name="Panel" type="Panel" parent="BG"]
+[node name="Panel" type="Panel" parent="BG" unique_id=1530355509]
 layout_mode = 1
 anchors_preset = -1
 anchor_left = 0.12
@@ -40,7 +41,7 @@ anchor_bottom = 0.88
 grow_horizontal = 2
 grow_vertical = 2
 
-[node name="MarginContainer" type="MarginContainer" parent="BG/Panel"]
+[node name="MarginContainer" type="MarginContainer" parent="BG/Panel" unique_id=1927385659]
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -52,21 +53,21 @@ theme_override_constants/margin_top = 16
 theme_override_constants/margin_right = 16
 theme_override_constants/margin_bottom = 16
 
-[node name="VBoxContainer" type="VBoxContainer" parent="BG/Panel/MarginContainer"]
+[node name="VBoxContainer" type="VBoxContainer" parent="BG/Panel/MarginContainer" unique_id=651769605]
 layout_mode = 2
 
-[node name="Title" type="Label" parent="BG/Panel/MarginContainer/VBoxContainer"]
+[node name="Title" type="Label" parent="BG/Panel/MarginContainer/VBoxContainer" unique_id=1592612005]
 auto_translate_mode = 2
 layout_mode = 2
 theme_type_variation = &"LabelHeader"
 text = "Space Pew Pew"
 horizontal_alignment = 1
 
-[node name="HSeparator" type="HSeparator" parent="BG/Panel/MarginContainer/VBoxContainer"]
+[node name="HSeparator" type="HSeparator" parent="BG/Panel/MarginContainer/VBoxContainer" unique_id=1820907435]
 layout_mode = 2
 theme_override_constants/separation = 16
 
-[node name="ContinueButton" type="Button" parent="BG/Panel/MarginContainer/VBoxContainer"]
+[node name="ContinueButton" type="Button" parent="BG/Panel/MarginContainer/VBoxContainer" unique_id=1266524517]
 unique_name_in_owner = true
 layout_mode = 2
 tooltip_text = "Continue playing"
@@ -74,7 +75,7 @@ focus_neighbor_bottom = NodePath("../RestartButton")
 focus_next = NodePath("../RestartButton")
 text = "Continue"
 
-[node name="RestartButton" type="Button" parent="BG/Panel/MarginContainer/VBoxContainer"]
+[node name="RestartButton" type="Button" parent="BG/Panel/MarginContainer/VBoxContainer" unique_id=2037127962]
 layout_mode = 2
 tooltip_text = "Restart the game"
 focus_neighbor_bottom = NodePath("../MusicVolumeControl/MusicVolumeEnabled")
@@ -82,14 +83,14 @@ focus_next = NodePath("../MusicVolumeControl/MusicVolumeEnabled")
 focus_previous = NodePath("../QuitVBoxContainer/QuitButton")
 text = "Restart"
 
-[node name="HSeparator2" type="HSeparator" parent="BG/Panel/MarginContainer/VBoxContainer"]
+[node name="HSeparator2" type="HSeparator" parent="BG/Panel/MarginContainer/VBoxContainer" unique_id=1708992440]
 layout_mode = 2
 theme_override_constants/separation = 32
 
-[node name="MusicVolumeControl" type="HBoxContainer" parent="BG/Panel/MarginContainer/VBoxContainer"]
+[node name="MusicVolumeControl" type="HBoxContainer" parent="BG/Panel/MarginContainer/VBoxContainer" unique_id=235303299]
 layout_mode = 2
 
-[node name="MusicVolumeEnabled" type="CheckBox" parent="BG/Panel/MarginContainer/VBoxContainer/MusicVolumeControl"]
+[node name="MusicVolumeEnabled" type="CheckBox" parent="BG/Panel/MarginContainer/VBoxContainer/MusicVolumeControl" unique_id=679817313]
 unique_name_in_owner = true
 layout_mode = 2
 focus_neighbor_top = NodePath("../../RestartButton")
@@ -99,13 +100,13 @@ focus_next = NodePath("../MusicVolumeSlider")
 focus_previous = NodePath("../../RestartButton")
 button_pressed = true
 
-[node name="MusicVolumeText" type="Label" parent="BG/Panel/MarginContainer/VBoxContainer/MusicVolumeControl"]
+[node name="MusicVolumeText" type="Label" parent="BG/Panel/MarginContainer/VBoxContainer/MusicVolumeControl" unique_id=780667592]
 unique_name_in_owner = true
 custom_minimum_size = Vector2(80, 0)
 layout_mode = 2
 text = "Music"
 
-[node name="MusicVolumeSlider" type="HSlider" parent="BG/Panel/MarginContainer/VBoxContainer/MusicVolumeControl"]
+[node name="MusicVolumeSlider" type="HSlider" parent="BG/Panel/MarginContainer/VBoxContainer/MusicVolumeControl" unique_id=1898127791]
 unique_name_in_owner = true
 layout_mode = 2
 size_flags_horizontal = 3
@@ -120,7 +121,7 @@ value = 100.0
 tick_count = 10
 ticks_on_borders = true
 
-[node name="MusicVolumeDisplay" type="Label" parent="BG/Panel/MarginContainer/VBoxContainer/MusicVolumeControl"]
+[node name="MusicVolumeDisplay" type="Label" parent="BG/Panel/MarginContainer/VBoxContainer/MusicVolumeControl" unique_id=1655170080]
 unique_name_in_owner = true
 auto_translate_mode = 2
 custom_minimum_size = Vector2(50, 0)
@@ -128,10 +129,10 @@ layout_mode = 2
 text = "100%"
 horizontal_alignment = 2
 
-[node name="VoiceVolumeControl" type="HBoxContainer" parent="BG/Panel/MarginContainer/VBoxContainer"]
+[node name="VoiceVolumeControl" type="HBoxContainer" parent="BG/Panel/MarginContainer/VBoxContainer" unique_id=1632786920]
 layout_mode = 2
 
-[node name="VoiceVolumeEnabled" type="CheckBox" parent="BG/Panel/MarginContainer/VBoxContainer/VoiceVolumeControl"]
+[node name="VoiceVolumeEnabled" type="CheckBox" parent="BG/Panel/MarginContainer/VBoxContainer/VoiceVolumeControl" unique_id=553677340]
 unique_name_in_owner = true
 layout_mode = 2
 focus_neighbor_top = NodePath("../../MusicVolumeControl/MusicVolumeEnabled")
@@ -141,13 +142,13 @@ focus_next = NodePath("../VoiceVolumeSlider")
 focus_previous = NodePath("../../MusicVolumeControl/MusicVolumeSlider")
 button_pressed = true
 
-[node name="VoiceVolumeText" type="Label" parent="BG/Panel/MarginContainer/VBoxContainer/VoiceVolumeControl"]
+[node name="VoiceVolumeText" type="Label" parent="BG/Panel/MarginContainer/VBoxContainer/VoiceVolumeControl" unique_id=1868270217]
 unique_name_in_owner = true
 custom_minimum_size = Vector2(80, 0)
 layout_mode = 2
 text = "Voice"
 
-[node name="VoiceVolumeSlider" type="HSlider" parent="BG/Panel/MarginContainer/VBoxContainer/VoiceVolumeControl"]
+[node name="VoiceVolumeSlider" type="HSlider" parent="BG/Panel/MarginContainer/VBoxContainer/VoiceVolumeControl" unique_id=879532636]
 unique_name_in_owner = true
 layout_mode = 2
 size_flags_horizontal = 3
@@ -162,7 +163,7 @@ value = 100.0
 tick_count = 10
 ticks_on_borders = true
 
-[node name="VoiceVolumeDisplay" type="Label" parent="BG/Panel/MarginContainer/VBoxContainer/VoiceVolumeControl"]
+[node name="VoiceVolumeDisplay" type="Label" parent="BG/Panel/MarginContainer/VBoxContainer/VoiceVolumeControl" unique_id=815289060]
 unique_name_in_owner = true
 auto_translate_mode = 2
 custom_minimum_size = Vector2(50, 0)
@@ -170,10 +171,10 @@ layout_mode = 2
 text = "100%"
 horizontal_alignment = 2
 
-[node name="EffectsVolumeControl" type="HBoxContainer" parent="BG/Panel/MarginContainer/VBoxContainer"]
+[node name="EffectsVolumeControl" type="HBoxContainer" parent="BG/Panel/MarginContainer/VBoxContainer" unique_id=981290848]
 layout_mode = 2
 
-[node name="EffectsVolumeEnabled" type="CheckBox" parent="BG/Panel/MarginContainer/VBoxContainer/EffectsVolumeControl"]
+[node name="EffectsVolumeEnabled" type="CheckBox" parent="BG/Panel/MarginContainer/VBoxContainer/EffectsVolumeControl" unique_id=1502267188]
 unique_name_in_owner = true
 layout_mode = 2
 focus_neighbor_top = NodePath("../../VoiceVolumeControl/VoiceVolumeEnabled")
@@ -183,13 +184,13 @@ focus_next = NodePath("../EffectsVolumeSlider")
 focus_previous = NodePath("../../VoiceVolumeControl/VoiceVolumeSlider")
 button_pressed = true
 
-[node name="EffectsVolumeText" type="Label" parent="BG/Panel/MarginContainer/VBoxContainer/EffectsVolumeControl"]
+[node name="EffectsVolumeText" type="Label" parent="BG/Panel/MarginContainer/VBoxContainer/EffectsVolumeControl" unique_id=1908793416]
 unique_name_in_owner = true
 custom_minimum_size = Vector2(80, 0)
 layout_mode = 2
 text = "Effects"
 
-[node name="EffectsVolumeSlider" type="HSlider" parent="BG/Panel/MarginContainer/VBoxContainer/EffectsVolumeControl"]
+[node name="EffectsVolumeSlider" type="HSlider" parent="BG/Panel/MarginContainer/VBoxContainer/EffectsVolumeControl" unique_id=851933522]
 unique_name_in_owner = true
 layout_mode = 2
 size_flags_horizontal = 3
@@ -204,7 +205,7 @@ value = 100.0
 tick_count = 10
 ticks_on_borders = true
 
-[node name="EffectsVolumeDisplay" type="Label" parent="BG/Panel/MarginContainer/VBoxContainer/EffectsVolumeControl"]
+[node name="EffectsVolumeDisplay" type="Label" parent="BG/Panel/MarginContainer/VBoxContainer/EffectsVolumeControl" unique_id=451320259]
 unique_name_in_owner = true
 auto_translate_mode = 2
 custom_minimum_size = Vector2(50, 0)
@@ -212,10 +213,10 @@ layout_mode = 2
 text = "100%"
 horizontal_alignment = 2
 
-[node name="UIVolumeControl" type="HBoxContainer" parent="BG/Panel/MarginContainer/VBoxContainer"]
+[node name="UIVolumeControl" type="HBoxContainer" parent="BG/Panel/MarginContainer/VBoxContainer" unique_id=154898793]
 layout_mode = 2
 
-[node name="UIVolumeEnabled" type="CheckBox" parent="BG/Panel/MarginContainer/VBoxContainer/UIVolumeControl"]
+[node name="UIVolumeEnabled" type="CheckBox" parent="BG/Panel/MarginContainer/VBoxContainer/UIVolumeControl" unique_id=834683376]
 unique_name_in_owner = true
 layout_mode = 2
 focus_neighbor_top = NodePath("../../EffectsVolumeControl/EffectsVolumeEnabled")
@@ -225,13 +226,13 @@ focus_next = NodePath("../UIVolumeSlider")
 focus_previous = NodePath("../../EffectsVolumeControl/EffectsVolumeSlider")
 button_pressed = true
 
-[node name="UIVolumeText" type="Label" parent="BG/Panel/MarginContainer/VBoxContainer/UIVolumeControl"]
+[node name="UIVolumeText" type="Label" parent="BG/Panel/MarginContainer/VBoxContainer/UIVolumeControl" unique_id=1174308957]
 unique_name_in_owner = true
 custom_minimum_size = Vector2(80, 0)
 layout_mode = 2
 text = "UI"
 
-[node name="UIVolumeSlider" type="HSlider" parent="BG/Panel/MarginContainer/VBoxContainer/UIVolumeControl"]
+[node name="UIVolumeSlider" type="HSlider" parent="BG/Panel/MarginContainer/VBoxContainer/UIVolumeControl" unique_id=1608269332]
 unique_name_in_owner = true
 layout_mode = 2
 size_flags_horizontal = 3
@@ -246,7 +247,7 @@ value = 100.0
 tick_count = 10
 ticks_on_borders = true
 
-[node name="UIVolumeDisplay" type="Label" parent="BG/Panel/MarginContainer/VBoxContainer/UIVolumeControl"]
+[node name="UIVolumeDisplay" type="Label" parent="BG/Panel/MarginContainer/VBoxContainer/UIVolumeControl" unique_id=120607081]
 unique_name_in_owner = true
 auto_translate_mode = 2
 custom_minimum_size = Vector2(50, 0)
@@ -254,14 +255,14 @@ layout_mode = 2
 text = "100%"
 horizontal_alignment = 2
 
-[node name="HSeparator3" type="HSeparator" parent="BG/Panel/MarginContainer/VBoxContainer"]
+[node name="HSeparator3" type="HSeparator" parent="BG/Panel/MarginContainer/VBoxContainer" unique_id=1276921040]
 layout_mode = 2
 theme_override_constants/separation = 16
 
-[node name="MainVolumeControl" type="HBoxContainer" parent="BG/Panel/MarginContainer/VBoxContainer"]
+[node name="MainVolumeControl" type="HBoxContainer" parent="BG/Panel/MarginContainer/VBoxContainer" unique_id=373612606]
 layout_mode = 2
 
-[node name="MainVolumeEnabled" type="CheckBox" parent="BG/Panel/MarginContainer/VBoxContainer/MainVolumeControl"]
+[node name="MainVolumeEnabled" type="CheckBox" parent="BG/Panel/MarginContainer/VBoxContainer/MainVolumeControl" unique_id=1744811443]
 unique_name_in_owner = true
 layout_mode = 2
 focus_neighbor_top = NodePath("../../UIVolumeControl/UIVolumeEnabled")
@@ -271,13 +272,13 @@ focus_next = NodePath("../MainVolumeSlider")
 focus_previous = NodePath("../../UIVolumeControl/UIVolumeSlider")
 button_pressed = true
 
-[node name="MainVolumeText" type="Label" parent="BG/Panel/MarginContainer/VBoxContainer/MainVolumeControl"]
+[node name="MainVolumeText" type="Label" parent="BG/Panel/MarginContainer/VBoxContainer/MainVolumeControl" unique_id=1156019465]
 unique_name_in_owner = true
 custom_minimum_size = Vector2(80, 0)
 layout_mode = 2
 text = "Main"
 
-[node name="MainVolumeSlider" type="HSlider" parent="BG/Panel/MarginContainer/VBoxContainer/MainVolumeControl"]
+[node name="MainVolumeSlider" type="HSlider" parent="BG/Panel/MarginContainer/VBoxContainer/MainVolumeControl" unique_id=253840523]
 unique_name_in_owner = true
 layout_mode = 2
 size_flags_horizontal = 3
@@ -292,7 +293,7 @@ value = 100.0
 tick_count = 10
 ticks_on_borders = true
 
-[node name="MainVolumeDisplay" type="Label" parent="BG/Panel/MarginContainer/VBoxContainer/MainVolumeControl"]
+[node name="MainVolumeDisplay" type="Label" parent="BG/Panel/MarginContainer/VBoxContainer/MainVolumeControl" unique_id=1742732415]
 unique_name_in_owner = true
 auto_translate_mode = 2
 custom_minimum_size = Vector2(50, 0)
@@ -300,11 +301,11 @@ layout_mode = 2
 text = "100%"
 horizontal_alignment = 2
 
-[node name="HSeparator4" type="HSeparator" parent="BG/Panel/MarginContainer/VBoxContainer"]
+[node name="HSeparator4" type="HSeparator" parent="BG/Panel/MarginContainer/VBoxContainer" unique_id=911752656]
 layout_mode = 2
 theme_override_constants/separation = 16
 
-[node name="CreditsButton" type="Button" parent="BG/Panel/MarginContainer/VBoxContainer"]
+[node name="CreditsButton" type="Button" parent="BG/Panel/MarginContainer/VBoxContainer" unique_id=1197279068]
 layout_mode = 2
 tooltip_text = "Open the credits menu"
 focus_neighbor_top = NodePath("../MainVolumeControl/MainVolumeEnabled")
@@ -313,7 +314,7 @@ focus_next = NodePath("../HelpButton")
 focus_previous = NodePath("../MainVolumeControl/MainVolumeSlider")
 text = "Credits"
 
-[node name="HelpButton" type="Button" parent="BG/Panel/MarginContainer/VBoxContainer"]
+[node name="HelpButton" type="Button" parent="BG/Panel/MarginContainer/VBoxContainer" unique_id=123683880]
 layout_mode = 2
 tooltip_text = "Open the instructions and controls menu"
 focus_neighbor_top = NodePath("../CreditsButton")
@@ -322,17 +323,17 @@ focus_next = NodePath("../QuitVBoxContainer/QuitButton")
 focus_previous = NodePath("../CreditsButton")
 text = "Help"
 
-[node name="QuitVBoxContainer" type="VBoxContainer" parent="BG/Panel/MarginContainer/VBoxContainer"]
+[node name="QuitVBoxContainer" type="VBoxContainer" parent="BG/Panel/MarginContainer/VBoxContainer" unique_id=1337544642]
 unique_name_in_owner = true
 layout_mode = 2
 size_flags_vertical = 3
 alignment = 2
 
-[node name="HSeparator5" type="HSeparator" parent="BG/Panel/MarginContainer/VBoxContainer/QuitVBoxContainer"]
+[node name="HSeparator5" type="HSeparator" parent="BG/Panel/MarginContainer/VBoxContainer/QuitVBoxContainer" unique_id=698229107]
 layout_mode = 2
 theme_override_constants/separation = 16
 
-[node name="QuitButton" type="Button" parent="BG/Panel/MarginContainer/VBoxContainer/QuitVBoxContainer"]
+[node name="QuitButton" type="Button" parent="BG/Panel/MarginContainer/VBoxContainer/QuitVBoxContainer" unique_id=745307560]
 unique_name_in_owner = true
 layout_mode = 2
 size_flags_horizontal = 3

@@ -15,4 +15,6 @@ dest_files=["res://.godot/imported/CheckRoundGrey.svg-4ae11202c90f4d8f4e61bcf955
 base_scale=0.5
 saturation=1.0
 color_map={}
+fix_alpha_border=false
+premult_alpha=false
 compress=true

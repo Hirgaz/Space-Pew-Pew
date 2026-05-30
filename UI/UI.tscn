@@ -1,4 +1,4 @@
-[gd_scene load_steps=9 format=3 uid="uid://c80n1scsjner4"]
+[gd_scene format=3 uid="uid://c80n1scsjner4"]
 
 [ext_resource type="Script" uid="uid://lxg52782mjku" path="res://UI/UI.gd" id="1_ddrgo"]
 [ext_resource type="PackedScene" uid="uid://bau4fu1mpu7pp" path="res://UI/Background/Background.tscn" id="2_d050y"]
@@ -9,20 +9,22 @@
 [ext_resource type="PackedScene" uid="uid://bb1j8gc71nsxn" path="res://UI/HelpMenu/HelpMenu.tscn" id="4_f1fl4"]
 [ext_resource type="PackedScene" uid="uid://m3mbkkkty30" path="res://UI/CreditsMenu/CreditsMenu.tscn" id="4_jqf55"]
 
-[node name="UI" type="Node"]
+[node name="UI" type="Node" unique_id=719229417]
 process_mode = 3
 script = ExtResource("1_ddrgo")
 
-[node name="BGCanvasLayer" type="CanvasLayer" parent="."]
+[node name="BGCanvasLayer" type="CanvasLayer" parent="." unique_id=1836844092]
 layer = -1
 
-[node name="Background" parent="BGCanvasLayer" instance=ExtResource("2_d050y")]
+[node name="Background" parent="BGCanvasLayer" unique_id=1548257909 instance=ExtResource("2_d050y")]
+anchors_preset = 8
 
-[node name="OverlayCanvasLayer" type="CanvasLayer" parent="."]
+[node name="OverlayCanvasLayer" type="CanvasLayer" parent="." unique_id=424939280]
 
-[node name="PlayerOverlay" type="Control" parent="OverlayCanvasLayer"]
+[node name="PlayerOverlay" type="Control" parent="OverlayCanvasLayer" unique_id=226089750]
 custom_minimum_size = Vector2(1152, 720)
 layout_mode = 3
+anchors_preset = 8
 anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
@@ -34,24 +36,27 @@ offset_bottom = 360.0
 grow_horizontal = 2
 grow_vertical = 2
 
-[node name="HealthOverlay" parent="OverlayCanvasLayer/PlayerOverlay" instance=ExtResource("3_d050y")]
+[node name="HealthOverlay" parent="OverlayCanvasLayer/PlayerOverlay" unique_id=1945925229 instance=ExtResource("3_d050y")]
 layout_mode = 1
 
-[node name="HelpOverlay" parent="OverlayCanvasLayer/PlayerOverlay" instance=ExtResource("4_d050y")]
+[node name="HelpOverlay" parent="OverlayCanvasLayer/PlayerOverlay" unique_id=776700071 instance=ExtResource("4_d050y")]
 layout_mode = 1
 
-[node name="MenuCanvasLayer" type="CanvasLayer" parent="."]
+[node name="MenuCanvasLayer" type="CanvasLayer" parent="." unique_id=1867001434]
 
-[node name="MainMenu" parent="MenuCanvasLayer" instance=ExtResource("4_byuxr")]
+[node name="MainMenu" parent="MenuCanvasLayer" unique_id=1231314691 instance=ExtResource("4_byuxr")]
 visible = false
+anchors_preset = 8
 
-[node name="CreditsMenu" parent="MenuCanvasLayer" instance=ExtResource("4_jqf55")]
+[node name="CreditsMenu" parent="MenuCanvasLayer" unique_id=363485823 instance=ExtResource("4_jqf55")]
 visible = false
+anchors_preset = 8
 
-[node name="HelpMenu" parent="MenuCanvasLayer" instance=ExtResource("4_f1fl4")]
+[node name="HelpMenu" parent="MenuCanvasLayer" unique_id=1732615463 instance=ExtResource("4_f1fl4")]
 visible = false
+anchors_preset = 8
 
-[node name="GameOverMenu" parent="MenuCanvasLayer" instance=ExtResource("4_e707p")]
+[node name="GameOverMenu" parent="MenuCanvasLayer" unique_id=6943274 instance=ExtResource("4_e707p")]
 visible = false
 
 [connection signal="help_pressed" from="OverlayCanvasLayer/PlayerOverlay/HelpOverlay" to="." method="_on_help_overlay_help_pressed"]
