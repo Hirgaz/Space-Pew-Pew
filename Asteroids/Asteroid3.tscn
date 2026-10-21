@@ -15,6 +15,6 @@ texture = ExtResource("2_57w5y")
 position = Vector2(-3, 1)
 shape = SubResource("CircleShape2D_r6vhm")
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Detector" index="0" unique_id=1667067440]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Detector" parent_id_path=PackedInt32Array(766184054) index="0" unique_id=1667067440]
 position = Vector2(-3, 1)
 shape = SubResource("CircleShape2D_r6vhm")
