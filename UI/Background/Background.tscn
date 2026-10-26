@@ -1,7 +1,6 @@
 [gd_scene format=3 uid="uid://bau4fu1mpu7pp"]
 
 [ext_resource type="Texture2D" uid="uid://de5dalm8rljim" path="res://World/Background.png" id="1_8dxnu"]
-[ext_resource type="Script" uid="uid://cxtxxe0amyxxh" path="res://UI/Background/Background.gd" id="1_666w4"]
 
 [node name="Background" type="Control" unique_id=1221465297]
 custom_minimum_size = Vector2(1152, 720)
@@ -17,8 +16,6 @@ offset_right = 576.0
 offset_bottom = 324.0
 grow_horizontal = 2
 grow_vertical = 2
-mouse_filter = 1
-script = ExtResource("1_666w4")
 
 [node name="TextureRect" type="TextureRect" parent="." unique_id=1209010141]
 layout_mode = 1
@@ -29,25 +26,3 @@ grow_horizontal = 2
 grow_vertical = 2
 texture = ExtResource("1_8dxnu")
 stretch_mode = 1
-
-[node name="MarginContainer" type="MarginContainer" parent="." unique_id=837475202]
-layout_mode = 1
-anchors_preset = -1
-anchor_left = 1.0
-anchor_top = 1.0
-anchor_right = 1.0
-anchor_bottom = 1.0
-offset_left = -18.0
-offset_top = -23.0
-grow_horizontal = 0
-grow_vertical = 0
-theme_override_constants/margin_right = 4
-theme_override_constants/margin_bottom = 4
-
-[node name="VersionLabel" type="Label" parent="MarginContainer" unique_id=805760024]
-unique_name_in_owner = true
-auto_translate_mode = 2
-layout_mode = 2
-size_flags_vertical = 1
-tooltip_auto_translate_mode = 1
-text = "v: "

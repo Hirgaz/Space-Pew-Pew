@@ -8,6 +8,7 @@
 [ext_resource type="PackedScene" uid="uid://jgl7q1qs2evg" path="res://UI/GameOverMenu/GameOverMenu.tscn" id="4_e707p"]
 [ext_resource type="PackedScene" uid="uid://bb1j8gc71nsxn" path="res://UI/HelpMenu/HelpMenu.tscn" id="4_f1fl4"]
 [ext_resource type="PackedScene" uid="uid://m3mbkkkty30" path="res://UI/CreditsMenu/CreditsMenu.tscn" id="4_jqf55"]
+[ext_resource type="PackedScene" uid="uid://c2nk5rmeipgr2" path="res://UI/VersionOverlay/VersionOverlay.tscn" id="9_qgmx8"]
 
 [node name="UI" type="Node" unique_id=719229417]
 process_mode = 3
@@ -56,6 +57,10 @@ visible = false
 
 [node name="GameOverMenu" parent="MenuCanvasLayer" unique_id=6943274 instance=ExtResource("4_e707p")]
 visible = false
+
+[node name="VersionCanvasLayer" type="CanvasLayer" parent="." unique_id=2096120928]
+
+[node name="VersionOverlay" parent="VersionCanvasLayer" unique_id=61656663 instance=ExtResource("9_qgmx8")]
 
 [connection signal="help_pressed" from="OverlayCanvasLayer/PlayerOverlay/HelpOverlay" to="." method="_on_help_overlay_help_pressed"]
 [connection signal="continue_pressed" from="MenuCanvasLayer/MainMenu" to="." method="_on_main_menu_continue_pressed"]
